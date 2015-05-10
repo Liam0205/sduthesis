@@ -1,0 +1,1665 @@
+% \iffalse meta-comment
+% !TeX program  = XeLaTeX
+% !TeX encoding = UTF-8
+%
+% This is file `sduthesis.dtx'.
+%
+% Copyright (C) 2012 -- 2015 by Liam Huang
+% -----------------------------------
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
+%
+% This work has the LPPL maintenance status `maintained'.
+%
+% The Current Maintainer of this work is Liam Huang.
+%
+%<*internal>
+\iffalse
+%</internal>
+%<*readme>
+# The `sduthesis` Class / `sduthesis` 文档类
+
+## Introduction / 介绍
+
+The `sduthesis` is designed for students of Shandong Univ., P.R.China,
+by [Liam Huang][liam-ctan]. The 1.0.x versions of `sduthesis` were
+released in the name of Ch'en Meng, while from the begining of version 1.2.0,
+it was released in the name of Liam Huang and was rewritten in `docstrip`.
+
+This work is released under the LaTeX Project Public License, v1.3c or later.
+See the License file.
+
+`sduthesis` 是由 [Liam Huang][liam-ctan] 为山东大学学生设计的 LaTeX 论文模板。
+1.x 以化名 Ch'en Meng 的名义发布；1.2.0 版本开始，以 `docstrip` 工具重写了整个代码，
+并以 Liam Huang 的名义发布。
+
+`sduthesis` 遵循不低于 1.3 版本的 LPPL 许可证，详情请查看 LICENSE 文件。
+
+## Installation / 安装
+
+    cd path/to/sduthesis
+    xetex sduthesis.dtx
+    xelatex -shell-escape sduthesis.dtx
+    xelatex -shell-escape sduthesis.dtx
+    xelatex sduthesis-demo.tex
+    xelatex sduthesis-demo.tex
+
+Remove temp-files.
+
+* Put `sduthesis.dtx` to `TEXMF/source/latex/sduthesis/`
+* Put `sduthesis.cls`, `*.def` and `figures/' to `TEXMF/tex/latex/sduthesis/`
+* Put the remaining files to `TEXMF/doc/latex/sduthesis/`
+
+中文用户参见用户文档。
+
+## Usage / 用法
+
+See the user manual `sduthesis.pdf` and the demo `sduthesis-demo.tex'.
+
+参见用户文档 `sduthesis.pdf` 及示例文件 `sduthesis-demo.tex`。
+
+## Author / 作者
+
+Liam Huang
+
+Email: liamhuang0205+sduthesis@gmail.com
+
+If you are interested in the process of development you may observe
+
+<https://github.com/LiamHuang0205/sduthesis>
+
+[liam-ctan]: http://www.ctan.org/author/huang-l
+%</readme>
+%<*license>
+Released under the [LaTeX Project Public
+License](http://www.latex-project.org/lppl.txt), v1.3c or later.
+
+The package has status 'maintained': the current maintainer is
+[Liam Huang](liamhuang0205+sduthesis@gmail.com).
+%</license>
+%<*internal>
+\fi
+\begingroup
+  \def\temp{LaTeX2e}
+\expandafter\endgroup\ifx\temp\fmtname\else
+\csname fi\endcsname
+%</internal>
+%<*install>
+\newread\inputcheck
+\openin\inputcheck=sduthesis.ver
+\ifeof\inputcheck
+  \def\sduthesisPutVersion{\string\GetIdInfo$Id$}
+\else
+  \input sduthesis.ver
+\fi
+\closein\inputcheck
+
+\input l3docstrip.tex
+
+\def\checkOption<#1{%
+  \ifcase
+    \ifx*#10\else \ifx/#11\else
+    \ifx+#12\else \ifx-#13\else
+    \ifx<#14\else \ifx @#15\else
+    \ifx.#16\else
+    7\fi\fi\fi\fi\fi\fi\fi\relax
+  \expandafter\starOption\or
+  \expandafter\slashOption\or
+  \expandafter\plusOption\or
+  \expandafter\minusOption\or
+  \expandafter\verbOption\or
+  \expandafter\moduleOption\or
+  \expandafter\expOption\or
+  \expandafter\doOption\fi
+  #1%
+}
+\def\expOption .#1>#2\endLine{%
+  \maybeMsg{<.#1 . >}%
+  \Evaluate{#1}%
+  \begingroup
+    \catcode`\\=0 \catcode`\{=1 \catcode`\}=2
+    \xdef\expandedLineStuff{\scantokens{#2\noexpand}}%
+  \endgroup
+  \def\do##1##2##3{%
+    \if1\Expr{##2}\StreamPut##1{\expandedLineStuff}\fi
+    }%
+  \activefiles
+  }
+
+\keepsilent
+\askforoverwritefalse
+
+\preamble
+
+-----------------------------------
+
+This is a generated file.
+
+Copyright (C) 2012 -- 2015 by Liam Huang
+
+This work may be distributed and/or modified under the
+conditions of the LaTeX Project Public License, either version 1.3
+of this license or (at your option) any later version.
+The latest version of this license is in
+  http://www.latex-project.org/lppl.txt
+and version 1.3 or later is part of all distributions of LaTeX
+version 2005/12/01 or later.
+
+This work has the LPPL maintenance status `maintained'.
+
+The Current Maintainer of this work is Liam Huang.
+
+\endpreamble
+\postamble
+
+Copyright (C) 2012 -- 2015 by Liam Huang
+
+This work may be distributed and/or modified under the
+conditions of the LaTeX Project Public License, either version 1.3
+of this license or (at your option) any later version.
+The latest version of this license is in
+  http://www.latex-project.org/lppl.txt
+and version 1.3 or later is part of all distributions of LaTeX
+version 2005/12/01 or later.
+
+This work has the LPPL maintenance status `maintained'.
+
+The Current Maintainer of this work is Liam Huang.
+
+-----------------------------------
+
+This work consists of the file  \jobname.dtx
+and the derived files           \jobname.cls,
+                                \jobname-cover.def,
+                                \jobname-statement.def,
+                                figures/,
+                                sduthesis-demo.tex,
+                                README.md,
+                                LICENSE.md,
+                                sduthesis.pdf and
+                                sduthesis-demo.pdf.
+\endpostamble
+
+\declarepostamble\emptypostamble
+\endpostamble
+
+\generate{%
+  \usedir{tex/latex/sduthesis}%
+  \file{\jobname.cls}{\from{\jobname.dtx}{class}}%
+  \usedir{tex/latex/sduthesis/def}%
+  \file{\jobname-cover.def}{\from{\jobname.dtx}{cover}}%
+  \file{\jobname-statement.def}{\from{\jobname.dtx}{statement}}%
+  \usedir{doc/latex/sduthesis}%
+  \file{\jobname-demo.tex}{\from{\jobname.dtx}{demo}}%
+  \nopreamble\nopostamble
+  \file{README.md}{\from{\jobname.dtx}{readme}}%
+  \file{LICENSE.md}{\from{\jobname.dtx}{license}}%
+}
+
+\catcode32=12\space
+
+\Msg{**************************************************************}
+\Msg{**************************************************************}
+\Msg{**                                                          **}
+\Msg{** To finish the installation you have to move the          **}
+\Msg{** following file into a directory searched by TeX:         **}
+\Msg{**                                                          **}
+\Msg{**    \jobname.cls                                         **}
+\Msg{**                                                          **}
+\Msg{** To produce the user manual run the file \jobname.dtx    **}
+\Msg{** through XeLaTeX.                                         **}
+\Msg{**                                                          **}
+\Msg{** To produce the demo file run the file \jobname-demo.tex **}
+\Msg{** through XeLaTeX.                                         **}
+\Msg{**                                                          **}
+\Msg{** Happy TeXing!                                            **}
+\Msg{**************************************************************}
+\Msg{**************************************************************}
+
+\endbatchfile
+%</install>
+%<*internal>
+\fi
+%</internal>
+%<*!(readme|license|install|demo|statement|cover)>
+%<*driver|package|class>
+\NeedsTeXFormat{LaTeX2e}
+\RequirePackage{expl3}
+%</driver|package|class>
+%<.!(readme|license|install|demo|statement|cover)>\sduthesisPutVersion
+%<*driver>
+\InputIfFileExists{sduthesis.ver}{}{
+  \def\sduthesisGetVersionInfo{\GetIdInfo$Id$}}
+\sduthesisGetVersionInfo
+  {sduthesis source file}
+\ProvidesExplFile{\ExplFileName.\ExplFileExtension}
+%</driver>
+%<class>  {Thesis Template for Shandong University}
+%<class>\ProvidesExplClass{sduthesis}
+  {\ExplFileDate}{2.0}{\ExplFileDescription}
+%</!(readme|license|install|demo|statement|cover)>
+%<*driver>
+\ExplSyntaxOff
+\let\sduthesisrevnum\ExplFileVersion
+\expandafter\let\csname ver@thumbpdf.sty\endcsname\fmtversion
+\documentclass[a4paper,full,numbered]{l3doc}
+\usepackage[UTF8, punct = kaiming, heading,
+  linespread = 1.2, sub3section, fontset = founder]{ctex}
+\usepackage[toc]{multitoc}
+\usepackage{geometry}
+\usepackage{tabularx}
+\usepackage{unicode-math}
+\usepackage{makecell}
+\usepackage{threeparttable}
+\usepackage{xcolor}
+\usepackage{tabu}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{minted}
+\usepackage{multirow}
+\usepackage{xcolor}
+\usepackage{caption}
+
+\ctexset{
+  abstractname   = 简介,
+  indexname      = 代码索引,
+  section        = {
+    format = \Large\bfseries\raggedright,
+    name   = {第,节},
+  },
+}
+\appto\abstract{\parindent=2\ccwd} ^^A l3doc.cls 设置列表环境中 \listparindent=\z@
+\geometry{includemp,hmargin={0mm,15mm},vmargin={25mm,15mm},footskip=7mm}
+\hypersetup{pdfstartview=FitH,bookmarksdepth=subsubsection}
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{2}
+\newcommand*\email{\nolinkurl}
+\setmainfont{TeX Gyre Pagella}
+\setsansfont{CMU Sans Serif}
+\setmonofont[
+  UprightFont=* Light, BoldFont=* Bold,
+  SlantedFont=* Light Oblique]{CMU Typewriter Text}
+\setmathfont{texgyrepagella-math.otf}
+\captionsetup{strut=off, labelsep=quad, labelfont+=bf}
+\makeatletter
+%% <--- http://tex.stackexchange.com/a/40896
+\patchcmd{\@addtocurcol}%
+    {\vskip \intextsep}%
+    {\edef\save@first@penalty{\the\lastpenalty}\unpenalty
+     \ifnum \lastpenalty = \@M  % hopefully the OR penalty
+        \unpenalty
+     \else
+        \penalty \save@first@penalty \relax % put it back
+     \fi
+      \ifnum\outputpenalty <-\@Mii
+                         \addvspace\intextsep
+                         \vskip\parskip
+      \else
+                         \addvspace\intextsep
+      \fi}%
+    {\typeout{*** SUCCESS ***}}{\typeout{*** FAIL ***}}
+\patchcmd{\@addtocurcol}%
+    {\vskip\intextsep \ifnum\outputpenalty <-\@Mii \vskip -\parskip\fi}%
+    {\ifnum\outputpenalty <-\@Mii
+       \aftergroup\vskip\aftergroup\intextsep
+       \aftergroup\nointerlineskip
+     \else
+       \vskip\intextsep
+     \fi}%
+    {\typeout{*** SUCCESS ***}}{\typeout{*** FAIL ***}}
+\patchcmd{\@getpen}{\@M}{\@Mi}
+  {\typeout{*** SUCCESS ***}}{\typeout{*** FAIL ***}}
+%% --->
+\ifxetex
+  \let\sduthesisdocverbaddon\xeCJKVerbAddon
+  \def\sduthesisdisableecglue{\xeCJKsetup{CJKecglue}}
+  \appto\meta@font@select{\ifinner\sduthesisdisableecglue\fi}
+\else
+  \let\sduthesisdocverbaddon\relax
+  \def\sduthesisdisableecglue{\ltjsetparameter{autoxspacing=false}}
+  \appto\meta@font@select{\sduthesisdisableecglue}
+\fi
+\setlist{noitemsep,topsep=\smallskipamount}
+\newlist{optdesc}{description}{3}
+%% 设置间距为 \marginparsep，与 l3doc 一致
+\setlist[optdesc]{%
+  font=\mdseries\ttfamily,align=right,
+  labelsep=\marginparsep,labelindent=-\marginparsep,leftmargin=*}
+\fvset{
+  fontsize=\small,baselinestretch=1,numbersep=5pt,
+  formatcom=\sduthesisdocverbaddon,
+  listparameters=\setlength\topsep{\MacrocodeTopsep}}
+\DefineVerbatimEnvironment{sduthesis}{Verbatim}{%
+  gobble=4,
+  frame=single,framesep=10pt,
+  label=\rule{0pt}{12pt}\textnormal{\bfseries 例 \arabic{sduthesis}},
+  listparameters=
+    \refstepcounter{sduthesis}\sduthesisexamlabelref
+    \appto\FV@EndList{\nointerlineskip}}
+\define@key{FV}{labelref}{\def\sduthesisexamlabelref{\label{#1}}}
+\let\sduthesisexamlabelref\empty
+\newcounter{sduthesis}
+\BeforeBeginEnvironment{function}{\par\nointerlineskip}
+\AtEndEnvironment{function}{%
+  \par\xdef\sduthesisfixprevdepth{\prevdepth=\the\prevdepth\space}%
+  \sduthesisfixdescrcoffinyoffset}
+%% l3doc 会在 function 环境的 syntax 和 descr 盒子中间加上 \medskipamount 的距离。
+%% 但是若 syntax 盒子为空（未使用 syntax 环境），就会显得不好看。
+%% 此时我们通过将 \medskipamount 设置为零来修正。
+\def\sduthesisfixdescrcoffinyoffset{%
+  \aftergroup\aftergroup\aftergroup\sduthesiszeromedskipamount}
+\def\sduthesiszeromedskipamount{\setlength\medskipamount{\z@skip}}
+\AfterEndEnvironment{syntax}{\let\sduthesisfixdescrcoffinyoffset\relax}
+\AfterEndEnvironment{function}{\sduthesisfixprevdepth}
+\AtBeginEnvironment{syntax}{\linespread{1}\sduthesisdisableecglue}
+\preto\MacroFont{\linespread{1}}
+\appto\MacroFont{\hyphenchar\font\m@ne\sduthesisdocverbaddon}
+\preto\AltMacroFont{\linespread{1}}
+\appto\AltMacroFont{\hyphenchar\font\m@ne\sduthesisdocverbaddon}
+\def\Module#1{\mbox{\normalfont\sffamily\textlangle#1\textrangle}}
+\ExplSyntaxOn
+%% 用 \vtop 让函数名字和语法盒子首行对齐
+\patchcmd \__codedoc_syntax:w
+  { { minipage } { \l__codedoc_syntax_dim } }
+  { { minipage } [t] { \l__codedoc_syntax_dim } }
+  { \iow_term:n { *** ~ SUCCESS ~ *** } }
+  { \iow_term:n { *** ~ FAIL ~ *** } }
+%% 左侧边注的函数列表采用单倍行距
+\cs_set_protected_nopar:Npx \__codedoc_typeset_names:
+  {
+    \exp_not:N \linespread { 1 }
+    \exp_not:o { \__codedoc_typeset_names: }
+  }
+\patchcmd \__codedoc_macro_typeset_one:n
+  { \vbox_unpack_clear:N }
+  { \linespread { 1 } \selectfont \vbox_unpack_clear:N }
+  { \iow_term:n { *** ~ SUCCESS ~ *** } }
+  { \iow_term:n { *** ~ FAIL ~ *** } }
+%% 不重复使用 \HD@target，避免索引出现重复页码
+\cs_set_protected:Npn \__codedoc_special_index_aux:nnnnn #1#2#3#4#5
+  {
+    \__codedoc_special_index_set:Nn \l__codedoc_index_escaped_macro_tl {#2}
+    \str_if_eq:onTF { \@currenvir } { macrocode }
+      { \codeline@wrindex }
+      {
+        \HD@target
+        \index
+      }
+      {
+        \tl_if_empty:nF { #3 #4 }
+          { #3 \actualchar #4 \levelchar }
+        #1
+        \actualchar
+        {
+          \token_to_str:N \verbatim@font \c_space_tl
+          \l__codedoc_index_escaped_macro_tl
+        }
+        \encapchar
+        hdclindex{\the\c@HD@hypercount}{#5}
+      }
+  }
+\DeclareDocumentCommand \cs { O{} m }
+  { \__codedoc_cmd_aux:no {#1} { \c__codedoc_backslash_tl #2 } }
+\DeclareDocumentCommand \tn { O{} m }
+  {
+    \__codedoc_cmd_aux:no
+      { index = TeX , replace = false , #1 }
+      { \c__codedoc_backslash_tl #2 }
+  }
+\DeclareDocumentCommand \meta { +m }
+  { \__codedoc_meta_aux:n {#1} }
+\DeclareExpandableDocumentCommand \bookmarkcstn { O{} m }
+  { \textbackslash \tl_to_str:n {#2} }
+\cs_new:Npn \bookmarkmeta #1 { < \tl_to_str:n {#1} > }
+\cs_generate_variant:Nn \__codedoc_cmd_aux:nn { no }
+\AtBeginEnvironment { syntax }
+  {
+    \char_set_active_eq:NN \| \orbar
+    \char_set_active_eq:NN \( \defaultvalaux
+  }
+%% 不对目录中出现的 \cs 和 \tn 等编索引
+\DeclareDocumentCommand \StopSpecialIndexModule { }
+  { \cs_set_eq:NN \__codedoc_special_index_module:nnnn \use_none:nnnn }
+\tl_map_inline:nn { \actualchar \encapchar \levelchar }
+  { \exp_args:Nx \DoNotIndex { \bslash \tl_to_str:N #1 } }
+\ExplSyntaxOff
+\AtBeginDocument{\addtocontents{toc}{\StopSpecialIndexModule}}
+\pdfstringdefDisableCommands{%
+  \let\cs\bookmarkcstn
+  \let\tn\bookmarkcstn
+  \let\meta\bookmarkmeta
+  \let\opt\@firstofone}
+\def\orbar{\textup{\textbar}}
+\def\defaultval#1{\textbf{\textup{#1}}}
+\def\defaultvalaux#1){\defaultval{#1}}
+\def\TF{true\orbar false}
+\def\TTF{\defaultval{true}\orbar false}
+\def\TFF{true\orbar\defaultval{false}}
+\protected\def\opt{\texttt}
+\def\pdfTeX{\hologo{pdfTeX}}
+\def\XeTeX{\hologo{XeTeX}}
+\def\XeLaTeX{\hologo{XeLaTeX}}
+\DeclareRobustCommand\LuaLaTeX{\hologo{LuaLaTeX}}
+\def\pdfLaTeX{\hologo{pdfLaTeX}}
+\def\LaTeX{\hologo{LaTeX}}
+\def\LaTeXe{\hologo{LaTeX2e}}
+\def\LTXIII{\hologo{LaTeX3}}
+\def\dvipdfmx{DVIPDFM\textit{x}}
+\newcommand{\TeXLive}{\TeX\ Live}
+\def\sduthesisrev#1{%
+  \href{https://github.com/LiamHuang0205/sduthesis/commit/#1}{\texttt{sduthesis} rev. #1}}
+\patchcmd\theCodelineNo{\sffamily\tiny}{\normalfont\sffamily\tiny}{}{}
+\appto\GlossaryParms{%
+  \def\@idxitem{\par\hangindent 2em }%
+  \def\subitem{\@idxitem\hspace*{1em}}%
+  \def\subsubitem{\@idxitem\hspace*{2em}}}
+\patchcmd\l@section{2.5em}{1.5em}{}{}
+\patchcmd\l@subsection{2.5em}{1.5em}{}{}
+\patchcmd\changes@{\space}{\lbrack}{}{}
+\patchcmd\@wrglossary{hdpindex}{hdclindex{\the\c@HD@hypercount}}{}{}
+\newenvironment{defaultcapconfig}{%
+  \MakePercentComment
+  \input{ctex-name-utf8.cfg}%
+  \ExplSyntaxOff
+  \MakePercentIgnore}{}
+\makeatother
+\EnableCrossrefs
+\CodelineIndex
+\RecordChanges
+\def\glossaryname{版本历史}
+\GlossaryPrologue{\section*{\glossaryname}}
+\IndexPrologue{%
+  \section*{\indexname}
+  \textit{意大利体的数字表示描述对应索引项的页码；
+  带下划线的数字表示定义对应索引项的代码行号；
+  罗马字体的数字表示使用对应索引项的代码行号。}}
+\AtBeginDocument{\hypersetup{hidelinks}}
+\newcommand{\mem}[1]{\textcolor{blue}{\kaishu #1}}
+\begin{document}
+  \DocInput{\jobname.dtx}
+  \newgeometry{hmargin=15mm,vmargin={25mm,15mm},footskip=7mm}
+  \PrintChanges
+  \PrintIndex
+\end{document}
+%</driver>
+% \fi
+%
+% \CheckSum{0}
+% \CharacterTable
+%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
+%   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
+%   Digits        \0\1\2\3\4\5\6\7\8\9
+%   Exclamation   \!     Double quote  \"     Hash (number) \#
+%   Dollar        \$     Percent       \%     Ampersand     \&
+%   Acute accent  \'     Left paren    \(     Right paren   \)
+%   Asterisk      \*     Plus          \+     Comma         \,
+%   Minus         \-     Point         \.     Solidus       \/
+%   Colon         \:     Semicolon     \;     Less than     \<
+%   Equals        \=     Greater than  \>     Question mark \?
+%   Commercial at \@     Left bracket  \[     Backslash     \\
+%   Right bracket \]     Circumflex    \^     Underscore    \_
+%   Grave accent  \`     Left brace    \{     Vertical bar  \|
+%   Right brace   \}     Tilde         \~}
+%
+% \changes{v1.2.0b}{2015/01/04}{重新构建了用户文档和演示文档。}
+% \changes{v1.2.0a}{2015/01/01}{使用 \pkg{DocStrip} 工具重新实现。}
+% \changes{v1.0}{2013/05/12}{首次公开。}
+%
+% \GetFileInfo{\jobname.dtx}
+%
+% \DoNotIndex{\test}
+%
+% \title{The \textsf{\jobname} class\thanks{This Document
+%   corresponds to \textsf{\jobname}~\fileversion,
+%   dated \filedate.}}
+% \author{Liam Huang \\ \texttt{liamhuang0205+\jobname@gmail.com}}
+% \date{\filedate}
+%
+% \maketitle
+%
+% \begin{abstract}
+%   \pkg{sduthesis} 由 Liam Huang 设计制作，旨在为山大学子建立一个
+%   简单易用的论文标准模板。
+% \end{abstract}
+%
+% \tableofcontents
+% \section{模板介绍}
+%
+% \textsc{SDUThesis} (Shandong Unversity Thesis) 是为了帮助山东大学
+% 毕业生高效完成自己的学位论文/毕业论文而设计的 \LaTeX{} 论文模板。\par
+% 模板由 Liam Huang 设计制作，并遵循 \LaTeX{} Project Public License 开源，
+% 源代码公开在 GitHub 上，项目地址是：
+% \begin{quote}
+%   \url{https://github.com/LiamHuang0205/sduthesis}
+% \end{quote}
+% 欢迎山大学子参与进来，共同维护这一项目。\par
+% \mem{模板的意义在于，它能让使用者将注意力集中在论文内容的编写上，而不必费心于
+% 格式调整。\pkg{sduthesis} 自身已经按照学校的论文要求制定了格式，如果使用者
+% 严格遵守 \LaTeX{} 规范和模板说明，就能排版出高质量的文档；反之，即使使
+% 用 \LaTeX{} 也可能排版出难看的文档。}\par
+% 本文档可以在命令行下执行 |xelatex sduthesis.dtx| 得到。\par
+% \pkg{sduthesis} 遵循版本号不低于 1.3 的 \LaTeX{} Project Public
+% License 许可证，下面是它的最新版本：
+% \begin{quote}
+%   \url{http://www.latex-project.org/lppl.txt}
+% \end{quote}
+%
+% \section{安装}
+% \pkg{sduthesis} 有三种安装方式，分别是
+% \begin{itemize}
+%   \item 编译源代码安装；
+%   \item 扁平化安装；
+%   \item TDS 安装。
+% \end{itemize}
+% 编译安装最为复杂，但允许用户修改源代码，高级用户可以采用此种方法；
+% 扁平化安装最为简单，实际上就是把所有模板文件解压至某个目录，如果只是想尝鲜，可以
+% 采用此种方法；TDS 安装是标准安装，实际上 \TeX{} 发行版内的宏包，都是按照 TDS
+% 的规则来安装的，如果想长期稳定使用，可以采用此种方法。
+% \subsection{下载}
+% 你可以在 GitHub 的 releases 页面找到 \pkg{sduthesis} 的历史版本并下载。
+% 建议总是下载安装最新版本的模板。
+% \begin{quote}
+%   \url{https://github.com/LiamHuang0205/sduthesis/releases}
+% \end{quote}
+% 这里，类似 \fileversion{} 的版本是源代码，下载后需要进行编译安装；
+% 类似 \fileversion-plain 的版本是扁平化安装，下载后解压至工作目录
+% 可以直接使用；类似 \fileversion-tds 的版本是 TDS 安装包，下载后应
+% 解压至指定目录使用。\par
+% \subsection{模板组成}\label{subs:consist}
+% 模板由下列文件组成：\\
+% \begin{longtabu} to \linewidth{X[1c]X[3r]X[3l]X[1c]}
+%   \tabucline[1.2pt]{2-3}
+%   & \textbf{文件（夹）} & \textbf{功能描述} & \\
+%   \cline{2-3}\endhead\cline{2-3}
+%   & \file{sduthesis.dtx} & 模板源代码及其他文档的 \pkg{DocStrip} 代码 & \\
+%   & \file{sduthesis.cls} & 文档类，模板主体 & \\
+%   & \file{sduthesis-cover.def} & 封面样式定义文件 & \\
+%   & \file{sduthesis-statement.def} & 承诺书定义文件 & \\
+%   \cline{2-3}
+%   & \file{sduthesis-demo.tex} & 演示文件 & \\
+%   & \file{figures/} & 演示文件图片路径 & \\
+%   \cline{2-3}
+%   & \file{README.md} & 不言自明的说明文件 & \\
+%   & \file{LICENSE.md} & 许可证说明文件 & \\
+%   & \file{sduthesis.pdf} & 用户手册（本文档） & \\
+%   & \file{sduthesis-demo.pdf} & 演示文件 & \\
+%   \tabucline[1.2pt]{2-3}
+% \end{longtabu}
+% \mem{其中 \file{sduthesis.dtx} 是原始文件，其余
+% 文件均可经由特定的编译步骤编译出来。}
+% \subsection{依赖}
+% \pkg{sduthesis} 依赖于以下宏包，这些宏包在常见的 \TeX{} 发行版中都已包含，
+% 在安装使用之前，请确认你的 \TeX{} 发行版中正确安装了这些宏包。
+% \begin{longtabu}to 0.9\linewidth{*4{X[cm]}}
+%   \toprule
+%   \pkg{kvoptions} & \pkg{etoolbox} & \pkg{ifpdf} & \pkg{ifxetex} \\
+%   \pkg{geometry} & \pkg{hyperref} & \pkg{fancyhdr} & \pkg{amsmath} \\
+%   \pkg{amsthm} & \pkg{amssymb} & \pkg{amsfonts} & \pkg{amsbsy} \\
+%   \pkg{bm} & \pkg{mathrsfs} & \pkg{booktabs} & \pkg{graphicx} \\
+%   \pkg{epstopdf} & \pkg{bmpsize} & \pkg{xcolor} & \pkg{makecell} \\
+%   \pkg{ctex} & \pkg{xeCJK} & \pkg{CJK} & \pkg{xCJK2uni}\\
+%   \pkg{tabu} & \pkg{minted} & \pkg{longtable} & \pkg{hologo}\\
+%   \pkg{multirow} \\
+%   \bottomrule
+% \end{longtabu}
+% 如果你尚未安装这些宏包，可以启动你的 \TeX{} 发行版的宏包管理器
+% 来安装；或者到 \url{http://www.ctan.org} 上搜索下载并安装。
+% \subsection{安装}
+% \subsubsection{编译安装}
+% % 下载并解压源代码至某一目录，将这一目录记为 \file{SOURCE}。
+% 按照如下顺序，依次执行命令，编译源代码。
+% \iffalse
+%<*internal>
+% \fi
+\begin{minted}{sh}
+cd SOURCE
+xetex sduthesis.dtx
+xelatex -shell-escape sduthesis.dtx
+xelatex -shell-escape sduthesis.dtx
+xelatex sduthesis-demo.tex
+xelatex sduthesis-demo.tex
+\end{minted}
+% \iffalse
+%</internal>
+% \fi
+% 编译成功之后，参照 \label{subs:consist} 节的表格，删除多余的辅助文件。
+% 这样得到的即为扁平化安装包，参考 \ref{subss:plain} 节的内容；若想继
+% 续以 TDS 方式安装，参考 \ref{subss:TDS} 节的内容。
+% \subsubsection{扁平化安装}\label{subss:plain}
+% 将扁平化安装包解压，将其内的所有内容复制到你的工作目录即可。
+% \subsubsection{TDS 安装}\label{subss:TDS}
+% 将 TDS 安装包解压，将其内的所有内容按照既有的目录结构，复制到某一个 TDS 根
+% 下面。比如 |TEXMFLOCAL|。\pkg{sduthesis} 的目录结构如下表所示。
+% \begin{longtabu}to \linewidth {X[1c]X[3r]X[3.8l]X[1c]}
+%   \tabucline[1.2pt]{2-3}
+%   & \textbf{文件（夹）} & \textbf{目录} & \\
+%   \cline{2-3}\endhead\cline{2-3}
+%   & \file{sduthesis.dtx} &
+%     \file{TEXMF/source/latex/sduthesis/} & \\
+%   \cline{2-3}
+%   & \file{sduthesis.cls} &
+%     \multirow{4}{*}{\file{TEXMF/tex/latex/sduthesis}} & \\
+%   & \file{sduthesis-cover.def} &  & \\
+%   & \file{sduthesis-statement.def} &  & \\
+%   & \file{figures/} &  & \\
+%   \cline{2-3}
+%   & \file{sduthesis-demo.tex} &
+%     \multirow{5}{*}{\file{TEXMF/doc/latex/sduthesis}} & \\
+%   & \file{README.md} &  & \\
+%   & \file{LICENSE.md} &  & \\
+%   & \file{sduthesis.pdf} &  & \\
+%   & \file{sduthesis-demo.pdf} &  & \\
+%   \tabucline[1.2pt]{2-3}
+% \end{longtabu}
+%
+% 之后，在终端（命令提示符）中以管理员权限运行 |texhash|。
+% \subsection{升级}
+% \begin{itemize}
+%   \item 对于编译安装的用户，需要下载新版源代码，重新编译安装。
+%   \item 对于扁平化安装的用户，需要下载新版扁平安装包，覆盖原有文件。
+%   \item 对于 TDS 安装的用户，需要下载新版 TDS 安装包，覆盖
+%   原有文件，并刷新文件名数据库。
+% \end{itemize}
+% \section{使用说明}
+%
+% 使用 \pkg{\jobname} 必须具有一定的 \LaTeXe{} 基础知识，能够
+% 处理一般的 \LaTeX{} 文档，并对 \BibTeX{} 有一定的了解。如果你
+% 从来没有接触过 \LaTeX{}，请先学习相关的基础知识，毕竟「磨刀不误砍柴工」。\par
+% 网络上关于 \LaTeX{} 的资料参差不齐，再加上今年 \LaTeX{} 中文处理
+% 技术发展飞快，许多网络文章已经过时。因此，我不建议你在网络上寻找文档
+% 自学 \LaTeX{}。如果你愿意购买实体书，我推荐你选购刘海洋\footnote{刘海洋
+% 是 C\TeX{} 论坛版主，是当前最先进的中文处理技术 \pkg{xeCJK} 的主要维护
+% 者，同时是当前最完善的中文版式解决方案 \pkg{ctex} 宏包的维护者，同时
+% 是不少中文相关 \TeX{} 工具的作者。}的《\LaTeX{} 入门》；如果你更希望
+% 阅读免费的电子文档，我推荐你下载我整理的文档集：\url{http://zip.xelatex.tk}。
+% \subsection{关于提问}
+% 首先你应当完整阅读一份 \LaTeX{} 入门文档，如果遇到的问题确实超出能力范围，
+% 而暂时无法解决，你应当清晰地提出你的问题。在提问之前，我建议你先阅读我写的
+% 这份文档：\url{xelatex.tk}。\par
+% 欢迎你到下列位置提出你的问题（按照优先级顺序排列）：
+% \begin{itemize}
+%   \item[C\TeX{}论坛] \url{http://bbs.ctex.org}；
+%   \item[QQ 群] 31752345；
+%   \item[GitHub Issue] \url{https://github.com/LiamHuang0205/sduthesis/issues}。
+% \end{itemize}
+% \subsection{关于编译}
+% \pkg{\jobname} 支持三种编译方式：
+% \begin{itemize}
+%   \item \XeLaTeX{}；
+%   \item pdf\LaTeX{}；
+%   \item \LaTeX{} + DVIPDFMx。
+% \end{itemize}
+% 其中，由于 \pkg{\jobname} 的依赖宏包 \pkg{ctex} 的默认配置的问题，只有
+% 在 Windows 系统底下三种编译方式均能较好地工作；在 Mac OS X 及 Linux 系统
+% 底下，pdf\LaTeX{} 和 \LaTeX{} + DVIPDFMx 两种方式需要做额外的配置。\par
+% 对于 Mac OS X 和 Linux 系统，推荐使用 \XeLaTeX{} 方式编译。请参看我的博文：
+% \begin{quote}
+%   \url{http://liam0205.me/2015/11/02/latex-mactex-chinese-support/}
+% \end{quote}\par
+% 考虑到使用 \XeLaTeX{} 能减少配置的工作量，且能够输出更高质量的文档，强烈建议
+% \mem{总是使用 \XeLaTeX{} 编译文档}。
+% \subsection{\pkg{\jobname} 示例文件}
+% 示例文件 \file{\jobname-demo.tex} 里集中展现了许多 \pkg{\jobname} 的用法，请在使用前自习研读示例文件。
+% \subsection{选项}
+% \subsubsection{中文字库}
+% \label{subs:fontset}
+% 下面的选项用于选择可用的中文字库。设置这些选项是考虑到不同的操作系统平台提
+% 供的中文字库是不同的。
+% \begin{center}
+% \begin{tabular}{p{.2\textwidth}p{.7\textwidth}}
+% \toprule
+% \textbf{winfonts}& 使用 Windows 的字体设置，默认为六种中易字体：宋体、仿宋、黑体、楷
+% 体、隶书、幼圆（在使用 \XeLaTeX 时只有前四种）。\textit{这是默认设置}。\\
+% \textbf{adobefonts}& 在 xeCJK 模式中使用 Adobe 的四套字体：宋体、仿宋、黑体、楷体。
+% 在 CJK 模式（即不使用 \XeLaTeX 时）下，该选项将使用 \textbf{winfonts} 选项的设置。\\
+% \textbf{nofonts}& 没有中文字库，此时没有中文字体命令可用。如果期望使用自己设置的字
+% 体，可以选中这个选项。\\
+% \bottomrule
+% \end{tabular}
+% \end{center}
+% \subsubsection{排版风格}
+% \begin{center}
+% \begin{tabular}{p{.2\textwidth}p{.7\textwidth}}
+% \toprule
+% \textbf{chsstyle}& 使用中文的标题样式。这个命令会修改章节的标题样式，以及图标目录等的标题。\textit{这是默认设置}。\\
+% \textbf{nochsstyle}& 保留使用英文的标题样式。\\
+% \textbf{punct}& 对中文标点的位置（宽度）进行调整。\textit{这是默认设置}。\\
+% \textbf{nopunct}& 不对中文标点的位置进行调整（每个标点占有相同的宽度）。\\
+% \bottomrule
+% \end{tabular}
+% \end{center}
+% \subsubsection{打印}
+% \begin{center}
+% \begin{tabular}{p{.2\textwidth}p{.7\textwidth}}
+% \toprule
+% \textbf{noprint}& 保留链接等的色彩，页边距左右相等，\verb|chapter|不强制从偶数页开始。\textit{这是默认设置}。\\
+% \textbf{print}& 单面打印模式。不保留链接等的色彩，页边距左右相等，\verb|chapter|不强制从偶数页开始。\\
+% \textbf{dprint}& 双面打印模式。不保留链接等的色彩，页边距左右不相等，\verb|chapter|强制从偶数页开始。\\
+% \bottomrule
+% \end{tabular}
+% \end{center}
+% \subsubsection{默认选项}
+% 总结一下，\pkg{\jobname} 的默认选项有：
+% \begin{itemize}
+% \item winfonts；\item chsstyle；\item punct；\item noprint。
+% \end{itemize}
+% \subsection{常用命令}
+% \pkg{\jobname} 提供了一系列命令，用于修改字体、字号、数字等的呈现形式。
+% \subsubsection{字体}
+% 中文字体很多，但是常用的就那么几个。模板为 CJK 常用的四种中文字体定义了简单易用的命令。它们是：
+%
+% 宋体： \cs{songti}，启用宋体。
+%
+% 黑体：  \cs{heiti}，启用黑体。
+%
+% 仿宋：  \cs{fangsong}，启用仿宋。
+%
+% 楷书：  \cs{kaishu}，启用楷书。
+%
+% \subsubsection{字号、字距、字宽和缩进}
+% 中文字号的设置命令是 \cs{zihao}\marg{字号}，例如 |\zihao{3}|。可以使用的参数有16 个，小号字体在前面加负号表示，从大到小依次为
+% \begin{center}
+% \begin{tabular}{cccccccc}
+% \toprule
+% 初号 & 小初 & 一号 & 小一 & 二号 & 小二 & 三号 & 小三 \\
+% 0 & -0 & 1 & -1 & 2 & -2 & 3 & -3 \\
+% \hline
+% 四号 & 小四 & 五号 & 小五 & 六号 & 小六 & 七号 & 八号 \\
+% 4 & -4 & 5 & -5 & 6 & -6 & 7 & 8 \\
+% \bottomrule
+% \end{tabular}
+% \end{center}
+% \noindent 英文字体大小会始终保持和中文字体一致。
+%
+% 汉字字距的调整使用命令  \cs{ziju}\marg{字宽的倍数}。参数可以是任意的数字，
+% 例如  |\ziju{5}| 设置汉字字距为当前汉字字宽的 5 倍，  |\ziju{0.5}| 设置汉字
+% 字距为当前汉字字宽的一半。这里的汉字字宽指的是实际汉字的宽度，
+% 不包含字间间隔。该命令不影响英文字距。
+%
+% 使用 |\CTEXindent| 可以正常的缩进两个汉字字宽的距离，同时在汉字大小和字距改变
+% 的情况都可以自动修改缩进距离。使用 |\CTEXnoindent|可以取消缩进。
+% \subsubsection{中文数字转换}
+% 使用  \pkg{ctex} 宏包提供的  |\CTEXnumber| 命令可以将阿拉伯数字转换为中文数字。该命令的格式为
+% \begin{quote}
+%  \cs{CTEXnumber}\marg{result}\marg{number}
+% \end{quote}
+% 其中  \marg{result} 必须是一个 \TeX{} 宏的名字，不需要预先定义。
+% 例如
+% \begin{quote}
+%  |\CTEXnumber{\test}{100002005}|
+% \end{quote}
+% 则 |\test|中的内容就是「一亿零二千零五」（不包括引号）。类似有 |\CTEXdigits|命令，若将上面示例中的 |\CTEXnumber|替换成 |\CTEXdigits|, 则 |\test|中的内容是「一〇〇〇〇二〇〇五」（不包括引号）。
+%
+% 对于计数器来说，可以用以下一些命令：
+%
+% \begin{itemize}
+% \item  \cs{chinese}\marg{counter}: 一, 二, 三, $\ldots$
+% \item  \cs{arabic}\marg{counter}: 1, 2, 3, $\ldots$
+% \item  \cs{roman}\marg{counter}: i, ii, iii, $\ldots$
+% \item  \cs{Roman}\marg{counter}: I, II, III, $\ldots$
+% \item  \cs{alph}\marg{counter}: a, b, c, $\ldots$
+% \item  \cs{Alph}\marg{counter}: A, B, C, $\ldots$
+% \end{itemize}
+% \subsubsection{引用}
+% \paragraph{参考文献}
+% 参考文献方面，模板没有提供任何支持，完全依赖 \texttt{book} 类。之所以这么做，是因为使用\LaTeX{}进行论文排版的人水平参差不一，在这里做过多的设置反而会让初学者感到困惑。事实上用\BibTeX{}对参考文献进行处理是容易的。
+% \paragraph{对图表、章节、公式的引用}
+% 和\LaTeXe{}的习惯完全一致，需要先用 \cs{label}\marg{label-name} 命令
+% 做一个「标签」，然后用 \cs{ref}\marg{label-name} 命令来引用。例如，
+% 式 \ref{Equ:emc2} 是被称为质能方程的公式。
+% \begin{equation}
+% E = m c^2.
+% \label{Equ:emc2}
+% \end{equation}
+%
+% \appendix
+% \section{山东大学研究生院关于学位论文的格式要求}
+% 因为没有找到关于学士学位论文的格式要求，这里附上一段研究生院的
+% 要求，仅供参考。
+% \subsection{学位论文的基本要求}
+% 硕士学位论文一般应用中文撰写，提倡并鼓励用中、外文撰写。理学、工
+% 学、医学类博士学位论文须用中、外文撰写，人文社科类博士学位论文提
+% 倡并鼓励用中、外撰写。博士学位论文字数一般3--10万字，摘要为3000字
+% 以上；硕士学位论文字数一般2--5万字，摘要为1000字左右。
+% \subsection{学位论文的结构要求}
+% 博士、硕士学位论文一般应由以下几部分组成，依次为：
+% \begin{itemize}
+% \item 论文封面；\item 扉页；\item 原创性声明和关于论文使用授权
+% 的声明；\item 中、外文论文目录；\item 中文摘要；\item 外文摘
+% 要；\item 符号说明；\item 论文正文（包括文献综述）；\item 附
+% 录、附图表；\item 引文出处及参考文献；\item 致谢；\item 攻读
+% 学位期间发表的学术论文目录；\item 学位论文评阅及答辩情况；\item 外文论文。
+% \end{itemize}
+% \subsection{学位论文的格式要求}
+% \subsubsection{论文封面}
+% 采用研究生院统一印制的封面。封面的论文题目需要中、外文标示。用小
+% 二号加重黑体字打印封面的中文论文题目，用三号加重打印封面外文论文
+% 题目，四号加重黑体字打印脊背处论文题目和封面作者姓名、专业、指导
+% 教师、合作导师姓名和专业技术职务、论文完成时间、密级、学校代码、学
+% 号、分类号等内容。论文题目不得超过30个汉字。分类号须采用《中国图
+% 书资料分类法》进行标注。
+% \subsubsection{扉页}
+% 论文设扉页，其内容与封面相同，送交校学位办公室、图书馆和档案馆的
+% 论文其扉页由本人用碳素钢笔填写。
+% \subsubsection{原创性声明和关于学位论文使用授权的说明}
+% 论文作者和指导教师在向校学位办公室、图书馆、档案馆提交论文时必须
+% 在要求签名处签字。
+% \subsubsection{论文目录}
+% 论文需要有中外文目录各一份。目录应将文内的章、节标题依次排列，并
+% 注明页码。标题应简明扼要。中文的「目录」标题字用小三号加重黑体字
+% 打印，目录内容用小四号宋体打印。外文的「目录」标题字用加重小三号
+% 字体大写字母打印，目录内容用小四号字体小写字母打印。
+% \subsubsection{中文摘要}
+% 中文摘要应以最简洁的语言介绍论文的内容要点，其中包括研究目的、研
+% 究方法、结果、结论及意义等，并注意突出论文中的新论点、新见解或创
+% 造性的成果，并在摘要后列出3--5个关键词，之间用分号相隔。关键词应
+% 体现论文的主要内容，词组符合学术规范。「中文摘要」 标题字用
+% 小三号加重黑体字打印，摘要内容用小四号宋体打印。
+% \subsubsection{外文摘要}
+% 外文摘要内容应与中文摘要基本一致，要语句通顺，语法正确，准确反映
+% 论文的内容，并在其后列出与中文相对应的外文关键词。「摘要」标题字
+% 用加重小三号字体大写字母打印，摘要内容用小四号字体小写字母打印。
+% \subsubsection{符号说明}
+% 介绍论文中所用符号表示的意义。
+% \subsubsection{论文正文}
+% 正文是学位论文的主体和核心部分。论文应在前言中包含必要的文献综述，
+% 并用小标题标明。论文中的计量单位、制图、制表、公式、缩略词和符号
+% 必须遵循国家规定的标准。其行文方式和文体的格局，研究生可根据自己
+% 研究课题的表达需要不同而变化，灵活掌握。论文题目用小三号黑体字打
+% 印，内容用小四号宋体打印，一般每行32--34字，每页29--31行。每页
+% 要有页眉，其上居中打印「山东大学博（硕）士学位论文」字样，页码标
+% 注在页面低端（页角）外侧。 论文中的章的标题用小三号加重黑体；节
+% 的标题用四号加重黑体；目及子目以下的标题用小四号加重黑体打印，标
+% 题应简明扼要，体现阐述内容的重点，无标点符号。
+% \subsubsection{附录、附图表}
+% 主要列入正文内过分冗长的公式推导，供查读方便所需的辅助性数学工具
+% 或表格；重复性数据图表；实验性图片；程序全文及说明等。
+% \subsubsection{引文出处及参考文献}
+% 人文社科类学位论文应有详细的引文出处，格式应规范，一般标注于论文
+% 每一页的下方或每一章节的结尾位置。参考文献按文中使用的顺序列出，
+% 并注明文献的作者、题名、刊物（出版社）名称、出版时间、页码等。理
+% 学、工学、医学类学位论文按国际惯例执行。
+% \subsubsection{致谢}
+% 系对给予各类资助、指导和协助完成研究工作以及提供各种对论文工作有
+% 利条件的单位和个人表示的感谢。致谢应实事求是，切忌浮夸之词。
+% \subsubsection{攻读学位期间发表的学术论文目录}
+% 按学术论文发表的时间顺序，列出本人在攻读学位期间发表或已录用的主
+% 要学术论文清单，包括顺序号、论文题名、刊物名称、卷册号及年月、起
+% 止页码、论文署名位次。
+% \subsubsection{学位论文评阅及答辩情况}
+% 论文答辩通过后，送校学位办公室、图书馆和档案馆的论文需将学位论文
+% 评阅及答辩情况填入《学位论文评阅及答辩情况表》中。
+% \subsubsection{外文论文}
+% \paragraph{外文论文写作的形式}
+% 可根据本学科的实际选择以下写作形式的其中一种。
+% \begin{enumerate}
+% \item 与中文全文在内容和形式上完全一致的外文全文;
+% \item 两篇以上与学位论文相关的可以在外文期刊上发表（含已发表）的
+% 外文论文。
+% \end{enumerate}
+% \paragraph{外语写作的要求}
+% 学位论文外语写作要语句通顺，语法正确，符合该种语言的写作规范，能准
+% 确反映作者的学术思想。论文内容用小四号字体小写字母打印。
+% \subsection{学位论文的打印与装订}
+% 论文用A4标准纸输出，双面打印。博士学位论文一式25份，硕士学位论文一
+% 式15份，装订成册，并按要求送交有关部门（送校图书馆和档案馆的论文需
+% 线装）。中、外文学位论文原则上一起装订，如篇幅过长可分别装订。除外
+% 语专业的学位论文外，其它学科的学位论文一律中文论文在前，外文论文在后。
+% \vfill
+% \hfill\begin{minipage}{.3\textwidth}
+% 山东大学研究生院
+%
+% 二〇〇六年十一月十日
+% \end{minipage}
+%
+% \section{代码实现}
+% \subsection{基本信息}
+%    \begin{macrocode}
+%<*class>
+\NeedsTeXFormat{LaTeX2e}[1999/12/01]
+\ProvidesClass{sduthesis}
+  [2015/01/05 v1.2.0c Thesis Template of Shandong University]
+%    \end{macrocode}
+% \subsection{定义选项}
+% 载入 \pkg{kvoptions} 宏包，并进行相关设置。
+%    \begin{macrocode}
+\RequirePackage{kvoptions}
+\RequirePackage{etoolbox}
+\SetupKeyvalOptions{family=SDU, prefix=SDU@opt@, setkeys=\kvsetkeys}
+\newcommand{\ekv}[1]{\kvsetkeys{SDU}{#1}}
+%    \end{macrocode}
+% 声明选项。
+%    \begin{macrocode}
+\DeclareBoolOption[true]{chsstyle}
+\DeclareComplementaryOption{nochsstyle}{chsstyle}
+\DeclareBoolOption[false]{print}
+\DeclareComplementaryOption{noprint}{print}
+\DeclareBoolOption[true]{double}
+\DeclareComplementaryOption{single}{double}
+\DeclareDefaultOption{\PassOptionsToPackage{\CurrentOption}{ctexcap}}
+\LoadClass[a4paper, cs4size, UTF8, hyperref, fancyhdr]{ctexbook}
+\ProcessKeyvalOptions*\relax
+\ifSDU@opt@double\relax\else
+  \PassOptionsToClass{twoside}{ctexbook}
+\fi
+%    \end{macrocode}
+% \subsection{加载宏包}
+%    \begin{macrocode}
+\RequirePackage{ifpdf,ifxetex}
+\RequirePackage{geometry}
+\RequirePackage{amsmath}
+\RequirePackage{amsfonts}
+\RequirePackage{amsthm}
+\RequirePackage{amssymb}
+\RequirePackage{amsbsy}
+\RequirePackage{bm}
+\RequirePackage{mathrsfs}
+\RequirePackage{booktabs}
+\ifxetex
+  \RequirePackage{graphicx}
+\else
+  \ifpdf
+    \RequirePackage{graphicx}
+    \RequirePackage{epstopdf}
+  \else
+    \RequirePackage[dvipdfmx]{graphicx}
+    \RequirePackage{bmpsize}
+  \fi
+\fi
+\RequirePackage{xcolor}
+\RequirePackage{makecell}
+%    \end{macrocode}
+% \subsection{字体和间距}
+% \begin{macro}{\fzbHei}
+% 调用「方正大黑简体」作为封面大标题字体。
+%
+% 学校提供的 M\$ Word 版封皮，标题字体使用的是方正大黑简体。
+% 然而，由于大多数的计算机，特别是学校内和学校周边的打印室没有安装这个字
+% 体，因此在实际打印时，使用「中易黑体」代替。由于字体版权的原因，这里也
+% 使用黑体代替。如果你有方正大黑简体的字体，可以在 \XeLaTeX{} 编译
+% 的时候定义：|\newCJKfontfamily[fzbighei]{\fzbHei}{FZDHTJW.ttf}|
+%    \begin{macrocode}
+\newcommand{\fzbHei}{\heiti}
+%    \end{macrocode}
+% \end{macro}
+% 行距设置。
+%    \begin{macrocode}
+\linespread{1.3}
+%    \end{macrocode}
+% 段落间距设置。
+%    \begin{macrocode}
+\setlength{\parskip}{0.3ex}
+%    \end{macrocode}
+% \subsection{页面布局和页眉页脚}
+% 页面布局及页边距设置。
+%    \begin{macrocode}
+\ifSDU@opt@double
+  \geometry{left=2.5cm, right=3cm, top=3cm, bottom=3cm}
+\else
+  \geometry{left=2.75cm, right=2.75cm, top=3cm, bottom=3cm}
+\fi
+%    \end{macrocode}
+% 页眉和页脚设置。
+%    \begin{macrocode}
+\AtBeginDocument{\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrule}{%
+  \hrule\@height1.5pt\@width\headwidth%
+  \vskip1pt%
+  \hrule\@height\headrulewidth\@width\headwidth%
+}
+\fancyhead[C]{%
+  \ifSDU@opt@chsstyle
+    \chead{\zihao{5}山东大学学士学位论文}
+  \else
+    \chead{\small Shandong University Bachelor Thesis}
+  \fi
+}
+\fancyfoot[OR, EL]{--~{\thepage}~--}}
+%    \end{macrocode}
+% \subsection{数学环境}
+% 特殊符号的定义。
+%    \begin{macrocode}
+\newcommand*{\me}{\ensuremath{\mathrm{e}}}
+\newcommand*{\mi}{\ensuremath{\mathrm{i}}}
+\newcommand*{\dif}{\ensuremath{\mathop{}\!\mathrm{d}}}
+\DeclareMathAlphabet{\mathsfsl}{OT1}{cmss}{m}{sl}
+\newcommand*{\VEC}[1]{\ensuremath{\boldsymbol{#1}}}
+\newcommand*{\MATRIX}[1]{\ensuremath{\mathsfsl{#1}}}
+\newcommand*{\TENSOR}[1]{\ensuremath{\mathsfsl{#1}}}
+\newcommand*{\HUA}[1]{\ensuremath{\mathscr{{#1}}}}
+\newcommand*{\SHUANG}[1]{\ensuremath{\mathbb{{#1}}}}
+%    \end{macrocode}
+%    \begin{macrocode}
+\numberwithin{equation}{chapter}
+%    \end{macrocode}
+% \subsection{图表}
+% 设置图档搜索路径。
+%    \begin{macrocode}
+\graphicspath{{figures/}{figure/}{pictures/}
+      {picture/}{pic/}{pics/}{image/}{images/}}
+%    \end{macrocode}
+% 浮动体设置。
+%    \begin{macrocode}
+\numberwithin{figure}{chapter}
+\numberwithin{table}{chapter}
+\newcommand{\figcaption}{\def\@captype{figure}\caption}
+\newcommand{\tabcaption}{\def\@captype{table}\caption}
+%    \end{macrocode}
+% \subsection{交叉引用设置}
+% 使用颜色作为链接标识，设置颜色为蓝色。如果开启 |print| 模式，则
+% 启用 |\hypersetup{hidelinks}|。
+%    \begin{macrocode}
+\AtBeginDocument{\hypersetup{colorlinks=true, linkcolor=blue}}
+\ifSDU@opt@print
+  \AtBeginDocument{\hypersetup{hidelinks}}
+\else\relax\fi
+%    \end{macrocode}
+%
+% \begin{macro}{\upcite}
+% 定义参考文献上标引用。
+% \end{macro}
+%    \begin{macrocode}
+\newcommand{\upcite}[1]{\textsuperscript{\cite{#1}}}
+%    \end{macrocode}
+% \subsection{摘要和关键字}
+% \begin{macro}{\enabstractname}
+% 英文摘要标题的名字，默认是全部大写的 |ABSTRACT|，可以自行
+% 用 \cs{renewcommand} 修改。
+%    \begin{macrocode}
+\newcommand\enabstractname{ABSTRACT}
+%    \end{macrocode}
+% \end{macro}
+% \begin{macro}{\enkeywordsname}
+% 英文关键字的名字。
+%    \begin{macrocode}
+\newcommand\enkeywordsname{Key words}
+%    \end{macrocode}
+% \end{macro}
+% \begin{macro}{\enkeywords}
+% 英文关键字命令。用法是 \cs{enkeywords}\marg{关键字列表}。
+%    \begin{macrocode}
+\newcommand\enkeywords[1]{%
+  \vspace{1cm}\noindent{\bfseries\zihao{-4}\enkeywordsname: }#1}
+%    \end{macrocode}
+% \end{macro}
+% \begin{macro}{\cnabstractname}
+% 中文摘要标题的名字，默认是|摘\quad 要|，可以自行用 \cs{renewcommand} 修改。
+%    \begin{macrocode}
+\newcommand\cnabstractname{摘\quad 要}
+%    \end{macrocode}
+% \end{macro}
+% \begin{macro}{\cnkeywordsname}
+% 中文关键字的名字。
+%    \begin{macrocode}
+\newcommand\cnkeywordsname{关键词}
+%    \end{macrocode}
+% \end{macro}
+% \begin{macro}{\cnkeywords}
+% 中文关键字命令。用法是 \cs{cnkeywords}\marg{关键字列表}。
+%    \begin{macrocode}
+\newcommand\cnkeywords[1]{%
+  \vspace{1cm}\noindent{\bfseries\zihao{-4}\cnkeywordsname: }#1}
+%    \end{macrocode}
+% \end{macro}
+% \begin{environment}{enabstract}
+% 英文摘要环境，按照学校要求，在结尾处分页。
+%    \begin{macrocode}
+\newenvironment{enabstract}{%
+  \newpage
+  \centering
+  \begin{minipage}{.9\textwidth}
+  \centerline{\zihao{-3}\bfseries\enabstractname}\vspace{.3cm}
+  \centering
+  \begin{minipage}{.85\textwidth}
+  \setlength{\parindent}{1.2em}
+}{
+\end{minipage}
+\end{minipage}
+\clearpage
+}
+%    \end{macrocode}
+% \end{environment}
+% \begin{environment}{cnabstract}
+% 中文摘要环境，按照学校要求，在结尾处分页。
+%    \begin{macrocode}
+\newenvironment{cnabstract}{%
+  \newpage
+  \centering
+  \begin{minipage}{.9\textwidth}
+  \centerline{\zihao{-3}\bfseries\cnabstractname}\vspace{.3cm}
+  \centering
+  \begin{minipage}[c]{.85\textwidth}
+  \setlength{\parindent}{2em}
+  \zihao{-4}
+}{
+\end{minipage}
+\end{minipage}
+\clearpage
+}
+%    \end{macrocode}
+% \end{environment}
+% \subsection{中文标题风格}
+%    \begin{macrocode}
+\ifSDU@opt@chsstyle
+  \CTEXsetup[name={第,章}]{chapter}
+  \CTEXsetup[number={\chinese{chapter}}]{chapter}
+  \CTEXsetup[format={\centering}]{chapter}
+  \CTEXsetup[nameformat={\bfseries\zihao{3}}]{chapter}
+  \CTEXsetup[titleformat={\bfseries\zihao{3}}]{chapter}
+  \CTEXsetup[aftername={\quad{}}]{chapter}
+  \CTEXsetup[beforeskip={10pt}]{chapter}
+  \CTEXsetup[afterskip={10pt}]{chapter}
+  \CTEXsetup[name={$\S$\,,}]{section}
+  \CTEXsetup[format={\bfseries\flushleft\zihao{4}}]{section}
+  \CTEXsetup[format={\bfseries\flushleft\zihao{-4}}]{subsection}
+  \CTEXsetup[format={\flushleft\zihao{-4}}]{subsubsection}
+  \CTEXsetup[name={附录~}]{appendix}
+  \CTEXsetup[number={\Alph{chapter}}]{appendix}
+\else
+  \PassOptionsToClass{nocap, noindent}{ctexbook}
+\fi
+%    \end{macrocode}
+% \subsection{封皮和誓言}
+%    \begin{macrocode}
+\input{sduthesis-cover.def}
+\input{sduthesis-statement.def}
+%    \end{macrocode}
+%    \begin{macrocode}
+%</class>
+%    \end{macrocode}
+% \subsubsection{封皮}
+%    \begin{macrocode}
+%<*cover>
+%    \end{macrocode}
+% 定义 tokens。
+%    \begin{macrocode}
+\newtoks\fenlei     % 中图分类号
+\newtoks\DWdaihao   % 单位代号
+\newtoks\miji       % 密级
+\newtoks\StuNum     % 学号
+\newtoks\Ctitle     % 中文标题
+\newtoks\Cauthor    % 作者中文名
+\newtoks\Cmajor     % 专业
+\newtoks\Csuperver  % 导师
+\newtoks\Cdate      % 中文日期
+\newtoks\Dpart      % 学院
+\newtoks\Grade      % 年级
+%    \end{macrocode}
+% \begin{macro}{\LeftLength}
+% 姓名登记表格左列的宽度。
+%    \begin{macrocode}
+\newcommand{\LeftLength}{2.3cm}
+%    \end{macrocode}
+% \end{macro}
+% \begin{macro}{\RightLength}
+% 姓名登记表格右列的宽度。
+%    \begin{macrocode}
+\newcommand{\RightLength}{5.5cm}
+%    \end{macrocode}
+% \end{macro}
+%    \begin{macrocode}
+\newcommand{\Mcs}[1]{\makebox[\LeftLength][s]{{\zihao{3}\bfseries\kaishu{}#1}}}
+\newcommand{\Mcc}[1]{\makebox[\RightLength][c]{{\zihao{-3}\songti{}#1}}}
+%    \end{macrocode}
+% \begin{macro}{\maketitlepage}
+% 最终输出封面的命令。
+%    \begin{macrocode}
+\newcommand{\maketitlepage}{%
+\thispagestyle{empty}
+\begin{center}
+~
+\vskip 8mm\relax
+{
+  {\includegraphics[width = .7\textwidth]{SDUWords.jpg}}\\[3mm]
+  {\scalebox{4}{\fzbHei{}毕业论文（设计）}}
+}
+\par \vskip 15mm \relax
+{
+  \begin{flushleft}
+    {\zihao{3}\heiti{}论文（设计）题目：}
+  \end{flushleft}
+}
+\vfill
+{
+  \noindent
+  \zihao{-1}\kaishu\the\Ctitle
+}
+\vfill
+{
+  \begin{tabular}{p{\LeftLength}p{\RightLength}}
+  \Mcs{姓名}& \Mcc{\the\Cauthor}\\[-.8mm]\cline{2-2}\\[-4mm]
+  \Mcs{学号}& \Mcc{\the\StuNum}\\[-.8mm]\cline{2-2}\\[-4mm]
+  \Mcs{学院}& \Mcc{\the\Dpart}\\[-.8mm]\cline{2-2}\\[-4mm]
+  \Mcs{专业}& \Mcc{\the\Cmajor}\\[-.8mm]\cline{2-2}\\[-4mm]
+  \Mcs{年级}& \Mcc{\the\Grade}\\[-.8mm]\cline{2-2}\\[-4mm]
+  \Mcs{指导老师}& \Mcc{\the\Csuperver}\\[-.8mm]\cline{2-2}
+  \end{tabular}
+}
+\par \vskip 20mm \relax
+{
+\zihao{3}\the\Cdate
+}
+\end{center}
+\clearpage
+}
+%    \end{macrocode}
+% \end{macro}
+%    \begin{macrocode}
+%</cover>
+%    \end{macrocode}
+% \subsubsection{誓言}
+%    \begin{macrocode}
+%<*statement>
+%    \end{macrocode}
+% \begin{macro}{\makestatement}
+% 输出诚信承诺书的命令。
+%    \begin{macrocode}
+\newcommand{\makestatement}{%
+\begin{titlepage}
+\vspace{2cm} {\zihao{4}\baselineskip=30pt
+
+\centerline{\zihao{3}\bfseries 原\quad 创\quad 性\quad 声\quad 明}
+
+\noindent\hspace*{2em}本人郑重声明：所呈交的学位论文，是本人在导师指导下，独
+立进行研究所取得的成果。除文中已经注明引用的内容外，本论文不包
+含任何其他个人或集体已经发表或撰写过的科研成果。对本论文的研究作出重
+要贡献的个人和集体，均已在文中以明确方式标明。本声明
+的法律责任由本人承担。
+
+\vspace{13mm}
+
+\noindent\hspace*{2em}论文作者签名：\hrulefill \hspace{1em}日\hspace{1em} 期：\hrulefill
+
+\vspace{2.7cm}
+
+\centerline{\zihao{3}\bfseries 关于学位论文使用授权的声明}
+
+\noindent\hspace*{2em}本人完全了解山东大学有关保留、使用学位论文的规定，同意学
+校保留或向国家有关部门或机构送交论文的复印件和电子版，允许论文被查阅
+和借阅；本人授权山东大学可以将本学位论文全部或部分内容编入有关数据库
+进行检索，可以采用影印、缩印或其他复制手段保存论文和汇编本学位论文。
+
+\noindent\hspace*{2em}（保密的论文在解密后应遵守此规定）
+
+\vspace{13mm}
+
+\noindent\hspace*{2em}论文作者签名：\hrulefill\hrulefill\hspace{0.5em} 导师签名：\hrulefill\hrulefill\hspace{0.5em}日\hspace{0.5em}期：\hrulefill \hrulefill }
+\end{titlepage}
+}
+%    \end{macrocode}
+% \end{macro}
+%    \begin{macrocode}
+%</statement>
+%    \end{macrocode}
+%    \begin{macrocode}
+% \subsubsection{重定义输出命令}
+%<*class>
+%    \end{macrocode}
+% \begin{macro}{\maketitlepagestatement}
+% 输出标题页和承诺书，并设置 \cs{frontmatter}。
+%    \begin{macrocode}
+\newcommand{\maketitlepagestatement}{%
+\maketitlepage
+\thispagestyle{empty}
+~
+\vfill\eject
+\thispagestyle{empty}
+\makestatement
+\vfill\eject
+\thispagestyle{empty}
+~
+\vfill\eject
+\setcounter{page}{1}
+\frontmatter
+}
+%    \end{macrocode}
+% \end{macro}
+% \begin{macro}{\tableofcontents}
+% 重定义目录命令。
+%    \begin{macrocode}
+\let\savedtableofcontents\tableofcontents
+\renewcommand{\tableofcontents}{%
+  \savedtableofcontents
+    \ifSDU@opt@double
+    \cleardoublepage
+  \else
+    \clearpage
+  \fi
+  \mainmatter
+}
+%    \end{macrocode}
+% \end{macro}
+%    \begin{macrocode}
+%</class>
+%<class>\endinput
+%    \end{macrocode}
+% \iffalse
+%<*demo>
+\documentclass{sduthesis}
+
+\fenlei{O21}                  % 中图分类号
+\DWdaihao{0518}               % 单位代号
+\miji{公开}                    % 密级
+\StuNum{200900000000}         % 学号
+\Ctitle{忆美丽的山大校园\\{\normalsize\raggedleft ——模板说明}} % 中文标题
+\Cauthor{山大学子}             % 作者中文名
+\Dpart{数学学院}               % 学院
+\Cmajor{如何用\LaTeX{}拯救世界} % 专业中文名
+\Grade{2009级}                % 年级
+\Csuperver{高德纳~~教授}        %指导老师中文名
+
+\Cdate{\today}
+\title{\the\Ctitle}
+\author{\the\Cauthor}
+\date{\the\Cdate}
+
+\usepackage{subfig}
+\usepackage{tabu}
+\usepackage{booktabs}
+
+\begin{document}
+\maketitlepagestatement
+\tableofcontents
+\begin{cnabstract}
+山东大学简称山大，最早可以追溯到 1901 年清朝政府建立的「山东大学堂」，她是中国第二所国立大学，也是第一所具有完整宪章的大学。2001 年，原山东大学、山东医科大学和山东工业大学合并组建成新的山东大学。
+
+离开山大之后，思思念念的是山大的美景、美食和美人。这篇文章简介了山大的历史和现状，并图文并茂地展现了山大校园之美，同时也以实例的方式给出了模板的用法。
+
+\cnkeywords{山东大学，美景，模板}
+\end{cnabstract}
+\begin{enabstract}
+Shandong University, referred to SDU, was set up in the year 1901 in the name of The Advanced School of Shandong (山东大学堂). She is the second national unversity of China, as well as the first unversity that has a complete constitution. In the year 2001, the original Shandong Unversity, Shandong Medical University and Shandong Industry Unversity merge with each other and became the new Shandong University.
+
+Graduting from SDU, I am suffering from lovesickness for the beauties, say the beautiful scenery, the beautiful teachers and the tasty food. This article introduces the history and current status of Shandong Unversity and present the beautiful scenery of Shandong Unversity, and gives a demo to the thesis template at the same time.
+
+\enkeywords{Shandong Unversity, Beautiful scenery, Thesis Template}
+\end{enabstract}
+
+\chapter{介绍}
+山东大学简称山大，是中国著名大学，是教育部直属的综合性全国重点大学。
+
+文章的第二章介绍了山东大学的历史，第三章介绍了山东大学的现状，第四章介绍了山东大学特别是济南中心校区的美景，附录是研究生院对学位论文的格式要求。
+
+\chapter{山东大学的历史}
+
+1901年：山东巡抚袁世凯（清光绪二十七年）上奏《山东试办大学堂暂行章程折稿》，同时调蓬莱知县李于锴进行筹备。是年11月《折稿》获准，在济南泺源书院正式创办了官立山东大学堂。首任 校长是政界闻人唐绍仪（时称管理总办）。第一批招收学生300人，分专斋、正斋、备斋、分斋督课。 聘请中西教习50余人，后增至110多人，美国人赫士为总教习。课程设置除经史子集外，还有社会科学、自然科学和外国语等20多门。学制初为三年，后改为四年。1904年学校迁入济南杆石桥新址，改为山东高等学堂。 1911年又改称山东高等学校。周学熙、方燕年、陈恩焘、萧应椿、陈庆和、周学渊、魏业锐、陈恩 畲、李豫同、李联璧、范之杰、黄国恩、丁维椽等先后出任校长。 1914年国民党政府实行全国设立大学区，各区中心城市设大学，各省设专门学校的体制，山东隶属中心城市北平，按章大学堂停办。师生分别转入法政、工业、农业、商业四个专门学校，校长丁维椽继任商业专门学校校长，校舍由法政专门学校使用。 山东大学堂在建校14年中，共培养毕业生770人，选送去欧美和日本留学的59人。其中徐镜心、 张伯言等人在日本参加同盟会，被孙中山先生委任为山东同盟会负责人。山东大学堂是山东省第一所官办的高等学校，也是山东大学历史的起点。
+
+1906在年济南皇华馆设立法政学堂。翌年再设法律学堂，时称第一、第二法政学堂。1913年合并为山东公立法政专门学校。 1906年，山东巡抚杨士骧、吴廷斌又在济南东关全福庄设立山东高等农业学堂，以南郊千佛山、马鞍山北麓五千亩土地作为学堂的林场，1913年易名山东公立农业专门学校。 1912年，留日学生叶春墀请准在济南南关设立商业学校，随后定名山东公立商业专门学校. 1912年，青州府高密中等工业学堂和济南工业学堂合并，后又并入山东第一中学，于第二年在一 中尚志堂校舍成立山东公立工业专门学校。 1915年，山东省设医学传习所，1916年改名为山东省立医学学校，校址在济南北园白鹤庄， 1920年正式命名山东公立医学专门学校。 1920年，又将矿业传习所扩建为山东公立业专门学校，校址设在济南东关。 上述六个专门学校课程均为现代社会科学和自然科学，教师多为欧美和日本留学生，学制一般为 三年，医学四年，十余年共毕业学生4000余人。 1926年，六所专门学校再行合并，组建成为省立山东大学。在山东大学的发展历史上，这六所专门学校起着承前启后的作用。
+
+1926年，奉系军阀张宗昌督鲁，下令将山东公立六个专门学校合并，在济南建省立山东大学，由山东省教育厅厅长，清末状元王寿彭任校长。设文、法、工、农、医五个学院，计有中国哲学、国文学、 法律、政治经济、商学、机械、机织、应用化学、采矿、农学、林学、蚕学、医学13个系，并有附属 中学。校设评议会，院设教务会，系设教授会。定期研究教学、人事、经费等问题。大学部有教师320 人，其中教授给200人，除专业课外，并开设选修课，学生毕业授学士学位。 1928年，国民北伐军进抵山东，奉系军阀败逃。日本帝国主义借口保护侨民出兵济南，制造了「五、三」惨案。在动乱中，学校经费无着，随即停办。 1924年8月正式创立私立青岛大学，高恩洪自任校长。设工科和商科，学制四年，学生修业期满 考试及格者授予学士学位。学生除本国外还有南洋华侨和朝鲜学生。革命活动家罗荣桓、彭明晶等系该校学生。校董事会聘请学界名流梁启超、蔡元培、张伯苓、黄炎培等人为名誉董事。选用德国人在青岛建造的俾斯麦兵营作校址。 1925年直奉战争再起，直系军阀失败，高恩洪下野，学校濒于倒闭，校董会公推山东省议长宋传典接任校长，勉强维持。 1928年北伐军进抵山东后，奉系败逃，学校经费逐渐断绝停办，学生按大学结业处理。省立山东大学和私立青岛大学是随后创办的国立青岛大学的前身，在山东大学历史上占有重要篇章。
+
+1928年8月，南京国民政府教育部根据山东省教育厅的报告，下令将省立山东大学改为国立山东大学。并由何思源、魏宗晋、陈雪南、赵畸、王近信、彭百川、杨亮功、杨振声、杜光埙、傅斯年、孙学悟等11人组成国立山东大学筹备委员会，着手筹备工作。在筹备过程中，蔡元培先生力主将国立山东大学设在青岛，取得教育部长蒋梦麟的同意。 1928年6月， 国立山东大学筹备委员会奉令改为国立青岛大学筹备委员会，除接收省立山东大 学外，并将私立青岛大学校产收用，筹备国立青岛大学。1930年5月，国民党政府任命杨振声为校长，9月21日，举行开学典礼，国立青岛大学正式成立。学校初设文、 理、教育三个学院，分为中国文学系、外国文学系、数学系、物理系、化学系、生物学系、教育行政系和乡村教育系八个系。1932 年9月，教育学院停办，学生大部分转入国立中央大学教育学院。同时增设工、农两学院。工学院设 土木工程学系和机械工程学系。农学院设于济南，设研究、推广两部。不久，又将文、理两学院合并 为文理学院。学校设校务会议，由校长、教务长、秘书长、各学院院长、各学系主任和教授代表组成，负责议决一切重大事项。校长杨振声思想进步，富有远见，效法北京大学「兼容并包」、「科学民主」 的办学方针，广聘专家学者，如闻一多、黄敬思、黄际遇、任之恭、傅鹰、沈从文、梁实秋、闻在宥、 游国恩、曾省、汤腾汉等著名学者均在校任教。学校发展较快，声誉日隆，国立青岛大学由此崭露头角。 1931年行政院议决，将国立青岛大学改为国立山东大学，任命赵太侔（赵畸）接任校长。赵太侔 原为国立青岛大学教务长，赞同杨振声的办学方针。接任后增聘老舍、洪深、张煦、丁山、王淦昌、童第周、曾呈奎等一批专家学者，师资阵营更为整齐，同时撙节行政费用，添购图书、仪器，先后建成科 学馆、工学馆、体育馆、化学馆、水力实验室及实习工厂等，改善了办学条件。此时期由于外部环境 相对稳定，校内人才荟萃，名流云集，师生勤奋教学、成就蜚然，成为学界仰重的国内知名高等学府。 国立山东大学实行「学年学分制」，学制四年，学生毕业授学士学位。学校先后创办有学术刊物《科 学丛刊》、《文史丛刊》、《励学》、《刁斗》等。 1937年，「七、七」事变，抗日战争爆发。11月国立山东大学由青岛迁往安徽安庆，不久再迁四川万县。图书、仪器、案卷分批运出，损失严重。 1938 年春学校在万县复课，不久教育部下令「暂行停办」。师生分别转入国立中央大学，图书、 仪器、机械分别暂交国立中央图书馆、国立中央大学、国立中央工业职业学校保管使用。 1946年春，经国民政府教育部批准。国立山东大学在青岛复校，赵太侔再任校长。复校后设文、 理、工、农、医五个学院，计有中国文学、历史学、外国文学、数学、物理学、化学、动物学、植物学、 地质矿物学、土木工程学、机械工程学、电机工程学、农艺学、园艺学、水产水15个系，医学院不会 系，并附设一个大学先修班和高级护士学校。各学院学生修业年限为四年，其中工学院五年，医学院 六年，实行分学制和必修制、选修制。1946年10月25日举行开学典型。知名学者王统照、陆侃如、 冯沅君、黄孝纾、丁山、赵纪彬、杨向奎、萧涤非、丁西林、杨肇 、童第周、曾呈奎、王普、郭贻诚、 王恒守、李先正、刘遵宪、朱树屏、严效复、杨宗翰、郑成坤、李士伟、沈福彭等应聘来校执教。 1949年6月2日青岛解放、王哲、罗竹风、高剑秋率领军管小组进校，对学校进行接管整顿，山 东大学从此进入新的时期。
+
+1945年中共华中局决定，在华中党校基础上，创办华中建设大学。校址设于苏皖边区的旰眙县新埔由华中局宣传部长彭康兼任校长。设民政、财政、文艺三系和一个高干班。首届招生。同年5月4日，正式开学。8月份，首届学生结业，学校迁清江市。1946年初，校长彭康率领部分干部教师和学员北上并入临沂山东大学，华中建设大学校长由李亚农继任，解放区知名人士贺希明、张劲夫、张茜、夏征农、戴白韬、阿英、孙冶芳、范长江、车载、朱维基、黎冰鸿、黄源、陶官云等在校工作和执教。学校拟办成一所正规大学，设工、农、文、医、师范、社会科学等六个学院和预科。 1945年8月，山东抗日人民政府在解放区临沂， 创办了山东大学（为了区别国立山东大学）称临沂 山东大学），由李澄之、田佩之任正副校长。设预科部，招收知识青年，进行思想政治教育。 1946年初，华中建设大学校长彭康，率领该校师生400余人北上，并入临沂山东大学。师资力量 得到充实，学校规模有所扩大，设立政治、经济、教育、文艺四系，转入以专业为主的学习，解放区 教育界的知名人士何封、薛暮桥、李仲融、王淑明、孙克定、刘力行、胡考、宋日昌、尚钺、宋之的等在校执教。 1948年夏，中共华东局决定，以原临沂山东大学渤海地区的部分留守人员为基础，并集中原来的 一些教师，会同华中建设大学的部分干部教师，在潍县组建成立华东大学，同年9月4日开学。韦悫 任校长，张勃川、李宇超任副校长。济南解放后，于11月迁入济南。迁济后成立文学、社会科学、教 育三个学院和一个研究部。另设附属中学。 1949年5月， 韦悫调任上海市副市长，彭康接任校长，学校向正规化大学过渡。11月，教育学 院划出，后成为山东师范学院。附属中学交济南市领导，改为实验中学。1950年全国教育工作会议 后，学校调整为政治、文学、史地、艺术、俄文五系，转入正规化的业务学习。1950年冬奉命迁青 岛，1951年在青岛与山东大学合校。 华中建设大学、临沂山东大学和华东大学，都是短期训练班式的政治大学，在战火纷飞的年代， 为国家培养了近一万名干部，为革命战争和建设作出了积极的贡献。
+
+1951年3月， 山东大学和华东大学合校，仍名 为山东大学。华岗任校长兼校党委书记，童第周、陆侃如为副校长、设文、理、工、农、医五个学院，分中国文学、历史学、外国文学、数学、物理学、化学、动物学、植物学、地质矿物学、水产学、土木工程学、机械工程学、电机工程学、农艺学、园艺学、病虫害学、政治 学、艺术学18个系。其中政治和艺术为两个直属系。学校积极贯彻党的教育方针，推进教学改革，大力开展科学研究。1951年创办《文史哲》杂志和《山东大学学报》，开辟了科学园地，促进了学术争鸣。从此山东大学又进入了学术繁荣的新阶段。 1952年夏，进行全国高等院校调整。山东大学根据中央教委部关于高等学校院系调整的方案，调 整出去的院系有： （一）政治系，迁至济南，组成山东政治学校，现为中共山东省委党校。 （二）艺术系戏剧组，迁至上海，与上海戏剧专科学校合并，组建成中央戏剧学院华东分院，现 为上海戏剧学院。 （三）艺术系音乐、美术两组，迁至无锡，与上海美术专科学校、苏州美术专科学校合并，组建 成华东艺术专科学校，现为南京艺术学院。 （四）工学院和土木系，和原山东工学院的土木、纺织系合并，组建成青岛工学院，后又迁至武 汉与有关系科合并，成立武江测绘学院，现为武汉测绘科学大学。 （五）工学院的机械、电机两系，迁至济南，与原山东大学合并，组建成新的山东工学院，现为 山东工业大学。 （六）农学院的农艺、园艺、植物病虫害学三系，迁至济南，与原山东农学院合并，组建成新的 山东农学院，现为山东农业大学。 （七）医学院1956年独立，扩建为青岛医学院。 （八）理学院的地矿系迁至长春，与有关院校系科合并，组建成长春地质学院。 （九）1954年教育部拟改变高等学校的布局，指令由山东大学负责，在郑州筹建一所新的大学， 由山东大学支援师资，即现今的郑州大学。 （十）在迁校济南时，留在青岛的系科，独立建院后，发展成为现在的青岛海洋大学。 山东大学在院系调整中，分出的系科和其他院校组建了十所高等院校，取消了院一级组织，留有 中文、历史、外文、数学、物理、化学、生物、水产八个系，增设海洋学系，建立文学历史和海洋物 理两个研究所，成为教育部直属的以文、理为主的综合大学。中文、历史两专业开始招收研究生，还接收朝鲜、越南、苏联等国的留学生，学校的影响扩及国外。 1955年华岗受诬陷去职，稍后童第周调中国科学院工作。1956年7月山东省副省长晁哲甫出任校长兼 党委书记。1957年外文系师生进入上海外国语学院，外文系撤销。 1958年夏晁哲甫奉调回省，国务院任命成仿吾为校长兼校党委书记。 1958年7月，山东大学归由山东省领导，同年10月奉命迁校济南。文科的中文、历史两系和理科 数学、物理、化学、生物四系搬迁济南，海洋、水产和正筹建的地矿三系留在青岛（后独立为山东海 洋学院）。 这期间根据科学发展和国家建设事业的需要。于1959年秋恢复了外文系，1960年重设政治系， 建成原子能系和电子系，学校由迁济时的6个系10个专业， 增至政治、中文、历史、外文、数学、物 理、化学、生物学、原子能（后学生并入复旦大学，该系撤销）、电子10个系。建立了中国古典文学、 中国现代文学、美国文学、中国古代史、微分方程（控制论）、磁学、晶体、微生物九个校属研究室。 有八个专业接受培养研究生。设有三个专业业余大学，六个专业函授班，并招收函授研究生，在校业余和函授生达到4000人。同时，恢复了外国留学生培养工作。 学校迁济后，从1959年开始兴建新校舍，到1966年「文革」前七年，共建成文史、化学两栋 教学校，6栋学生宿舍楼，三个食堂，13 栋教工宿舍楼和部分辅助用房，总面积五万平方米。全校 九个系分住两地，校部机关和外文、物理、电子、生物四系仍住原处，称老校；政治、中文、历史、 数学、化学五系迁新校舍，称新校。 1961年学校复归中央教育部领导，学校在文史见长的优势中，向社会科学领域开拓；在理科的扬 长避短中，突出数学、磁学、晶体、微生物的六十年代新特色，为学校以后的发展打下了良好的基础。 1966年开始了「文化大革命」。6月殃及山东大学校园， 全校机构随之瘫痪。1967年后，校内山东 头林立，学校的一派组织夺权后，把校名改为「鲁迅大学」，直到1970年才又恢复了山东大学校名。 1970年夏，山东省革命委员会将山东大学一分为三：政治、中文、外文、历史四系南迁曲阜，与曲 阜师范学院合并，改称为山东大学；生物学系迁奉泰安，并入山东农学院；校部机关和数学、物理、 电子、化学、光学（新建）五系留在济南，成立山东科学技术大学。 1973年周恩来总理在病中得悉这一情况，立即签署恢复山东大学原建制的指示，1974年初山东大学 恢复原建制，山东科学技术大学即行撤销。1971年高等学校恢复招生，实行「群众推荐，领导批准， 学校审定」的招生办法，开始招收工农兵学生入学。到1976年共招收五届工农兵学生（学制二、三年）， 总计毕业3267人。
+
+1978年由吴富恒出任校长，孙汉卿任校党委书记。 1984年调整领导班子，校长吴富恒退居二线，邓从豪出任校长，戈平主持校党委的工作。这时期，经原教育部批准。 1984年在风景秀丽的海滨城市威海，设立山东大学威海分校。 1987年，校长邓从豪退居二线，由潘承洞任校长。1986年徐豫龙出任校党委书记。1988年，陈之安任党委书记。1996年，曾繁仁教授出任校党委书记。 经过十几年的不懈努力，学校各项事业有长足发展，在学科建设方面，在注重基础学科建设的同时，大力发展了新兴学科、应用学科，由1978年24个专业，发展到1997年14个学院，45个系（教 学部）。有56个本科专业，57个硕士点，17个博士点和3个博士后流动站。有2个国家重点学科，17个山东省重点学科。有2个国家重点实验室，6个山东省重点实验室，一个国家教委部门开放实验 室。1个国家科委技术推广中心，3个山东省技术工程研究中心。 山东大学设有出版社，建成了综合档案馆和博物馆，设立了附属中小学和校医院。有教职工4500 人，校园占地面积3000多亩，建筑面积50万平方米，学校图书馆藏书220万册，出版有《文史哲》、 《山东大学学报》等八种刊物。
+
+1997年，进入「211工程」建设序列。
+
+2000年7月，由原山东大学、原山东医科大学、原山东工业大学合并组建新的山东大学。
+
+2001年2月，进入「985工程」序列。
+
+\chapter{现状}
+
+\section{三城八校}
+
+当前，山东大学在济南、威海和青岛三市共有八个校区。分别是：
+
+\begin{itemize}
+  \item 中心校区；
+  \item 洪家楼校区；
+  \item 趵突泉校区；
+  \item 千佛山校区；
+  \item 兴隆山校区；
+  \item 齐鲁软件园；
+  \item 威海校区（威海）；
+  \item 青岛校区（青岛）。
+\end{itemize}
+
+\subsection{中心校区}
+
+中心校区设有以下院系。
+
+\begin{itemize}
+  \item 文学与新闻传播学院；
+  \item 历史文化学院；
+  \item 数学与系统科学学院；
+  \item 物理学院；
+  \item 化学与化工学院；
+  \item 经济学院；
+  \item 生命科学学院；
+  \item 经济研究院（中心）；
+  \item 信息科学与工程学院；
+  \item 环境科学与工程学院；
+  \item 哲学与社会发展学院；
+  \item 晶体材料研究所；
+  \item 管理学院；
+  \item 环境研究院；
+  \item 马克思主义学院；
+  \item 大学外语教学部；
+  \item 国际教育学院；
+  \item 文史哲研究院。
+\end{itemize}
+
+\subsection{洪家楼校区}
+
+洪家楼校区设有以下院系。
+
+\begin{itemize}
+  \item 政治学与公共管理学院；
+  \item 法学院；
+  \item 艺术学院；
+  \item 外国语学院。
+\end{itemize}
+
+\subsection{趵突泉校区}
+
+趵突泉校区设有以下院系。
+
+\begin{itemize}
+  \item 医学院；
+  \item 公共卫生学院；
+  \item 口腔医学院；
+  \item 护理学院；
+  \item 药学院。
+\end{itemize}
+
+\subsection{千佛山校区}
+
+千佛山校区设有以下院系。
+
+\begin{itemize}
+  \item 材料科学与工程学院；
+  \item 机械工程学院；
+  \item 控制科学与工程学院；
+  \item 能源与动力工程学院；
+  \item 电气工程学院；
+  \item 土建与水利学院；
+  \item 体育学院。
+\end{itemize}
+
+\subsection{兴隆山校区}
+
+兴隆山校区设有以下院系。
+
+\begin{itemize}
+  \item 材料科学与工程学院；
+  \item 机械工程学院；
+  \item 控制科学与工程学院；
+  \item 能源与动力工程学院；
+  \item 电气工程学院；
+  \item 土建与水利学院。
+\end{itemize}
+
+\subsection{齐鲁软件园}
+
+齐鲁软件园设有以下院系。
+
+\begin{itemize}
+  \item 软件学院；
+  \item 计算机科学与技术学院；
+  \item 加拿大高等教育基础部（2011届·药学院、公共卫生学院、护理学院等）。
+\end{itemize}
+
+\subsection{威海校区}
+
+威海校区设有以下院系。
+
+\begin{itemize}
+  \item 韩国学院；
+  \item 商学院；
+  \item 法学院；
+  \item 新闻传播学院；
+  \item 翻译学院；
+  \item 艺术学院；
+  \item 海洋学院；
+  \item 机电与信息工程学院；
+  \item 空间科学与物理学院；
+  \item 继续教育学院；
+  \item 数学与统计学院；
+  \item 国际教育学院。
+\end{itemize}
+
+\subsection{青岛校区}
+
+青岛校区在建。
+
+\section{师资力量}
+
+截止2013年，学校有教授1107人，博士生导师907人。其中，诺贝尔物理学奖获得者Peter Grünberg教授加盟山东大学，受聘为特聘教授；山东大学研究生导师莫言教授荣获2012年诺贝尔文学奖。同时，学校有中国科学院和工程院院士9人，双聘院士43人，山东大学终身教授11人，山东大学人文社科一级教授14人；「千人计划」国家特聘教授22人，「青年千人计划」5人；国务院学位委员会学科评议组成员7人；国家百千万人才工程入选者26人；教育部「长江学者奖励计划」特聘教授、讲座教授39人，国家级教学团队8个，长江学者创新团队7个，国家杰出青年基金获得者32人，山东省泰山学者特聘专家教授45位、泰山学者海外特聘专家22位、泰山学者攀登计划人选4位，国家级教学名师9人。
+
+\subsection{两院院士}
+
+\paragraph{科学院院士}彭实戈、钱逸泰、佟振合。
+
+\paragraph{工程院院士}艾兴、张运、王文兴、方家熊、钱七虎、张明高。
+
+\section{愉快的吐槽}
+
+关于山东大学的吐槽，见表 \ref{tab:debunk}。
+
+\begin{table}[!htb]
+\centering
+\caption{学子的吐槽}\label{tab:debunk}
+\begin{tabular}{*5{c}}
+  \toprule
+  & 中心校区 & 洪家楼校区 & 趵突泉校区 & 千佛山校区 \\
+  \midrule
+  饮食 & 超赞 & 赞 & 赞 & 一般 \\
+  住宿 & 比较差 & 很差 & 未知 & 未知\\
+  \midrule[0.8pt]
+  & 兴隆山校区 & 软件园 & 威海校区 & 青岛校区 \\
+  \midrule
+  饮食 & 比较差 & 未知 & 未知 & 未知 \\
+  住宿 & 未知 & 未知 & 未知 & 未知\\
+  \bottomrule
+\end{tabular}
+\end{table}
+
+\chapter{山东大学图志：秋忆——山大之恋}
+
+匆匆间，已是初冬。虽置身于这份清冷，我们却还记得独属于秋天的温暖气息。曾经秋风瑟瑟，吹散了大成广场孩童戏水的欢声，也曾暮雨潇潇，滴落了小树林鸟雀低鸣的婉转。山大视点推出“秋忆”系列图志，用相机记录秋日的苒苒物华，探索校园的清秋况味，呈现不一样的秋意山大。
+
+云淡天高雁南渡，空灵明澈掩喧嚣。秋日的山大校园，落叶浸染着大地的金黄，秋林掩映着落日的余红。现在，跟随我们的镜头，一起走进图志：秋忆——山大之恋。
+
+山大的秋天，是……
+
+如图 \ref{fig:zhixinlou}、\ref{fig:xianzhidadao}、\ref{fig:hongloujiaotang}。
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width = 0.8\linewidth]{sduthesis-zhixinlou}
+\caption{知新楼上的袅袅轻云}\label{fig:zhixinlou}
+\end{figure}
+
+\begin{figure}[!htb]
+\centering
+\subfloat[先志大道的萧萧落叶]{\includegraphics
+  [width = 0.45\linewidth]{sduthesis-xianzhidadao}\label{fig:xianzhidadao}}\quad
+\subfloat[洪楼教堂的呢喃钟鸣]{\includegraphics
+  [width = 0.45\linewidth]{sduthesis-hongloujiaotang}\label{fig:hongloujiaotang}}\quad
+\caption{千佛山与洪家楼}
+\end{figure}
+
+\begin{figure}[!htb]
+\centering
+\begin{minipage}{0.5\linewidth}
+\centering
+\includegraphics[width = 0.95\linewidth]{sduthesis-baotuquan}
+\caption{古老号院的安然静谧}\label{fig:baotuquan}
+\end{minipage}%
+\begin{minipage}{0.5\linewidth}
+\centering
+\includegraphics[width = 0.95\linewidth]{sduthesis-ruanjianyuan}
+\caption{软件园区的日新月异}\label{fig:ruanjianyuan}
+\end{minipage}
+\end{figure}
+\appendix
+\chapter{山东大学研究生院关于学位论文的格式要求}
+因为没有找到关于学士学位论文的格式要求，这里附上一段研究生院的要求，仅供参考。
+\section{学位论文的基本要求}
+硕士学位论文一般应用中文撰写，提倡并鼓励用中、外文撰写。理学、工学、医学类博士学位论文须用中、外文撰写，人文社科类博士学位论文提倡并鼓励用中、外撰写。博士学位论文字数一般3--10万字，摘要为3000字以上；硕士学位论文字数一般2--5万字，摘要为1000字左右。
+\section{学位论文的结构要求}
+博士、硕士学位论文一般应由以下几部分组成，依次为：
+\begin{enumerate}
+\item 论文封面；\item 扉页；\item 原创性声明和关于论文使用授权的声明；\item 中、外文论文目录；\item 中文摘要；\item 外文摘要；\item 符号说明；\item 论文正文（包括文献综述）；\item 附录、附图表；\item 引文出处及参考文献；\item 致谢；\item 攻读学位期间发表的学术论文目录；\item 学位论文评阅及答辩情况；\item 外文论文。
+\end{enumerate}
+\section{学位论文的格式要求}
+\subsection{论文封面}
+采用研究生院统一印制的封面。封面的论文题目需要中、外文标示。用小二号加重黑体字打印封面的中文论文题目，用三号加重打印封面外文论文题目，四号加重黑体字打印脊背处论文题目和封面作者姓名、专业、指导教师、合作导师姓名和专业技术职务、论文完成时间、密级、学校代码、学号、分类号等内容。论文题目不得超过30个汉字。分类号须采用《中国图书资料分类法》进行标注。
+\subsection{扉页}
+论文设扉页，其内容与封面相同，送交校学位办公室、图书馆和档案馆的论文其扉页由本人用碳素钢笔填写。
+\subsection{原创性声明和关于学位论文使用授权的说明}
+论文作者和指导教师在向校学位办公室、图书馆、档案馆提交论文时必须在要求签名处签字。
+\subsection{论文目录}
+论文需要有中外文目录各一份。目录应将文内的章、节标题依次排列，并注明页码。标题应简明扼要。中文的「目录」标题字用小三号加重黑体字打印，目录内容用小四号宋体打印。外文的「目录」标题字用加重小三号字体大写字母打印，目录内容用小四号字体小写字母打印。
+\subsection{中文摘要}
+中文摘要应以最简洁的语言介绍论文的内容要点，其中包括研究目的、研究方法、结果、结论及意义等，并注意突出论文中的新论点、新见解或创造性的成果，并在摘要后列出3--5个关键词，之间用分号相隔。关键词应体现论文的主要内容，词组符合学术规范。「中文摘要」 标题字用小三号加重黑体字打印，摘要内容用小四号宋体打印。
+\subsection{外文摘要}
+外文摘要内容应与中文摘要基本一致，要语句通顺，语法正确，准确反映论文的内容，并在其后列出与中文相对应的外文关键词。「摘要」标题字用加重小三号字体大写字母打印，摘要内容用小四号字体小写字母打印。
+\subsection{符号说明}
+介绍论文中所用符号表示的意义。
+\subsection{论文正文}
+正文是学位论文的主体和核心部分。论文应在前言中包含必要的文献综述，并用小标题标明。论文中的计量单位、制图、制表、公式、缩略词和符号必须遵循国家规定的标准。其行文方式和文体的格局，研究生可根据自己研究课题的表达需要不同而变化，灵活掌握。论文题目用小三号黑体字打印，内容用小四号宋体打印，一般每行32--34字，每页29--31行。每页要有页眉，其上居中打印「山东大学博（硕）士学位论文」字样，页码标注在页面低端（页角）外侧。 论文中的章的标题用小三号加重黑体；节的标题用四号加重黑体；目及子目以下的标题用小四号加重黑体打印，标题应简明扼要，体现阐述内容的重点，无标点符号。
+\subsection{附录、附图表}
+主要列入正文内过分冗长的公式推导，供查读方便所需的辅助性数学工具或表格；重复性数据图表；实验性图片；程序全文及说明等。
+\subsection{引文出处及参考文献}
+人文社科类学位论文应有详细的引文出处，格式应规范，一般标注于论文每一页的下方或每一章节的结尾位置。参考文献按文中使用的顺序列出，并注明文献的作者、题名、刊物（出版社）名称、出版时间、页码等。理学、工学、医学类学位论文按国际惯例执行。
+\subsection{致谢}
+系对给予各类资助、指导和协助完成研究工作以及提供各种对论文工作有利条件的单位和个人表示的感谢。致谢应实事求是，切忌浮夸之词。
+\subsection{攻读学位期间发表的学术论文目录}
+按学术论文发表的时间顺序，列出本人在攻读学位期间发表或已录用的主要学术论文清单，包括顺序号、论文题名、刊物名称、卷册号及年月、起止页码、论文署名位次。
+\subsection{学位论文评阅及答辩情况}
+论文答辩通过后，送校学位办公室、图书馆和档案馆的论文需将学位论文评阅及答辩情况填入《学位论文评阅及答辩情况表》中。
+\subsection{外文论文}
+\subsubsection{外文论文写作的形式}
+可根据本学科的实际选择以下写作形式的其中一种。
+\begin{enumerate}
+\item 与中文全文在内容和形式上完全一致的外文全文;
+\item 两篇以上与学位论文相关的可以在外文期刊上发表（含已发表）的外文论文。
+\end{enumerate}
+\subsubsection{外语写作的要求}
+学位论文外语写作要语句通顺，语法正确，符合该种语言的写作规范，能准确反映作者的学术思想。论文内容用小四号字体小写字母打印。
+\section{学位论文的打印与装订}
+论文用A4标准纸输出，双面打印。博士学位论文一式25份，硕士学位论文一式15份，装订成册，并按要求送交有关部门（送校图书馆和档案馆的论文需线装）。中、外文学位论文原则上一起装订，如篇幅过长可分别装订。除外语专业的学位论文外，其它学科的学位论文一律中文论文在前，外文论文在后。
+\vfill
+\hfill\begin{minipage}{.3\textwidth}
+山东大学研究生院
+
+二〇〇六年十一月十日
+\end{minipage}
+\listoffigures
+\end{document}
+%</demo>
+%\fi
+% \Finale
+\endinput

@@ -1,0 +1,52 @@
+# The `sduthesis` Class / `sduthesis` 文档类
+
+## Introduction / 介绍
+
+The `sduthesis` is designed for students of Shandong Univ., P.R.China,
+by [Liam Huang][liam-ctan]. The 1.0.x versions of `sduthesis` were
+released in the name of Ch'en Meng, while from the begining of version 1.2.0,
+it was released in the name of Liam Huang and was rewritten in `docstrip`.
+
+This work is released under the LaTeX Project Public License, v1.3c or later.
+See the License file.
+
+`sduthesis` 是由 [Liam Huang][liam-ctan] 为山东大学学生设计的 LaTeX 论文模板。
+1.x 以化名 Ch'en Meng 的名义发布；1.2.0 版本开始，以 `docstrip` 工具重写了整个代码，
+并以 Liam Huang 的名义发布。
+
+`sduthesis` 遵循不低于 1.3 版本的 LPPL 许可证，详情请查看 LICENSE 文件。
+
+## Installation / 安装
+
+    cd path/to/sduthesis
+    xetex sduthesis.dtx
+    xelatex -shell-escape sduthesis.dtx
+    xelatex -shell-escape sduthesis.dtx
+    xelatex sduthesis-demo.tex
+    xelatex sduthesis-demo.tex
+
+Remove temp-files.
+
+* Put `sduthesis.dtx` to `TEXMF/source/latex/sduthesis/`
+* Put `sduthesis.cls`, `*.def` and `figures/' to `TEXMF/tex/latex/sduthesis/`
+* Put the remaining files to `TEXMF/doc/latex/sduthesis/`
+
+中文用户参见用户文档。
+
+## Usage / 用法
+
+See the user manual `sduthesis.pdf` and the demo `sduthesis-demo.tex'.
+
+参见用户文档 `sduthesis.pdf` 及示例文件 `sduthesis-demo.tex`。
+
+## Author / 作者
+
+Liam Huang
+
+Email: liamhuang0205+sduthesis@gmail.com
+
+If you are interested in the process of development you may observe
+
+<https://github.com/LiamHuang0205/sduthesis>
+
+[liam-ctan]: http://www.ctan.org/author/huang-l
