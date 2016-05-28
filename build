@@ -1,0 +1,11 @@
+#!/bin/bash
+
+xetex sduthesis.dtx
+xelatex -shell-escape sduthesis.dtx
+xelatex -shell-escape sduthesis.dtx
+xelatex -shell-escape sduthesis-demo.tex
+xelatex -shell-escape sduthesis-demo.tex
+
+for fname in *.md; do
+  mv ${fname} ${fname%.*}
+done
