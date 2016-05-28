@@ -19,7 +19,7 @@ See the License file.
 ## Installation / 安装
 
     cd path/to/sduthesis
-    xetex sduthesis.dtx
+    xelatex sduthesis.ins
     xelatex -shell-escape sduthesis.dtx
     xelatex -shell-escape sduthesis.dtx
     xelatex sduthesis-demo.tex
@@ -27,7 +27,7 @@ See the License file.
 
 Remove temp-files.
 
-* Put `sduthesis.dtx` to `TEXMF/source/latex/sduthesis/`
+* Put `sduthesis.ins` and `sduthesis.dtx` to `TEXMF/source/latex/sduthesis/`
 * Put `sduthesis.cls`, `*.def` and `figures/' to `TEXMF/tex/latex/sduthesis/`
 * Put the remaining files to `TEXMF/doc/latex/sduthesis/`
 

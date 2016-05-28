@@ -1,10 +1,8 @@
 % \iffalse meta-comment
-% !TeX program  = XeLaTeX
-% !TeX encoding = UTF-8
 %
 % This is file `sduthesis.dtx'.
 %
-% Copyright (C) 2012 -- 2015 by Liam Huang
+% Copyright (C) 2012 -- 2016 by Liam Huang
 % -----------------------------------
 % This work may be distributed and/or modified under the
 % conditions of the LaTeX Project Public License, either version 1.3
@@ -18,473 +16,31 @@
 %
 % The Current Maintainer of this work is Liam Huang.
 %
-%<*internal>
-\iffalse
-%</internal>
-%<*readme>
-# The `sduthesis` Class / `sduthesis` 文档类
-
-## Introduction / 介绍
-
-The `sduthesis` is designed for students of Shandong Univ., P.R.China,
-by [Liam Huang][liam-ctan]. The 1.0.x versions of `sduthesis` were
-released in the name of Ch'en Meng, while from the begining of version 1.2.0,
-it was released in the name of Liam Huang and was rewritten in `docstrip`.
-
-This work is released under the LaTeX Project Public License, v1.3c or later.
-See the License file.
-
-`sduthesis` 是由 [Liam Huang][liam-ctan] 为山东大学学生设计的 LaTeX 论文模板。
-1.x 以化名 Ch'en Meng 的名义发布；1.2.0 版本开始，以 `docstrip` 工具重写了整个代码，
-并以 Liam Huang 的名义发布。
-
-`sduthesis` 遵循不低于 1.3 版本的 LPPL 许可证，详情请查看 LICENSE 文件。
-
-## Installation / 安装
-
-    cd path/to/sduthesis
-    xetex sduthesis.dtx
-    xelatex -shell-escape sduthesis.dtx
-    xelatex -shell-escape sduthesis.dtx
-    xelatex sduthesis-demo.tex
-    xelatex sduthesis-demo.tex
-
-Remove temp-files.
-
-* Put `sduthesis.dtx` to `TEXMF/source/latex/sduthesis/`
-* Put `sduthesis.cls`, `*.def` and `figures/' to `TEXMF/tex/latex/sduthesis/`
-* Put the remaining files to `TEXMF/doc/latex/sduthesis/`
-
-中文用户参见用户文档。
-
-## Usage / 用法
-
-See the user manual `sduthesis.pdf` and the demo `sduthesis-demo.tex'.
-
-参见用户文档 `sduthesis.pdf` 及示例文件 `sduthesis-demo.tex`。
-
-## Author / 作者
-
-Liam Huang
-
-Email: liamhuang0205+sduthesis@gmail.com
-
-If you are interested in the process of development you may observe
-
-<https://github.com/Liam0205/sduthesis>
-
-[liam-ctan]: http://www.ctan.org/author/huang-l
-%</readme>
-%<*license>
-Released under the [LaTeX Project Public
-License](http://www.latex-project.org/lppl.txt), v1.3c or later.
-
-The package has status 'maintained': the current maintainer is
-[Liam Huang](liamhuang0205+sduthesis@gmail.com).
-%</license>
-%<*internal>
-\fi
-\begingroup
-  \def\temp{LaTeX2e}
-\expandafter\endgroup\ifx\temp\fmtname\else
-\csname fi\endcsname
-%</internal>
-%<*install>
-\newread\inputcheck
-\openin\inputcheck=sduthesis.ver
-\ifeof\inputcheck
-  \def\sduthesisPutVersion{\string\GetIdInfo$Id$}
-\else
-  \input sduthesis.ver
-\fi
-\closein\inputcheck
-
-\input l3docstrip.tex
-
-\def\checkOption<#1{%
-  \ifcase
-    \ifx*#10\else \ifx/#11\else
-    \ifx+#12\else \ifx-#13\else
-    \ifx<#14\else \ifx @#15\else
-    \ifx.#16\else
-    7\fi\fi\fi\fi\fi\fi\fi\relax
-  \expandafter\starOption\or
-  \expandafter\slashOption\or
-  \expandafter\plusOption\or
-  \expandafter\minusOption\or
-  \expandafter\verbOption\or
-  \expandafter\moduleOption\or
-  \expandafter\expOption\or
-  \expandafter\doOption\fi
-  #1%
-}
-\def\expOption .#1>#2\endLine{%
-  \maybeMsg{<.#1 . >}%
-  \Evaluate{#1}%
-  \begingroup
-    \catcode`\\=0 \catcode`\{=1 \catcode`\}=2
-    \xdef\expandedLineStuff{\scantokens{#2\noexpand}}%
-  \endgroup
-  \def\do##1##2##3{%
-    \if1\Expr{##2}\StreamPut##1{\expandedLineStuff}\fi
-    }%
-  \activefiles
-  }
-
-\keepsilent
-\askforoverwritefalse
-
-\preamble
-
------------------------------------
-
-This is a generated file.
-
-Copyright (C) 2012 -- 2015 by Liam Huang
-
-This work may be distributed and/or modified under the
-conditions of the LaTeX Project Public License, either version 1.3
-of this license or (at your option) any later version.
-The latest version of this license is in
-  http://www.latex-project.org/lppl.txt
-and version 1.3 or later is part of all distributions of LaTeX
-version 2005/12/01 or later.
-
-This work has the LPPL maintenance status `maintained'.
-
-The Current Maintainer of this work is Liam Huang.
-
-\endpreamble
-\postamble
-
-Copyright (C) 2012 -- 2015 by Liam Huang
-
-This work may be distributed and/or modified under the
-conditions of the LaTeX Project Public License, either version 1.3
-of this license or (at your option) any later version.
-The latest version of this license is in
-  http://www.latex-project.org/lppl.txt
-and version 1.3 or later is part of all distributions of LaTeX
-version 2005/12/01 or later.
-
-This work has the LPPL maintenance status `maintained'.
-
-The Current Maintainer of this work is Liam Huang.
-
------------------------------------
-
-This work consists of the file  \jobname.dtx
-and the derived files           \jobname.cls,
-                                \jobname-cover.def,
-                                \jobname-statement.def,
-                                figures/,
-                                sduthesis-demo.tex,
-                                README.md,
-                                LICENSE.md,
-                                sduthesis.pdf and
-                                sduthesis-demo.pdf.
-\endpostamble
-
-\declarepostamble\emptypostamble
-\endpostamble
-
-\generate{%
-  \usedir{tex/latex/sduthesis}%
-  \file{\jobname.cls}{\from{\jobname.dtx}{class}}%
-  \usedir{tex/latex/sduthesis/def}%
-  \file{\jobname-cover.def}{\from{\jobname.dtx}{cover}}%
-  \file{\jobname-statement.def}{\from{\jobname.dtx}{statement}}%
-  \usedir{doc/latex/sduthesis}%
-  \file{\jobname-demo.tex}{\from{\jobname.dtx}{demo}}%
-  \nopreamble\nopostamble
-  \file{README.md}{\from{\jobname.dtx}{readme}}%
-  \file{LICENSE.md}{\from{\jobname.dtx}{license}}%
-}
-
-\catcode32=12\space
-
-\Msg{**************************************************************}
-\Msg{**************************************************************}
-\Msg{**                                                          **}
-\Msg{** To finish the installation you have to move the          **}
-\Msg{** following file into a directory searched by TeX:         **}
-\Msg{**                                                          **}
-\Msg{**    \jobname.cls                                         **}
-\Msg{**                                                          **}
-\Msg{** To produce the user manual run the file \jobname.dtx    **}
-\Msg{** through XeLaTeX.                                         **}
-\Msg{**                                                          **}
-\Msg{** To produce the demo file run the file \jobname-demo.tex **}
-\Msg{** through XeLaTeX.                                         **}
-\Msg{**                                                          **}
-\Msg{** Happy TeXing!                                            **}
-\Msg{**************************************************************}
-\Msg{**************************************************************}
-
-\endbatchfile
-%</install>
-%<*internal>
-\fi
-%</internal>
-%<*!(readme|license|install|demo|statement|cover)>
-%<*driver|package|class>
-\NeedsTeXFormat{LaTeX2e}
-\RequirePackage{expl3}
-%</driver|package|class>
-%<.!(readme|license|install|demo|statement|cover)>\sduthesisPutVersion
+% \fi
+%
+% \iffalse
 %<*driver>
-\InputIfFileExists{sduthesis.ver}{}{
-  \def\sduthesisGetVersionInfo{\GetIdInfo$Id$}}
-\sduthesisGetVersionInfo
-  {sduthesis source file}
-\ProvidesExplFile{\ExplFileName.\ExplFileExtension}
-%</driver>
-%<class>  {Thesis Template for Shandong University}
-%<class>\ProvidesExplClass{sduthesis}
-  {\ExplFileDate}{2.0}{\ExplFileDescription}
-%</!(readme|license|install|demo|statement|cover)>
-%<*driver>
-\ExplSyntaxOff
-\let\sduthesisrevnum\ExplFileVersion
-\expandafter\let\csname ver@thumbpdf.sty\endcsname\fmtversion
-\documentclass[a4paper,full,numbered]{l3doc}
-\usepackage[UTF8, punct = kaiming, heading,
-  linespread = 1.2, sub3section, fontset = founder]{ctex}
-\usepackage[toc]{multitoc}
-\usepackage{geometry}
-\usepackage{tabularx}
-\usepackage{unicode-math}
-\usepackage{makecell}
-\usepackage{threeparttable}
-\usepackage{xcolor}
-\usepackage{tabu}
-\usepackage{longtable}
-\usepackage{booktabs}
-\usepackage{minted}
-\usepackage{multirow}
-\usepackage{xcolor}
-\usepackage{caption}
-
-\ctexset{
-  abstractname   = 简介,
-  indexname      = 代码索引,
-  section        = {
-    format = \Large\bfseries\raggedright,
-    name   = {第,节},
-  },
-}
-\appto\abstract{\parindent=2\ccwd} ^^A l3doc.cls 设置列表环境中 \listparindent=\z@
-\geometry{includemp,hmargin={0mm,15mm},vmargin={25mm,15mm},footskip=7mm}
-\hypersetup{pdfstartview=FitH,bookmarksdepth=subsubsection}
-\setcounter{secnumdepth}{4}
-\setcounter{tocdepth}{2}
-\newcommand*\email{\nolinkurl}
-\setmainfont{TeX Gyre Pagella}
-\setsansfont{CMU Sans Serif}
-\setmonofont[
-  UprightFont=* Light, BoldFont=* Bold,
-  SlantedFont=* Light Oblique]{CMU Typewriter Text}
-\setmathfont{texgyrepagella-math.otf}
-\captionsetup{strut=off, labelsep=quad, labelfont+=bf}
-\makeatletter
-%% <--- http://tex.stackexchange.com/a/40896
-\patchcmd{\@addtocurcol}%
-    {\vskip \intextsep}%
-    {\edef\save@first@penalty{\the\lastpenalty}\unpenalty
-     \ifnum \lastpenalty = \@M  % hopefully the OR penalty
-        \unpenalty
-     \else
-        \penalty \save@first@penalty \relax % put it back
-     \fi
-      \ifnum\outputpenalty <-\@Mii
-                         \addvspace\intextsep
-                         \vskip\parskip
-      \else
-                         \addvspace\intextsep
-      \fi}%
-    {\typeout{*** SUCCESS ***}}{\typeout{*** FAIL ***}}
-\patchcmd{\@addtocurcol}%
-    {\vskip\intextsep \ifnum\outputpenalty <-\@Mii \vskip -\parskip\fi}%
-    {\ifnum\outputpenalty <-\@Mii
-       \aftergroup\vskip\aftergroup\intextsep
-       \aftergroup\nointerlineskip
-     \else
-       \vskip\intextsep
-     \fi}%
-    {\typeout{*** SUCCESS ***}}{\typeout{*** FAIL ***}}
-\patchcmd{\@getpen}{\@M}{\@Mi}
-  {\typeout{*** SUCCESS ***}}{\typeout{*** FAIL ***}}
-%% --->
-\ifxetex
-  \let\sduthesisdocverbaddon\xeCJKVerbAddon
-  \def\sduthesisdisableecglue{\xeCJKsetup{CJKecglue}}
-  \appto\meta@font@select{\ifinner\sduthesisdisableecglue\fi}
-\else
-  \let\sduthesisdocverbaddon\relax
-  \def\sduthesisdisableecglue{\ltjsetparameter{autoxspacing=false}}
-  \appto\meta@font@select{\sduthesisdisableecglue}
-\fi
-\setlist{noitemsep,topsep=\smallskipamount}
-\newlist{optdesc}{description}{3}
-%% 设置间距为 \marginparsep，与 l3doc 一致
-\setlist[optdesc]{%
-  font=\mdseries\ttfamily,align=right,
-  labelsep=\marginparsep,labelindent=-\marginparsep,leftmargin=*}
-\fvset{
-  fontsize=\small,baselinestretch=1,numbersep=5pt,
-  formatcom=\sduthesisdocverbaddon,
-  listparameters=\setlength\topsep{\MacrocodeTopsep}}
-\DefineVerbatimEnvironment{sduthesis}{Verbatim}{%
-  gobble=4,
-  frame=single,framesep=10pt,
-  label=\rule{0pt}{12pt}\textnormal{\bfseries 例 \arabic{sduthesis}},
-  listparameters=
-    \refstepcounter{sduthesis}\sduthesisexamlabelref
-    \appto\FV@EndList{\nointerlineskip}}
-\define@key{FV}{labelref}{\def\sduthesisexamlabelref{\label{#1}}}
-\let\sduthesisexamlabelref\empty
-\newcounter{sduthesis}
-\BeforeBeginEnvironment{function}{\par\nointerlineskip}
-\AtEndEnvironment{function}{%
-  \par\xdef\sduthesisfixprevdepth{\prevdepth=\the\prevdepth\space}%
-  \sduthesisfixdescrcoffinyoffset}
-%% l3doc 会在 function 环境的 syntax 和 descr 盒子中间加上 \medskipamount 的距离。
-%% 但是若 syntax 盒子为空（未使用 syntax 环境），就会显得不好看。
-%% 此时我们通过将 \medskipamount 设置为零来修正。
-\def\sduthesisfixdescrcoffinyoffset{%
-  \aftergroup\aftergroup\aftergroup\sduthesiszeromedskipamount}
-\def\sduthesiszeromedskipamount{\setlength\medskipamount{\z@skip}}
-\AfterEndEnvironment{syntax}{\let\sduthesisfixdescrcoffinyoffset\relax}
-\AfterEndEnvironment{function}{\sduthesisfixprevdepth}
-\AtBeginEnvironment{syntax}{\linespread{1}\sduthesisdisableecglue}
-\preto\MacroFont{\linespread{1}}
-\appto\MacroFont{\hyphenchar\font\m@ne\sduthesisdocverbaddon}
-\preto\AltMacroFont{\linespread{1}}
-\appto\AltMacroFont{\hyphenchar\font\m@ne\sduthesisdocverbaddon}
-\def\Module#1{\mbox{\normalfont\sffamily\textlangle#1\textrangle}}
-\ExplSyntaxOn
-%% 用 \vtop 让函数名字和语法盒子首行对齐
-\patchcmd \__codedoc_syntax:w
-  { { minipage } { \l__codedoc_syntax_dim } }
-  { { minipage } [t] { \l__codedoc_syntax_dim } }
-  { \iow_term:n { *** ~ SUCCESS ~ *** } }
-  { \iow_term:n { *** ~ FAIL ~ *** } }
-%% 左侧边注的函数列表采用单倍行距
-\cs_set_protected_nopar:Npx \__codedoc_typeset_names:
-  {
-    \exp_not:N \linespread { 1 }
-    \exp_not:o { \__codedoc_typeset_names: }
-  }
-\patchcmd \__codedoc_macro_typeset_one:n
-  { \vbox_unpack_clear:N }
-  { \linespread { 1 } \selectfont \vbox_unpack_clear:N }
-  { \iow_term:n { *** ~ SUCCESS ~ *** } }
-  { \iow_term:n { *** ~ FAIL ~ *** } }
-%% 不重复使用 \HD@target，避免索引出现重复页码
-\cs_set_protected:Npn \__codedoc_special_index_aux:nnnnn #1#2#3#4#5
-  {
-    \__codedoc_special_index_set:Nn \l__codedoc_index_escaped_macro_tl {#2}
-    \str_if_eq:onTF { \@currenvir } { macrocode }
-      { \codeline@wrindex }
-      {
-        \HD@target
-        \index
-      }
-      {
-        \tl_if_empty:nF { #3 #4 }
-          { #3 \actualchar #4 \levelchar }
-        #1
-        \actualchar
-        {
-          \token_to_str:N \verbatim@font \c_space_tl
-          \l__codedoc_index_escaped_macro_tl
-        }
-        \encapchar
-        hdclindex{\the\c@HD@hypercount}{#5}
-      }
-  }
-\DeclareDocumentCommand \cs { O{} m }
-  { \__codedoc_cmd_aux:no {#1} { \c__codedoc_backslash_tl #2 } }
-\DeclareDocumentCommand \tn { O{} m }
-  {
-    \__codedoc_cmd_aux:no
-      { index = TeX , replace = false , #1 }
-      { \c__codedoc_backslash_tl #2 }
-  }
-\DeclareDocumentCommand \meta { +m }
-  { \__codedoc_meta_aux:n {#1} }
-\DeclareExpandableDocumentCommand \bookmarkcstn { O{} m }
-  { \textbackslash \tl_to_str:n {#2} }
-\cs_new:Npn \bookmarkmeta #1 { < \tl_to_str:n {#1} > }
-\cs_generate_variant:Nn \__codedoc_cmd_aux:nn { no }
-\AtBeginEnvironment { syntax }
-  {
-    \char_set_active_eq:NN \| \orbar
-    \char_set_active_eq:NN \( \defaultvalaux
-  }
-%% 不对目录中出现的 \cs 和 \tn 等编索引
-\DeclareDocumentCommand \StopSpecialIndexModule { }
-  { \cs_set_eq:NN \__codedoc_special_index_module:nnnn \use_none:nnnn }
-\tl_map_inline:nn { \actualchar \encapchar \levelchar }
-  { \exp_args:Nx \DoNotIndex { \bslash \tl_to_str:N #1 } }
-\ExplSyntaxOff
-\AtBeginDocument{\addtocontents{toc}{\StopSpecialIndexModule}}
-\pdfstringdefDisableCommands{%
-  \let\cs\bookmarkcstn
-  \let\tn\bookmarkcstn
-  \let\meta\bookmarkmeta
-  \let\opt\@firstofone}
-\def\orbar{\textup{\textbar}}
-\def\defaultval#1{\textbf{\textup{#1}}}
-\def\defaultvalaux#1){\defaultval{#1}}
-\def\TF{true\orbar false}
-\def\TTF{\defaultval{true}\orbar false}
-\def\TFF{true\orbar\defaultval{false}}
-\protected\def\opt{\texttt}
-\def\pdfTeX{\hologo{pdfTeX}}
-\def\XeTeX{\hologo{XeTeX}}
-\def\XeLaTeX{\hologo{XeLaTeX}}
-\DeclareRobustCommand\LuaLaTeX{\hologo{LuaLaTeX}}
-\def\pdfLaTeX{\hologo{pdfLaTeX}}
-\def\LaTeX{\hologo{LaTeX}}
-\def\LaTeXe{\hologo{LaTeX2e}}
-\def\LTXIII{\hologo{LaTeX3}}
-\def\dvipdfmx{DVIPDFM\textit{x}}
-\newcommand{\TeXLive}{\TeX\ Live}
-\def\sduthesisrev#1{%
-  \href{https://github.com/Liam0205/sduthesis/commit/#1}{\texttt{sduthesis} rev. #1}}
-\patchcmd\theCodelineNo{\sffamily\tiny}{\normalfont\sffamily\tiny}{}{}
-\appto\GlossaryParms{%
-  \def\@idxitem{\par\hangindent 2em }%
-  \def\subitem{\@idxitem\hspace*{1em}}%
-  \def\subsubitem{\@idxitem\hspace*{2em}}}
-\patchcmd\l@section{2.5em}{1.5em}{}{}
-\patchcmd\l@subsection{2.5em}{1.5em}{}{}
-\patchcmd\changes@{\space}{\lbrack}{}{}
-\patchcmd\@wrglossary{hdpindex}{hdclindex{\the\c@HD@hypercount}}{}{}
-\newenvironment{defaultcapconfig}{%
-  \MakePercentComment
-  \input{ctex-name-utf8.cfg}%
-  \ExplSyntaxOff
-  \MakePercentIgnore}{}
-\makeatother
+\ProvidesFile{sduthesis.dtx}
+  [2015/01/05 v1.2.0c Thesis Template of Shandong Unversity]
+\documentclass{ltxdoc}
 \EnableCrossrefs
 \CodelineIndex
 \RecordChanges
-\def\glossaryname{版本历史}
-\GlossaryPrologue{\section*{\glossaryname}}
-\IndexPrologue{%
-  \section*{\indexname}
-  \textit{意大利体的数字表示描述对应索引项的页码；
-  带下划线的数字表示定义对应索引项的代码行号；
-  罗马字体的数字表示使用对应索引项的代码行号。}}
+\usepackage[UTF8, fntef, hyperref]{ctexcap}
+\newcommand{\pkg}[1]{\textsf{#1}}
+\usepackage{hologo}
+\newcommand{\XeLaTeX}{\hologo{XeLaTeX}}
 \AtBeginDocument{\hypersetup{hidelinks}}
+\usepackage{xcolor}
 \newcommand{\mem}[1]{\textcolor{blue}{\kaishu #1}}
+\usepackage{tabu}
+\usepackage{longtable}
+\newcommand{\file}[1]{\textsf{#1}}
+\usepackage{booktabs}
+\usepackage{minted}
+\usepackage{multirow}
 \begin{document}
   \DocInput{\jobname.dtx}
-  \newgeometry{hmargin=15mm,vmargin={25mm,15mm},footskip=7mm}
-  \PrintChanges
-  \PrintIndex
 \end{document}
 %</driver>
 % \fi
@@ -506,8 +62,8 @@ and the derived files           \jobname.cls,
 %   Grave accent  \`     Left brace    \{     Vertical bar  \|
 %   Right brace   \}     Tilde         \~}
 %
-% \changes{v1.2.0b}{2015/01/04}{重新构建了用户文档和演示文档。}
-% \changes{v1.2.0a}{2015/01/01}{使用 \pkg{DocStrip} 工具重新实现。}
+% \changes{v1.2.0b}{2014/01/04}{重新构建了用户文档和演示文档。}
+% \changes{v1.2.0a}{2014/01/01}{使用 \pkg{DocStrip} 工具重新实现。}
 % \changes{v1.0}{2013/05/12}{首次公开。}
 %
 % \GetFileInfo{\jobname.dtx}
@@ -576,6 +132,7 @@ and the derived files           \jobname.cls,
 %   \tabucline[1.2pt]{2-3}
 %   & \textbf{文件（夹）} & \textbf{功能描述} & \\
 %   \cline{2-3}\endhead\cline{2-3}
+%   & \file{sduthesis.ins} & 模板驱动文件 & \\
 %   & \file{sduthesis.dtx} & 模板源代码及其他文档的 \pkg{DocStrip} 代码 & \\
 %   & \file{sduthesis.cls} & 文档类，模板主体 & \\
 %   & \file{sduthesis-cover.def} & 封面样式定义文件 & \\
@@ -590,7 +147,7 @@ and the derived files           \jobname.cls,
 %   & \file{sduthesis-demo.pdf} & 演示文件 & \\
 %   \tabucline[1.2pt]{2-3}
 % \end{longtabu}
-% \mem{其中 \file{sduthesis.dtx} 是原始文件，其余
+% \mem{其中 \file{sduthesis.ins} 和 \file{sduthesis.dtx} 是原始文件，其余
 % 文件均可经由特定的编译步骤编译出来。}
 % \subsection{依赖}
 % \pkg{sduthesis} 依赖于以下宏包，这些宏包在常见的 \TeX{} 发行版中都已包含，
@@ -618,7 +175,7 @@ and the derived files           \jobname.cls,
 % \fi
 \begin{minted}{sh}
 cd SOURCE
-xetex sduthesis.dtx
+xelatex sduthesis.ins
 xelatex -shell-escape sduthesis.dtx
 xelatex -shell-escape sduthesis.dtx
 xelatex sduthesis-demo.tex
@@ -639,8 +196,9 @@ xelatex sduthesis-demo.tex
 %   \tabucline[1.2pt]{2-3}
 %   & \textbf{文件（夹）} & \textbf{目录} & \\
 %   \cline{2-3}\endhead\cline{2-3}
-%   & \file{sduthesis.dtx} &
-%     \file{TEXMF/source/latex/sduthesis/} & \\
+%   & \file{sduthesis.ins} &
+%     \multirow{2}{*}{\file{TEXMF/source/latex/sduthesis/}} & \\
+%   & \file{sduthesis.dtx} &  & \\
 %   \cline{2-3}
 %   & \file{sduthesis.cls} &
 %     \multirow{4}{*}{\file{TEXMF/tex/latex/sduthesis}} & \\
@@ -699,7 +257,7 @@ xelatex sduthesis-demo.tex
 % 底下，pdf\LaTeX{} 和 \LaTeX{} + DVIPDFMx 两种方式需要做额外的配置。\par
 % 对于 Mac OS X 和 Linux 系统，推荐使用 \XeLaTeX{} 方式编译。请参看我的博文：
 % \begin{quote}
-%   \url{http://liam0205.me/2015/11/02/latex-mactex-chinese-support/}
+%   \url{http://liam0205.me/2014/11/02/latex-mactex-chinese-support/}
 % \end{quote}\par
 % 考虑到使用 \XeLaTeX{} 能减少配置的工作量，且能够输出更高质量的文档，强烈建议
 % \mem{总是使用 \XeLaTeX{} 编译文档}。
@@ -945,7 +503,7 @@ xelatex sduthesis-demo.tex
 \LoadClass[a4paper, cs4size, UTF8, hyperref, fancyhdr]{ctexbook}
 \ProcessKeyvalOptions*\relax
 \ifSDU@opt@double\relax\else
-  \PassOptionsToClass{oneside}{ctexbook}
+  \PassOptionsToClass{twoside}{ctexbook}
 \fi
 %    \end{macrocode}
 % \subsection{加载宏包}
@@ -1085,7 +643,7 @@ xelatex sduthesis-demo.tex
 % 英文关键字命令。用法是 \cs{enkeywords}\marg{关键字列表}。
 %    \begin{macrocode}
 \newcommand\enkeywords[1]{%
-  \vspace{1cm}\noindent{\bfseries\zihao{-4}\enkeywordsname{}: }#1}
+  \vspace{1cm}\noindent{\bfseries\zihao{-4}\enkeywordsname: }#1}
 %    \end{macrocode}
 % \end{macro}
 % \begin{macro}{\cnabstractname}
@@ -1104,7 +662,7 @@ xelatex sduthesis-demo.tex
 % 中文关键字命令。用法是 \cs{cnkeywords}\marg{关键字列表}。
 %    \begin{macrocode}
 \newcommand\cnkeywords[1]{%
-  \vspace{1cm}\noindent{\bfseries\zihao{-4}\cnkeywordsname{}: }#1}
+  \vspace{1cm}\noindent{\bfseries\zihao{-4}\cnkeywordsname: }#1}
 %    \end{macrocode}
 % \end{macro}
 % \begin{environment}{enabstract}
@@ -1340,6 +898,67 @@ xelatex sduthesis-demo.tex
 %<class>\endinput
 %    \end{macrocode}
 % \iffalse
+%<*readme>
+# The `sduthesis` Class / `sduthesis` 文档类
+
+## Introduction / 介绍
+
+The `sduthesis` is designed for students of Shandong Univ., P.R.China,
+by [Liam Huang][liam-ctan]. The 1.0.x versions of `sduthesis` were
+released in the name of Ch'en Meng, while from the begining of version 1.2.0,
+it was released in the name of Liam Huang and was rewritten in `docstrip`.
+
+This work is released under the LaTeX Project Public License, v1.3c or later.
+See the License file.
+
+`sduthesis` 是由 [Liam Huang][liam-ctan] 为山东大学学生设计的 LaTeX 论文模板。
+1.x 以化名 Ch'en Meng 的名义发布；1.2.0 版本开始，以 `docstrip` 工具重写了整个代码，
+并以 Liam Huang 的名义发布。
+
+`sduthesis` 遵循不低于 1.3 版本的 LPPL 许可证，详情请查看 LICENSE 文件。
+
+## Installation / 安装
+
+    cd path/to/sduthesis
+    xelatex sduthesis.ins
+    xelatex -shell-escape sduthesis.dtx
+    xelatex -shell-escape sduthesis.dtx
+    xelatex sduthesis-demo.tex
+    xelatex sduthesis-demo.tex
+
+Remove temp-files.
+
+* Put `sduthesis.ins` and `sduthesis.dtx` to `TEXMF/source/latex/sduthesis/`
+* Put `sduthesis.cls`, `*.def` and `figures/' to `TEXMF/tex/latex/sduthesis/`
+* Put the remaining files to `TEXMF/doc/latex/sduthesis/`
+
+中文用户参见用户文档。
+
+## Usage / 用法
+
+See the user manual `sduthesis.pdf` and the demo `sduthesis-demo.tex'.
+
+参见用户文档 `sduthesis.pdf` 及示例文件 `sduthesis-demo.tex`。
+
+## Author / 作者
+
+Liam Huang
+
+Email: liamhuang0205+sduthesis@gmail.com
+
+If you are interested in the process of development you may observe
+
+<https://github.com/Liam0205/sduthesis>
+
+[liam-ctan]: http://www.ctan.org/author/huang-l
+%</readme>
+%<*license>
+Released under the [LaTeX Project Public
+License](http://www.latex-project.org/lppl.txt), v1.3c or later.
+
+The package has status 'maintained': the current maintainer is
+[Liam Huang](liamhuang0205+sduthesis@gmail.com).
+%</license>
 %<*demo>
 \documentclass{sduthesis}
 
