@@ -1,6 +1,6 @@
 #!/bin/bash
 
-xetex sduthesis.dtx
+xelatex sduthesis.ins
 xelatex -shell-escape sduthesis.dtx
 xelatex -shell-escape sduthesis.dtx
 xelatex -shell-escape sduthesis-demo.tex
