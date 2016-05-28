@@ -24,3 +24,6 @@ for fname in *.def *.aux *.lof *.log *.out *.toc *.cls *.glo *.hd *.idx; do
   /bin/rm -rf ${fname}
 done
 /bin/rm -rf _minted*
+
+# say
+say "ALL DONE!!!"
