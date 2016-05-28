@@ -1,11 +1,26 @@
 #!/bin/bash
 
-xelatex sduthesis.ins
-xelatex -shell-escape sduthesis.dtx
-xelatex -shell-escape sduthesis.dtx
-xelatex -shell-escape sduthesis-demo.tex
-xelatex -shell-escape sduthesis-demo.tex
+# clean all
+for fname in *.def *.aux *.lof *.log *.out *.toc *.cls *.glo *.hd *.idx \
+  *.tex *.pdf; do
+  /bin/rm -rf ${fname}
+done
+/bin/rm -rf _minted*
 
+# extract
+xelatex sduthesis.ins
 for fname in *.md; do
   mv ${fname} ${fname%.*}
 done
+
+# build document
+xelatex -shell-escape sduthesis.dtx
+xelatex -shell-escape sduthesis.dtx
+xelatex sduthesis-demo.tex
+xelatex sduthesis-demo.tex
+
+# clean
+for fname in *.def *.aux *.lof *.log *.out *.toc *.cls *.glo *.hd *.idx; do
+  /bin/rm -rf ${fname}
+done
+/bin/rm -rf _minted*
