@@ -37,7 +37,7 @@
 \usepackage{longtable}
 \newcommand{\file}[1]{\textsf{#1}}
 \usepackage{booktabs}
-\usepackage{minted}
+\usepackage{listings}
 \usepackage{multirow}
 \begin{document}
   \DocInput{\jobname.dtx}
@@ -141,8 +141,8 @@
 %   & \file{sduthesis-demo.tex} & 演示文件 & \\
 %   & \file{figures/} & 演示文件图片路径 & \\
 %   \cline{2-3}
-%   & \file{README.md} & 不言自明的说明文件 & \\
-%   & \file{LICENSE.md} & 许可证说明文件 & \\
+%   & \file{README} & 不言自明的说明文件 & \\
+%   & \file{LICENSE} & 许可证说明文件 & \\
 %   & \file{sduthesis.pdf} & 用户手册（本文档） & \\
 %   & \file{sduthesis-demo.pdf} & 演示文件 & \\
 %   \tabucline[1.2pt]{2-3}
@@ -160,7 +160,7 @@
 %   \pkg{bm} & \pkg{mathrsfs} & \pkg{booktabs} & \pkg{graphicx} \\
 %   \pkg{epstopdf} & \pkg{bmpsize} & \pkg{xcolor} & \pkg{makecell} \\
 %   \pkg{ctex} & \pkg{xeCJK} & \pkg{CJK} & \pkg{xCJK2uni}\\
-%   \pkg{tabu} & \pkg{minted} & \pkg{longtable} & \pkg{hologo}\\
+%   \pkg{tabu} & \pkg{listings} & \pkg{longtable} & \pkg{hologo}\\
 %   \pkg{multirow} \\
 %   \bottomrule
 % \end{longtabu}
@@ -168,24 +168,10 @@
 % 来安装；或者到 \url{http://www.ctan.org} 上搜索下载并安装。
 % \subsection{安装}
 % \subsubsection{编译安装}
-% % 下载并解压源代码至某一目录，将这一目录记为 \file{SOURCE}。
-% 按照如下顺序，依次执行命令，编译源代码。
-% \iffalse
-%<*internal>
-% \fi
-\begin{minted}{sh}
-cd SOURCE
-xelatex sduthesis.ins
-xelatex -shell-escape sduthesis.dtx
-xelatex -shell-escape sduthesis.dtx
-xelatex sduthesis-demo.tex
-xelatex sduthesis-demo.tex
-\end{minted}
-% \iffalse
-%</internal>
-% \fi
-% 编译成功之后，参照 \label{subs:consist} 节的表格，删除多余的辅助文件。
-% 这样得到的即为扁平化安装包，参考 \ref{subss:plain} 节的内容；若想继
+% 下载并解压源代码至某一目录，*nix 用户在该目录执行 \lstinline|./build| 脚本，
+% Windows 用户直接双击 \lstinline`build.bat` 即可。
+%
+% 编译成功得到的即为扁平化安装包，参考 \ref{subss:plain} 节的内容；若想继
 % 续以 TDS 方式安装，参考 \ref{subss:TDS} 节的内容。
 % \subsubsection{扁平化安装}\label{subss:plain}
 % 将扁平化安装包解压，将其内的所有内容复制到你的工作目录即可。
@@ -208,8 +194,8 @@ xelatex sduthesis-demo.tex
 %   \cline{2-3}
 %   & \file{sduthesis-demo.tex} &
 %     \multirow{5}{*}{\file{TEXMF/doc/latex/sduthesis}} & \\
-%   & \file{README.md} &  & \\
-%   & \file{LICENSE.md} &  & \\
+%   & \file{README} &  & \\
+%   & \file{LICENSE} &  & \\
 %   & \file{sduthesis.pdf} &  & \\
 %   & \file{sduthesis-demo.pdf} &  & \\
 %   \tabucline[1.2pt]{2-3}
@@ -919,14 +905,11 @@ See the License file.
 
 ## Installation / 安装
 
-    cd path/to/sduthesis
-    xelatex sduthesis.ins
-    xelatex -shell-escape sduthesis.dtx
-    xelatex -shell-escape sduthesis.dtx
-    xelatex sduthesis-demo.tex
-    xelatex sduthesis-demo.tex
+For *nix users, just execute the build script in the terminal.
 
-Remove temp-files.
+    /path/to/sduthesis/build
+
+For Windows users, just double click the `build.bat`.
 
 * Put `sduthesis.ins` and `sduthesis.dtx` to `TEXMF/source/latex/sduthesis/`
 * Put `sduthesis.cls`, `*.def` and `figures/' to `TEXMF/tex/latex/sduthesis/`

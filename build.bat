@@ -89,8 +89,8 @@ goto:EOF
 :document
   echo building documents...
   set cmode=-interaction=batchmode
-  xelatex -shell-escape %cmode% sduthesis.dtx
-  xelatex -shell-escape %cmode% sduthesis.dtx
+  xelatex %cmode% sduthesis.dtx
+  xelatex %cmode% sduthesis.dtx
   xelatex %cmode% sduthesis-demo.tex
   xelatex %cmode% sduthesis-demo.tex
 goto:EOF

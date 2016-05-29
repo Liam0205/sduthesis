@@ -18,14 +18,11 @@ See the License file.
 
 ## Installation / 安装
 
-    cd path/to/sduthesis
-    xelatex sduthesis.ins
-    xelatex -shell-escape sduthesis.dtx
-    xelatex -shell-escape sduthesis.dtx
-    xelatex sduthesis-demo.tex
-    xelatex sduthesis-demo.tex
+For *nix users, just execute the build script in the terminal.
 
-Remove temp-files.
+    /path/to/sduthesis/build
+
+For Windows users, just double click the `build.bat`.
 
 * Put `sduthesis.ins` and `sduthesis.dtx` to `TEXMF/source/latex/sduthesis/`
 * Put `sduthesis.cls`, `*.def` and `figures/' to `TEXMF/tex/latex/sduthesis/`

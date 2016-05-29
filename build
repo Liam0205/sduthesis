@@ -39,8 +39,8 @@ function extract {
 function build_document {
   echo "building documents..."
   mode="-interaction=batchmode"
-  xelatex -shell-escape ${mode} sduthesis.dtx
-  xelatex -shell-escape ${mode} sduthesis.dtx
+  xelatex ${mode} sduthesis.dtx
+  xelatex ${mode} sduthesis.dtx
   xelatex ${mode} sduthesis-demo.tex
   xelatex ${mode} sduthesis-demo.tex
 }
