@@ -188,7 +188,7 @@ header h1 {
 
 header h2 {
   background-color: #7c334f;
-  font: bold italic .85em/1.5 Georgia, Times, “Times New Roman”, serif;
+  font: bold italic .85em/1.5 Georgia, 'Open Sans', Myriad, "Helvetica Neue", "Helvetica", "Hiragino Sans GB", "Source Han Sans CN", "STXihei", "Microsoft YaHei", "WenQuanYi Micro Hei", "SimHei", "Arial", sans-serif;
   color: #e69b95;
   padding-bottom: 14px;
   margin-top: -3px;
@@ -225,7 +225,7 @@ section#downloads a {
   text-align: center;
   line-height: 1;
   color: #fff;
-  font-family: 'Open Sans', Myriad, Calibri, sans-serif;
+  font-family: 'Open Sans', Myriad, "Helvetica Neue", "Helvetica", "Hiragino Sans GB", "Source Han Sans CN", "STXihei", "Microsoft YaHei", "WenQuanYi Micro Hei", "SimHei", "Arial", sans-serif;
   font-weight: 800;
   font-size: 1.3em;
 }
@@ -235,7 +235,7 @@ section#downloads a:hover {
 }
 
 section#downloads a em {
-  font: bold italic 12px/1 Georgia, Times, “Times New Roman”, serif;
+  font: bold italic 12px/1 Georgia, 'Open Sans', Myriad, "Helvetica Neue", "Helvetica", "Hiragino Sans GB", "Source Han Sans CN", "STXihei", "Microsoft YaHei", "WenQuanYi Micro Hei", "SimHei", "Arial", sans-serif;
   color: #83b7da;
   display: block;
 }
@@ -299,7 +299,7 @@ footer span.ribbon-inner {
 }
 
 footer p {
-  font-family: 'Open Sans', Myriad, Calibri, sans-serif;
+  font-family: 'Open Sans', Myriad, "Helvetica Neue", "Helvetica", "Hiragino Sans GB", "Source Han Sans CN", "STXihei", "Microsoft YaHei", "WenQuanYi Micro Hei", "SimHei", "Arial", sans-serif;
   font-weight: bold;
   font-size: .8em;
   color: #8b786f;
@@ -313,7 +313,7 @@ footer span.ribbon-inner p {
   background-color: #7c334f;
   margin: 0;
   color: #e69b95;
-  font: bold italic 12px/1 Georgia, Times, “Times New Roman”, serif;
+  font: bold italic 12px/1 Georgia, 'Open Sans', Myriad, "Helvetica Neue", "Helvetica", "Hiragino Sans GB", "Source Han Sans CN", "STXihei", "Microsoft YaHei", "WenQuanYi Micro Hei", "SimHei", "Arial", sans-serif;
   padding-bottom:4px;
 }
 
@@ -321,7 +321,7 @@ footer span.ribbon-inner a {
   position: relative;
   bottom: -1px;
   color: #7eb0d2;
-  font-family: 'Open Sans', Myriad, Calibri, sans-serif;
+  font-family: 'Open Sans', Myriad, "Helvetica Neue", "Helvetica", "Hiragino Sans GB", "Source Han Sans CN", "STXihei", "Microsoft YaHei", "WenQuanYi Micro Hei", "SimHei", "Arial", sans-serif;
   text-transform: uppercase;
   font-style: normal;
   font-weight: 800;
@@ -365,7 +365,7 @@ footer span.octocat {
 
 body {
   background: #ece4d8;
-  font: normal normal 15px/1.5 Georgia, Palatino,” Palatino Linotype”, Times, “Times New Roman”, serif;
+  font: normal normal 15px/1.5 Georgia, Palatino,” Palatino Linotype”, 'Open Sans', Myriad, "Helvetica Neue", "Helvetica", "Hiragino Sans GB", "Source Han Sans CN", "STXihei", "Microsoft YaHei", "WenQuanYi Micro Hei", "SimHei", "Arial", sans-serif;
   color: #544943;
   -webkit-font-smoothing: antialiased;
 }
@@ -383,7 +383,7 @@ a:hover {
 }
 
 h1,h2,h3,h4,h5,h6 {
-  font-family: 'Open Sans', Myriad, Calibri, sans-serif;
+  font-family: 'Open Sans', Myriad, "Helvetica Neue", "Helvetica", "Hiragino Sans GB", "Source Han Sans CN", "STXihei", "Microsoft YaHei", "WenQuanYi Micro Hei", "SimHei", "Arial", sans-serif;
   font-weight: bold;
 }
 
@@ -416,7 +416,7 @@ ul li {
 }
 
 blockquote {
-  font-family: 'Open Sans', Myriad, Calibri, sans-serif;
+  font-family: 'Open Sans', Myriad, "Helvetica Neue", "Helvetica", "Hiragino Sans GB", "Source Han Sans CN", "STXihei", "Microsoft YaHei", "WenQuanYi Micro Hei", "SimHei", "Arial", sans-serif;
   margin: 20px 0;
   color: #8b786f;
   padding-left: 1.35em;
@@ -477,7 +477,7 @@ th {
   border: solid #ece4d8;
   border-width: 0 2px 2px 0;
   color: #cd596b;
-  font-family: 'Open Sans', Myriad, Calibri, sans-serif;
+  font-family: 'Open Sans', Myriad, "Helvetica Neue", "Helvetica", "Hiragino Sans GB", "Source Han Sans CN", "STXihei", "Microsoft YaHei", "WenQuanYi Micro Hei", "SimHei", "Arial", sans-serif;
   font-weight: bold;
   font-size: .85em;
 }
@@ -502,7 +502,7 @@ dl {
 }
 
 dt {
-  font-family: 'Open Sans', Myriad, Calibri, sans-serif;
+  font-family: 'Open Sans', Myriad, "Helvetica Neue", "Helvetica", "Hiragino Sans GB", "Source Han Sans CN", "STXihei", "Microsoft YaHei", "WenQuanYi Micro Hei", "SimHei", "Arial", sans-serif;
   font-weight: bold;
 }
 
