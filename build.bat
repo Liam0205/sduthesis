@@ -59,9 +59,6 @@ goto:EOF
   for %%i in (*.aux *.lof *.log *.out *.toc *.glo *.hd *.idx) do (
     del %%i
   )
-  for /f %%D in (';dir /ad/b _minted*';) do (
-    rd /s /q %%D
-  )
 goto:EOF
 
 :cleanpdf
