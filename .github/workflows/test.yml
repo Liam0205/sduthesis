@@ -1,0 +1,28 @@
+name: Test
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install TeX Live
+        uses: TeX-Live/setup-texlive-action@v4
+        with:
+          package-file: .github/tl_packages
+
+      - name: Run tests
+        run: l3build check
+
+      - name: Upload test diffs on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-diffs
+          path: build/test*/*.diff

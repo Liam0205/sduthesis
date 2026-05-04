@@ -1,0 +1,16 @@
+hard l3kernel
+hard l3packages
+hard l3backend
+hard ctex
+hard geometry
+hard fancyhdr
+hard hyperref
+hard graphicx
+hard amsmath
+hard amscls
+hard amsfonts
+hard bm
+hard mathrsfs
+hard booktabs
+hard xcolor
+hard makecell

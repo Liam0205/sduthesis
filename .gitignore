@@ -123,6 +123,11 @@ make
 quickmake
 sduthesis-demo*
 LICENSE.md
-README.md
+
 _minted-sduthesis
 sduthesis.hd
+
+# l3build
+build/
+*.tds.zip
+*-ctan.zip

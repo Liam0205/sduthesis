@@ -1,0 +1,19 @@
+\input{regression-test}
+\documentclass{sduthesis}
+\ExplSyntaxOn
+\START
+
+\TEST { default~option~values }
+  {
+    \TYPE { style:~   \tl_use:N   \l__sdu_style_tl }
+    \TYPE { degree:~  \tl_use:N   \l__sdu_degree_tl }
+    \bool_if:NTF \l__sdu_print_bool
+      { \TYPE { print:~true } }
+      { \TYPE { print:~false } }
+    \bool_if:NTF \l__sdu_twoside_bool
+      { \TYPE { twoside:~true } }
+      { \TYPE { twoside:~false } }
+  }
+
+\END
+\ExplSyntaxOff

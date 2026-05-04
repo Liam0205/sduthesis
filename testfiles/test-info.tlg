@@ -1,0 +1,13 @@
+This is a generated file for the l3build validation system.
+Don't change this file in any respect.
+============================================================
+TEST 1: sdusetup info keys
+============================================================
+title: Test Title
+author: Test Author
+student-id: 123456
+school: Math
+major: CS
+grade: 2024
+supervisor: Advisor
+============================================================

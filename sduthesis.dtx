@@ -2,7 +2,7 @@
 %
 % This is file `sduthesis.dtx'.
 %
-% Copyright (C) 2012 -- 2016 by Liam Huang
+% Copyright (C) 2012 -- 2026 by Liam Huang
 % -----------------------------------
 % This work may be distributed and/or modified under the
 % conditions of the LaTeX Project Public License, either version 1.3
@@ -18,24 +18,139 @@
 %
 % \fi
 %
+%<*dtx>
+\ifx\documentclass\undefined
+\input l3docstrip.tex
+\keepsilent
+\preamble
+
+-----------------------------------
+
+This is a generated file.
+
+Copyright (C) 2012 -- 2026 by Liam Huang
+
+This work may be distributed and/or modified under the
+conditions of the LaTeX Project Public License, either version 1.3
+of this license or (at your option) any later version.
+The latest version of this license is in
+  http://www.latex-project.org/lppl.txt
+and version 1.3 or later is part of all distributions of LaTeX
+version 2005/12/01 or later.
+
+This work has the LPPL maintenance status `maintained'.
+
+The Current Maintainer of this work is Liam Huang.
+
+\endpreamble
+\postamble
+
+Copyright (C) 2012 -- 2026 by Liam Huang
+
+This work may be distributed and/or modified under the
+conditions of the LaTeX Project Public License, either version 1.3
+of this license or (at your option) any later version.
+The latest version of this license is in
+  http://www.latex-project.org/lppl.txt
+and version 1.3 or later is part of all distributions of LaTeX
+version 2005/12/01 or later.
+
+This work has the LPPL maintenance status `maintained'.
+
+The Current Maintainer of this work is Liam Huang.
+
+-----------------------------------
+
+This work consists of the file  sduthesis.dtx
+and the derived files           sduthesis.cls,
+                                sduthesis-cover.def,
+                                sduthesis-statement.def,
+                                figures/,
+                                sduthesis-demo.tex,
+                                README.md,
+                                LICENSE.md,
+                                sduthesis.pdf and
+                                sduthesis-demo.pdf.
+\endpostamble
+\askforoverwritefalse
+
+\generate{%
+  \usedir{tex/latex/sduthesis}%
+  \file{sduthesis.cls}{\from{sduthesis.dtx}{class}}%
+  \usedir{tex/latex/sduthesis/def}%
+  \file{sduthesis-cover.def}{\from{sduthesis.dtx}{cover}}%
+  \file{sduthesis-statement.def}{\from{sduthesis.dtx}{statement}}%
+  \usedir{doc/latex/sduthesis}%
+  \file{sduthesis-demo.tex}{\from{sduthesis.dtx}{demo}}%
+  \nopreamble\nopostamble
+  \file{README.md}{\from{sduthesis.dtx}{readme}}%
+  \file{LICENSE.md}{\from{sduthesis.dtx}{license}}%
+}
+
+\Msg{*********************************************************}
+\Msg{*}
+\Msg{* To finish the installation you have to move the}
+\Msg{* following file into a directory searched by TeX:}
+\Msg{*}
+\Msg{*   sduthesis.cls}
+\Msg{*}
+\Msg{* To produce the user manual run the file sduthesis.dtx}
+\Msg{* through XeLaTeX.}
+\Msg{*}
+\Msg{* To produce the demo file run the file sduthesis-demo.tex}
+\Msg{* through XeLaTeX.}
+\Msg{*}
+\Msg{* Happy TeXing!}
+\Msg{*********************************************************}
+\endbatchfile
+\fi
+%</dtx>
+%
 % \iffalse
 %<*driver>
 \ProvidesFile{sduthesis.dtx}
-  [2016/05/31 v1.3.0a Thesis Template of Shandong Unversity]
-\documentclass{ltxdoc}
-\EnableCrossrefs
-\CodelineIndex
-\RecordChanges
-\usepackage[UTF8, fntef, hyperref]{ctexcap}
-\newcommand{\pkg}[1]{\textsf{#1}}
-\usepackage{hologo}
-\newcommand{\XeLaTeX}{\hologo{XeLaTeX}}
+  [2026/05/04 v2.0.0 Thesis Template of Shandong University]
+\documentclass[full]{ctxdoc}
+\providecommand{\XeLaTeX}{\hologo{XeLaTeX}}
+\ExplSyntaxOn
+% polyfill: ctxdoc <= v2.5.x overrides \__codedoc_print_macroname:nN
+% using internal l3doc functions removed in l3doc 2025+.
+% We regenerate the missing variants and provide stubs.
+% Safe to drop once ctxdoc >= v2.6.0 is the baseline.
+\cs_if_exist:NF \__codedoc_get_hyper_target:xN
+  {
+    \cs_if_exist:NT \__codedoc_get_hyper_target:nN
+      { \cs_generate_variant:Nn \__codedoc_get_hyper_target:nN { x } }
+  }
+\cs_if_exist:NF \__codedoc_macroname_prefix:n
+  {
+    \cs_new_protected:Npn \__codedoc_macroname_prefix:n #1 { #1 }
+    \cs_generate_variant:Nn \__codedoc_macroname_prefix:n { o }
+  }
+\cs_if_exist:NF \__codedoc_macroname_suffix:N
+  {
+    \cs_new_protected:Npn \__codedoc_macroname_suffix:N #1
+      { \bool_if:NT #1 { \__codedoc_typeset_TF: } }
+  }
+\cs_if_exist:NF \fontspec_visible_space:
+  { \cs_new:Npn \fontspec_visible_space: { \char "2423 } }
+\cs_if_free:cT { tl_replace_all:Non }
+  {
+    \cs_if_exist:NT \tl_replace_all:Nnn
+      { \cs_generate_variant:Nn \tl_replace_all:Nnn { No } }
+  }
+\ExplSyntaxOff
 \AtBeginDocument{\hypersetup{hidelinks}}
-\usepackage{xcolor}
 \newcommand{\mem}[1]{\textcolor{blue}{\kaishu #1}}
-\usepackage{tabu}
+\setCJKmainfont{Noto Serif CJK SC}[
+  BoldFont   = Noto Serif CJK SC Bold,
+  ItalicFont = Noto Serif CJK SC,
+]
+\setCJKsansfont{Noto Sans CJK SC}[
+  BoldFont   = Noto Sans CJK SC Bold,
+]
+\setCJKmonofont{Noto Sans Mono CJK SC}
 \usepackage{longtable}
-\newcommand{\file}[1]{\textsf{#1}}
 \usepackage{booktabs}
 \usepackage{listings}
 \usepackage{multirow}
@@ -128,87 +243,82 @@
 % 解压至指定目录使用。\par
 % \subsection{模板组成}\label{subs:consist}
 % 模板由下列文件组成：\\
-% \begin{longtabu} to \linewidth{X[1c]X[3r]X[3l]X[1c]}
-%   \tabucline[1.2pt]{2-3}
-%   & \textbf{文件（夹）} & \textbf{功能描述} & \\
-%   \cline{2-3}\endhead\cline{2-3}
-%   & \file{sduthesis.ins} & 模板驱动文件 & \\
-%   & \file{sduthesis.dtx} & 模板源代码及其他文档的 \pkg{DocStrip} 代码 & \\
-%   & \file{sduthesis.cls} & 文档类，模板主体 & \\
-%   & \file{sduthesis-cover.def} & 封面样式定义文件 & \\
-%   & \file{sduthesis-statement.def} & 承诺书定义文件 & \\
-%   \cline{2-3}
-%   & \file{sduthesis-demo.tex} & 演示文件 & \\
-%   & \file{figures/} & 演示文件图片路径 & \\
-%   \cline{2-3}
-%   & \file{README} & 不言自明的说明文件 & \\
-%   & \file{LICENSE} & 许可证说明文件 & \\
-%   & \file{sduthesis.pdf} & 用户手册（本文档） & \\
-%   & \file{sduthesis-demo.pdf} & 演示文件 & \\
-%   \tabucline[1.2pt]{2-3}
-% \end{longtabu}
+% \begin{longtable}{rlr}
+%   \toprule
+%   \textbf{文件（夹）} & \textbf{功能描述} & \\
+%   \midrule\endhead\bottomrule\endfoot
+%   \file{sduthesis.ins} & 模板驱动文件 \\
+%   \file{sduthesis.dtx} & 模板源代码及其他文档的 \pkg{DocStrip} 代码 \\
+%   \file{sduthesis.cls} & 文档类，模板主体 \\
+%   \file{sduthesis-cover.def} & 封面样式定义文件 \\
+%   \file{sduthesis-statement.def} & 承诺书定义文件 \\
+%   \midrule
+%   \file{sduthesis-demo.tex} & 演示文件 \\
+%   \file{figures/} & 演示文件图片路径 \\
+%   \midrule
+%   \file{README.md} & 说明文件 \\
+%   \file{LICENSE.md} & 许可证说明文件 \\
+%   \file{sduthesis.pdf} & 用户手册（本文档） \\
+%   \file{sduthesis-demo.pdf} & 演示文件 \\
+% \end{longtable}
 % \mem{其中 \file{sduthesis.ins} 和 \file{sduthesis.dtx} 是原始文件，其余
 % 文件均可经由特定的编译步骤编译出来。}
 % \subsection{依赖}
 % \pkg{sduthesis} 依赖于以下宏包，这些宏包在常见的 \TeX{} 发行版中都已包含，
 % 在安装使用之前，请确认你的 \TeX{} 发行版中正确安装了这些宏包。
-% \begin{longtabu}to 0.9\linewidth{*4{X[cm]}}
+% \begin{tabular}{*4{l}}
 %   \toprule
-%   \pkg{kvoptions} & \pkg{etoolbox} & \pkg{ifpdf} & \pkg{ifxetex} \\
-%   \pkg{geometry} & \pkg{hyperref} & \pkg{fancyhdr} & \pkg{amsmath} \\
-%   \pkg{amsthm} & \pkg{amssymb} & \pkg{amsfonts} & \pkg{amsbsy} \\
-%   \pkg{bm} & \pkg{mathrsfs} & \pkg{booktabs} & \pkg{graphicx} \\
-%   \pkg{epstopdf} & \pkg{bmpsize} & \pkg{xcolor} & \pkg{makecell} \\
-%   \pkg{ctex} & \pkg{xeCJK} & \pkg{CJK} & \pkg{xCJK2uni}\\
-%   \pkg{tabu} & \pkg{listings} & \pkg{longtable} & \pkg{hologo}\\
-%   \pkg{multirow} \\
+%   \pkg{expl3} & \pkg{ctex} & \pkg{geometry} & \pkg{fancyhdr} \\
+%   \pkg{hyperref} & \pkg{graphicx} & \pkg{amsmath} & \pkg{amsthm} \\
+%   \pkg{amssymb} & \pkg{amsfonts} & \pkg{amsbsy} & \pkg{bm} \\
+%   \pkg{mathrsfs} & \pkg{booktabs} & \pkg{xcolor} & \pkg{makecell} \\
 %   \bottomrule
-% \end{longtabu}
+% \end{tabular}
 % 如果你尚未安装这些宏包，可以启动你的 \TeX{} 发行版的宏包管理器
 % 来安装；或者到 \url{http://www.ctan.org} 上搜索下载并安装。
 % \subsection{安装}
 % \subsubsection{编译安装}
-% 下载并解压源代码至某一目录，*nix 用户在该目录执行 \lstinline|./build| 脚本，
-% Windows 用户直接双击 \lstinline`build.bat` 即可。
+% 下载并解压源代码至某一目录，在该目录执行：
+% \begin{verbatim}
+%   l3build unpack
+% \end{verbatim}
+% 即可在 \file{build/unpacked/} 目录下得到所有生成文件。
 %
-% 编译成功得到的即为扁平化安装包，参考 \ref{subss:plain} 节的内容；若想继
-% 续以 TDS 方式安装，参考 \ref{subss:TDS} 节的内容。
+% 若想继续以 TDS 方式安装，执行：
+% \begin{verbatim}
+%   l3build install
+% \end{verbatim}
 % \subsubsection{扁平化安装}\label{subss:plain}
-% 将扁平化安装包解压，将其内的所有内容复制到你的工作目录即可。
+% 将 \lstinline|l3build unpack| 生成的文件复制到你的工作目录即可。
 % \subsubsection{TDS 安装}\label{subss:TDS}
 % 将 TDS 安装包解压，将其内的所有内容按照既有的目录结构，复制到某一个 TDS 根
 % 下面。比如 |TEXMFLOCAL|。\pkg{sduthesis} 的目录结构如下表所示。
-% \begin{longtabu}to \linewidth {X[1c]X[3r]X[3.8l]X[1c]}
-%   \tabucline[1.2pt]{2-3}
-%   & \textbf{文件（夹）} & \textbf{目录} & \\
-%   \cline{2-3}\endhead\cline{2-3}
-%   & \file{sduthesis.ins} &
-%     \multirow{2}{*}{\file{TEXMF/source/latex/sduthesis/}} & \\
-%   & \file{sduthesis.dtx} &  & \\
-%   \cline{2-3}
-%   & \file{sduthesis.cls} &
-%     \multirow{4}{*}{\file{TEXMF/tex/latex/sduthesis}} & \\
-%   & \file{sduthesis-cover.def} &  & \\
-%   & \file{sduthesis-statement.def} &  & \\
-%   & \file{figures/} &  & \\
-%   \cline{2-3}
-%   & \file{sduthesis-demo.tex} &
-%     \multirow{5}{*}{\file{TEXMF/doc/latex/sduthesis}} & \\
-%   & \file{README} &  & \\
-%   & \file{LICENSE} &  & \\
-%   & \file{sduthesis.pdf} &  & \\
-%   & \file{sduthesis-demo.pdf} &  & \\
-%   \tabucline[1.2pt]{2-3}
-% \end{longtabu}
+% \begin{longtable}{rl}
+%   \toprule
+%   \textbf{文件（夹）} & \textbf{目录} \\
+%   \midrule\endhead\bottomrule\endfoot
+%   \file{sduthesis.ins} &
+%     \multirow{2}{*}{\file{TEXMF/source/latex/sduthesis/}} \\
+%   \file{sduthesis.dtx} &  \\
+%   \midrule
+%   \file{sduthesis.cls} &
+%     \multirow{4}{*}{\file{TEXMF/tex/latex/sduthesis/}} \\
+%   \file{sduthesis-cover.def} &  \\
+%   \file{sduthesis-statement.def} &  \\
+%   \file{figures/} &  \\
+%   \midrule
+%   \file{sduthesis-demo.tex} &
+%     \multirow{5}{*}{\file{TEXMF/doc/latex/sduthesis/}} \\
+%   \file{README.md} &  \\
+%   \file{LICENSE.md} &  \\
+%   \file{sduthesis.pdf} &  \\
+%   \file{sduthesis-demo.pdf} &  \\
+% \end{longtable}
 %
 % 之后，在终端（命令提示符）中以管理员权限运行 |texhash|。
 % \subsection{升级}
-% \begin{itemize}
-%   \item 对于编译安装的用户，需要下载新版源代码，重新编译安装。
-%   \item 对于扁平化安装的用户，需要下载新版扁平安装包，覆盖原有文件。
-%   \item 对于 TDS 安装的用户，需要下载新版 TDS 安装包，覆盖
-%   原有文件，并刷新文件名数据库。
-% \end{itemize}
+% 下载新版源代码后，重新执行 \lstinline|l3build unpack| 或
+% \lstinline|l3build install| 即可。
 % \section{使用说明}
 %
 % 使用 \pkg{\jobname} 必须具有一定的 \LaTeXe{} 基础知识，能够
@@ -465,254 +575,366 @@
 % \subsection{基本信息}
 %    \begin{macrocode}
 %<*class>
-\NeedsTeXFormat{LaTeX2e}[1999/12/01]
-\ProvidesClass{sduthesis}
-  [2016/05/31 v1.3.0a Thesis Template of Shandong University]
+%<@@=sdu>
+\RequirePackage { expl3 }
+\ProvidesExplClass { sduthesis }
+  { 2026/05/04 } { 2.0.0 }
+  { Shandong~University~Thesis~Template }
 %    \end{macrocode}
-% \subsection{定义选项}
-% 载入 \pkg{kvoptions} 宏包，并进行相关设置。
+%
+% \subsection{消息定义}
 %    \begin{macrocode}
-\RequirePackage{kvoptions}
-\RequirePackage{etoolbox}
-\SetupKeyvalOptions{family=SDU, prefix=SDU@opt@, setkeys=\kvsetkeys}
-\newcommand{\ekv}[1]{\kvsetkeys{SDU}{#1}}
+\msg_new:nnn { sdu } { deprecated-command }
+  { "#1"~is~deprecated;~use~\sdusetup{}~instead. }
+\msg_new:nnn { sdu } { deprecated-option }
+  { Class~option~"#1"~is~deprecated;~use~"#2"~instead. }
 %    \end{macrocode}
-% 声明选项。
+%
+% \subsection{选项定义}
+% 使用 \pkg{l3keys} 定义类选项。
 %    \begin{macrocode}
-\DeclareBoolOption[true]{chsstyle}
-\DeclareComplementaryOption{nochsstyle}{chsstyle}
-\DeclareBoolOption[false]{print}
-\DeclareComplementaryOption{noprint}{print}
-\DeclareBoolOption[true]{double}
-\DeclareComplementaryOption{single}{double}
-\DeclareDefaultOption{\PassOptionsToPackage{\CurrentOption}{ctexcap}}
-\LoadClass[a4paper, cs4size, UTF8, hyperref, fancyhdr]{ctexbook}
-\ProcessKeyvalOptions*\relax
-\ifSDU@opt@double\relax\else
-  \PassOptionsToClass{oneside}{ctexbook}
-\fi
+\tl_new:N   \l_@@_style_tl
+\bool_new:N \l_@@_print_bool
+\bool_new:N \l_@@_twoside_bool
+\tl_new:N   \l_@@_degree_tl
+\keys_define:nn { sdu / option }
+  {
+    style .choices:nn =
+      { chinese , plain }
+      { \tl_set_eq:NN \l_@@_style_tl \l_keys_choice_tl } ,
+    style .initial:n  = chinese ,
+    print .bool_set:N = \l_@@_print_bool ,
+    print .initial:n  = false ,
+    twoside .bool_set:N = \l_@@_twoside_bool ,
+    twoside .initial:n  = true ,
+    degree .choices:nn =
+      { bachelor , master , doctor }
+      { \tl_set_eq:NN \l_@@_degree_tl \l_keys_choice_tl } ,
+    degree .initial:n  = bachelor ,
+    chsstyle .code:n =
+      {
+        \msg_warning:nnn { sdu } { deprecated-option }
+          { chsstyle } { style=chinese }
+        \keys_set:nn { sdu / option } { style = chinese }
+      } ,
+    nochsstyle .code:n =
+      {
+        \msg_warning:nnn { sdu } { deprecated-option }
+          { nochsstyle } { style=plain }
+        \keys_set:nn { sdu / option } { style = plain }
+      } ,
+    noprint .code:n =
+      {
+        \msg_warning:nnn { sdu } { deprecated-option }
+          { noprint } { print=false }
+        \keys_set:nn { sdu / option } { print = false }
+      } ,
+    double .code:n =
+      {
+        \msg_warning:nnn { sdu } { deprecated-option }
+          { double } { twoside=true }
+        \keys_set:nn { sdu / option } { twoside = true }
+      } ,
+    single .code:n =
+      {
+        \msg_warning:nnn { sdu } { deprecated-option }
+          { single } { twoside=false }
+        \keys_set:nn { sdu / option } { twoside = false }
+      } ,
+  }
+\ProcessKeyOptions [ sdu / option ]
+%    \end{macrocode}
+%
+% \subsection{加载基础类}
+%    \begin{macrocode}
+\PassOptionsToClass { a4paper , UTF8 , zihao = -4 , scheme = plain } { ctexbook }
+\bool_if:NTF \l_@@_twoside_bool
+  { \PassOptionsToClass { twoside , openright } { ctexbook } }
+  { \PassOptionsToClass { oneside , openany }   { ctexbook } }
+\LoadClass { ctexbook }
+%    \end{macrocode}
+%
+% \subsection{文档元数据}
+% 使用 \pkg{l3keys} 定义元数据键，通过 \cs{sdusetup} 设置。
+%    \begin{macrocode}
+\tl_new:N \l_@@_title_tl
+\tl_new:N \l_@@_author_tl
+\tl_new:N \l_@@_student_id_tl
+\tl_new:N \l_@@_school_tl
+\tl_new:N \l_@@_major_tl
+\tl_new:N \l_@@_grade_tl
+\tl_new:N \l_@@_supervisor_tl
+\tl_new:N \l_@@_date_tl
+\tl_new:N \l_@@_clc_tl
+\tl_new:N \l_@@_inst_code_tl
+\tl_new:N \l_@@_secret_tl
+\keys_define:nn { sdu / info }
+  {
+    title          .tl_set:N = \l_@@_title_tl ,
+    author         .tl_set:N = \l_@@_author_tl ,
+    student-id     .tl_set:N = \l_@@_student_id_tl ,
+    school         .tl_set:N = \l_@@_school_tl ,
+    major          .tl_set:N = \l_@@_major_tl ,
+    grade          .tl_set:N = \l_@@_grade_tl ,
+    supervisor     .tl_set:N = \l_@@_supervisor_tl ,
+    date           .tl_set:N = \l_@@_date_tl ,
+    date           .initial:n = \today ,
+    clc            .tl_set:N = \l_@@_clc_tl ,
+    institution-code .tl_set:N = \l_@@_inst_code_tl ,
+    secret-level   .tl_set:N = \l_@@_secret_tl ,
+  }
+\keys_define:nn { sdu }
+  {
+    info   .meta:nn = { sdu / info }   {#1} ,
+    option .meta:nn = { sdu / option } {#1} ,
+  }
+\NewDocumentCommand \sdusetup { m }
+  { \keys_set:nn { sdu } {#1} }
+%    \end{macrocode}
+%
+% \subsection{兼容性命令}
+% 保留旧命令接口，发出废弃警告。
+%    \begin{macrocode}
+\NewDocumentCommand \Ctitle { m }
+  {
+    \msg_warning:nnn { sdu } { deprecated-command } { \Ctitle }
+    \keys_set:nn { sdu / info } { title = {#1} }
+  }
+\NewDocumentCommand \Cauthor { m }
+  {
+    \msg_warning:nnn { sdu } { deprecated-command } { \Cauthor }
+    \keys_set:nn { sdu / info } { author = {#1} }
+  }
+\NewDocumentCommand \StuNum { m }
+  {
+    \msg_warning:nnn { sdu } { deprecated-command } { \StuNum }
+    \keys_set:nn { sdu / info } { student-id = {#1} }
+  }
+\NewDocumentCommand \Dpart { m }
+  {
+    \msg_warning:nnn { sdu } { deprecated-command } { \Dpart }
+    \keys_set:nn { sdu / info } { school = {#1} }
+  }
+\NewDocumentCommand \Cmajor { m }
+  {
+    \msg_warning:nnn { sdu } { deprecated-command } { \Cmajor }
+    \keys_set:nn { sdu / info } { major = {#1} }
+  }
+\NewDocumentCommand \Grade { m }
+  {
+    \msg_warning:nnn { sdu } { deprecated-command } { \Grade }
+    \keys_set:nn { sdu / info } { grade = {#1} }
+  }
+\NewDocumentCommand \Csuperver { m }
+  {
+    \msg_warning:nnn { sdu } { deprecated-command } { \Csuperver }
+    \keys_set:nn { sdu / info } { supervisor = {#1} }
+  }
+\NewDocumentCommand \Cdate { m }
+  {
+    \msg_warning:nnn { sdu } { deprecated-command } { \Cdate }
+    \keys_set:nn { sdu / info } { date = {#1} }
+  }
+\NewDocumentCommand \fenlei { m }
+  {
+    \msg_warning:nnn { sdu } { deprecated-command } { \fenlei }
+    \keys_set:nn { sdu / info } { clc = {#1} }
+  }
+\NewDocumentCommand \DWdaihao { m }
+  {
+    \msg_warning:nnn { sdu } { deprecated-command } { \DWdaihao }
+    \keys_set:nn { sdu / info } { institution-code = {#1} }
+  }
+\NewDocumentCommand \miji { m }
+  {
+    \msg_warning:nnn { sdu } { deprecated-command } { \miji }
+    \keys_set:nn { sdu / info } { secret-level = {#1} }
+  }
+\NewDocumentCommand \ekv { m }
+  {
+    \msg_warning:nnn { sdu } { deprecated-command } { \ekv }
+    \keys_set:nn { sdu / option } {#1}
+  }
 %    \end{macrocode}
 % \subsection{加载宏包}
 %    \begin{macrocode}
-\RequirePackage{ifpdf,ifxetex}
-\RequirePackage{geometry}
-\RequirePackage{amsmath}
-\RequirePackage{amsfonts}
-\RequirePackage{amsthm}
-\RequirePackage{amssymb}
-\RequirePackage{amsbsy}
-\RequirePackage{bm}
-\RequirePackage{mathrsfs}
-\RequirePackage{booktabs}
-\ifxetex
-  \RequirePackage{graphicx}
-\else
-  \ifpdf
-    \RequirePackage{graphicx}
-    \RequirePackage{epstopdf}
-  \else
-    \RequirePackage[dvipdfmx]{graphicx}
-    \RequirePackage{bmpsize}
-  \fi
-\fi
-\RequirePackage{xcolor}
-\RequirePackage{makecell}
+\RequirePackage { geometry }
+\RequirePackage { graphicx }
+\RequirePackage { amsmath , amsfonts , amsthm , amssymb , amsbsy }
+\RequirePackage { bm }
+\RequirePackage { mathrsfs }
+\RequirePackage { booktabs }
+\RequirePackage { xcolor }
+\RequirePackage { makecell }
+\RequirePackage { fancyhdr }
+\RequirePackage { hyperref }
 %    \end{macrocode}
 % \subsection{字体和间距}
 % \begin{macro}{\fzbHei}
-% 调用「方正大黑简体」作为封面大标题字体。
-%
-% 学校提供的 M\$ Word 版封皮，标题字体使用的是方正大黑简体。
-% 然而，由于大多数的计算机，特别是学校内和学校周边的打印室没有安装这个字
-% 体，因此在实际打印时，使用「中易黑体」代替。由于字体版权的原因，这里也
-% 使用黑体代替。如果你有方正大黑简体的字体，可以在 \XeLaTeX{} 编译
-% 的时候定义：|\newCJKfontfamily[fzbighei]{\fzbHei}{FZDHTJW.ttf}|
+% 封面大标题字体，默认使用黑体。
 %    \begin{macrocode}
-\newcommand{\fzbHei}{\heiti}
+\cs_new_protected:Npn \fzbHei { \heiti }
 %    \end{macrocode}
 % \end{macro}
-% 行距设置。
 %    \begin{macrocode}
-\linespread{1.3}
-%    \end{macrocode}
-% 段落间距设置。
-%    \begin{macrocode}
-\setlength{\parskip}{0.3ex}
+\linespread { 1.3 }
+\setlength { \parskip } { 0.3ex }
 %    \end{macrocode}
 % \subsection{页面布局和页眉页脚}
-% 页面布局及页边距设置。
 %    \begin{macrocode}
-\ifSDU@opt@double
-  \geometry{left=2.5cm, right=3cm, top=3cm, bottom=3cm}
-\else
-  \geometry{left=2.75cm, right=2.75cm, top=3cm, bottom=3cm}
-\fi
+\bool_if:NTF \l_@@_twoside_bool
+  { \geometry { left=2.5cm, right=3cm, top=3cm, bottom=3cm, headheight=15.6pt } }
+  { \geometry { left=2.75cm, right=2.75cm, top=3cm, bottom=3cm, headheight=15.6pt } }
 %    \end{macrocode}
-% 页眉和页脚设置。
 %    \begin{macrocode}
-\AtBeginDocument{\pagestyle{fancy}
-\fancyhf{}
-\renewcommand{\headrule}{%
-  \hrule\@height1.5pt\@width\headwidth%
-  \vskip1pt%
-  \hrule\@height\headrulewidth\@width\headwidth%
-}
-\fancyhead[C]{%
-  \ifSDU@opt@chsstyle
-    \chead{\zihao{5}山东大学学士学位论文}
-  \else
-    \chead{\small Shandong University Bachelor Thesis}
-  \fi
-}
-\fancyfoot[OR, EL]{--~{\thepage}~--}}
+\AtBeginDocument
+  {
+    \pagestyle { fancy }
+    \fancyhf { }
+    \cs_set:Npn \headrule
+      {
+        \hrule \@height 1.5pt \@width \headwidth
+        \vskip 1pt
+        \hrule \@height \headrulewidth \@width \headwidth
+      }
+    \fancyhead [C]
+      {
+        \str_if_eq:VnTF \l_@@_style_tl { chinese }
+          { \zihao { 5 } 山东大学学士学位论文 }
+          { \small Shandong~University~Bachelor~Thesis }
+      }
+    \fancyfoot [OR,EL] { --~{ \thepage }~-- }
+  }
 %    \end{macrocode}
 % \subsection{数学环境}
-% 特殊符号的定义。
 %    \begin{macrocode}
-\newcommand*{\me}{\ensuremath{\mathrm{e}}}
-\newcommand*{\mi}{\ensuremath{\mathrm{i}}}
-\newcommand*{\dif}{\ensuremath{\mathop{}\!\mathrm{d}}}
-\DeclareMathAlphabet{\mathsfsl}{OT1}{cmss}{m}{sl}
-\newcommand*{\VEC}[1]{\ensuremath{\boldsymbol{#1}}}
-\newcommand*{\MATRIX}[1]{\ensuremath{\mathsfsl{#1}}}
-\newcommand*{\TENSOR}[1]{\ensuremath{\mathsfsl{#1}}}
-\newcommand*{\HUA}[1]{\ensuremath{\mathscr{{#1}}}}
-\newcommand*{\SHUANG}[1]{\ensuremath{\mathbb{{#1}}}}
-%    \end{macrocode}
-%    \begin{macrocode}
-\numberwithin{equation}{chapter}
+\NewDocumentCommand \me  { } { \ensuremath { \mathrm { e } } }
+\NewDocumentCommand \mi  { } { \ensuremath { \mathrm { i } } }
+\NewDocumentCommand \dif { } { \ensuremath { \mathop { } \! \mathrm { d } } }
+\DeclareMathAlphabet { \mathsfsl } { OT1 } { cmss } { m } { sl }
+\NewDocumentCommand \VEC    { m } { \ensuremath { \boldsymbol {#1} } }
+\NewDocumentCommand \MATRIX { m } { \ensuremath { \mathsfsl {#1} } }
+\NewDocumentCommand \TENSOR { m } { \ensuremath { \mathsfsl {#1} } }
+\NewDocumentCommand \HUA    { m } { \ensuremath { \mathscr {#1} } }
+\NewDocumentCommand \SHUANG { m } { \ensuremath { \mathbb {#1} } }
+\numberwithin { equation } { chapter }
 %    \end{macrocode}
 % \subsection{图表}
-% 设置图档搜索路径。
 %    \begin{macrocode}
-\graphicspath{{figures/}{figure/}{pictures/}
-      {picture/}{pic/}{pics/}{image/}{images/}}
-%    \end{macrocode}
-% 浮动体设置。
-%    \begin{macrocode}
-\numberwithin{figure}{chapter}
-\numberwithin{table}{chapter}
-\newcommand{\figcaption}{\def\@captype{figure}\caption}
-\newcommand{\tabcaption}{\def\@captype{table}\caption}
+\graphicspath { {figures/} {figure/} {pictures/}
+  {picture/} {pic/} {pics/} {image/} {images/} }
+\numberwithin { figure } { chapter }
+\numberwithin { table }  { chapter }
+\NewDocumentCommand \figcaption { }
+  { \cs_set:Npn \@captype { figure } \caption }
+\NewDocumentCommand \tabcaption { }
+  { \cs_set:Npn \@captype { table } \caption }
 %    \end{macrocode}
 % \subsection{交叉引用设置}
-% 使用颜色作为链接标识，设置颜色为蓝色。如果开启 |print| 模式，则
-% 启用 |\hypersetup{hidelinks}|。
 %    \begin{macrocode}
-\AtBeginDocument{\hypersetup{colorlinks=true, linkcolor=blue}}
-\ifSDU@opt@print
-  \AtBeginDocument{\hypersetup{hidelinks}}
-\else\relax\fi
+\AtBeginDocument { \hypersetup { colorlinks=true, linkcolor=blue } }
+\bool_if:NT \l_@@_print_bool
+  { \AtBeginDocument { \hypersetup { hidelinks } } }
 %    \end{macrocode}
 %
 % \begin{macro}{\upcite}
-% 定义参考文献上标引用。
-% \end{macro}
 %    \begin{macrocode}
-\newcommand{\upcite}[1]{\textsuperscript{\cite{#1}}}
+\NewDocumentCommand \upcite { m }
+  { \textsuperscript { \cite {#1} } }
 %    \end{macrocode}
+% \end{macro}
 % \subsection{摘要和关键字}
-% \begin{macro}{\enabstractname}
-% 英文摘要标题的名字，默认是全部大写的 |ABSTRACT|，可以自行
-% 用 \cs{renewcommand} 修改。
 %    \begin{macrocode}
-\newcommand\enabstractname{ABSTRACT}
+\tl_const:Nn \c_@@_enabstract_name_tl { ABSTRACT }
+\tl_const:Nn \c_@@_enkeywords_name_tl { Key~words }
+\tl_const:Nn \c_@@_cnabstract_name_tl { 摘 \quad 要 }
+\tl_const:Nn \c_@@_cnkeywords_name_tl { 关键词 }
+\NewDocumentCommand \enkeywords { m }
+  {
+    \vspace { 1cm }
+    \noindent
+    { \bfseries \zihao { -4 } \c_@@_enkeywords_name_tl : ~ } #1
+  }
+\NewDocumentCommand \cnkeywords { m }
+  {
+    \vspace { 1cm }
+    \noindent
+    { \bfseries \zihao { -4 } \c_@@_cnkeywords_name_tl : ~ } #1
+  }
 %    \end{macrocode}
-% \end{macro}
-% \begin{macro}{\enkeywordsname}
-% 英文关键字的名字。
-%    \begin{macrocode}
-\newcommand\enkeywordsname{Key words}
-%    \end{macrocode}
-% \end{macro}
-% \begin{macro}{\enkeywords}
-% 英文关键字命令。用法是 \cs{enkeywords}\marg{关键字列表}。
-%    \begin{macrocode}
-\newcommand\enkeywords[1]{%
-  \vspace{1cm}\noindent{\bfseries\zihao{-4}\enkeywordsname: }#1}
-%    \end{macrocode}
-% \end{macro}
-% \begin{macro}{\cnabstractname}
-% 中文摘要标题的名字，默认是|摘\quad 要|，可以自行用 \cs{renewcommand} 修改。
-%    \begin{macrocode}
-\newcommand\cnabstractname{摘\quad 要}
-%    \end{macrocode}
-% \end{macro}
-% \begin{macro}{\cnkeywordsname}
-% 中文关键字的名字。
-%    \begin{macrocode}
-\newcommand\cnkeywordsname{关键词}
-%    \end{macrocode}
-% \end{macro}
-% \begin{macro}{\cnkeywords}
-% 中文关键字命令。用法是 \cs{cnkeywords}\marg{关键字列表}。
-%    \begin{macrocode}
-\newcommand\cnkeywords[1]{%
-  \vspace{1cm}\noindent{\bfseries\zihao{-4}\cnkeywordsname: }#1}
-%    \end{macrocode}
-% \end{macro}
 % \begin{environment}{enabstract}
-% 英文摘要环境，按照学校要求，在结尾处分页。
 %    \begin{macrocode}
-\newenvironment{enabstract}{%
-  \newpage
-  \centering
-  \begin{minipage}{.9\textwidth}
-  \centerline{\zihao{-3}\bfseries\enabstractname}\vspace{.3cm}
-  \centering
-  \begin{minipage}{.85\textwidth}
-  \setlength{\parindent}{1.2em}
-}{
-\end{minipage}
-\end{minipage}
-\clearpage
-}
+\NewDocumentEnvironment { enabstract } { }
+  {
+    \newpage
+    \centering
+    \begin { minipage } { .9 \textwidth }
+    \centerline { \zihao { -3 } \bfseries \c_@@_enabstract_name_tl }
+    \vspace { .3cm }
+    \centering
+    \begin { minipage } { .85 \textwidth }
+    \setlength { \parindent } { 1.2em }
+  }
+  {
+    \end { minipage }
+    \end { minipage }
+    \clearpage
+  }
 %    \end{macrocode}
 % \end{environment}
 % \begin{environment}{cnabstract}
-% 中文摘要环境，按照学校要求，在结尾处分页。
 %    \begin{macrocode}
-\newenvironment{cnabstract}{%
-  \newpage
-  \centering
-  \begin{minipage}{.9\textwidth}
-  \centerline{\zihao{-3}\bfseries\cnabstractname}\vspace{.3cm}
-  \centering
-  \begin{minipage}[c]{.85\textwidth}
-  \setlength{\parindent}{2em}
-  \zihao{-4}
-}{
-\end{minipage}
-\end{minipage}
-\clearpage
-}
+\NewDocumentEnvironment { cnabstract } { }
+  {
+    \newpage
+    \centering
+    \begin { minipage } { .9 \textwidth }
+    \centerline { \zihao { -3 } \bfseries \c_@@_cnabstract_name_tl }
+    \vspace { .3cm }
+    \centering
+    \begin { minipage } [c] { .85 \textwidth }
+    \setlength { \parindent } { 2em }
+    \zihao { -4 }
+  }
+  {
+    \end { minipage }
+    \end { minipage }
+    \clearpage
+  }
 %    \end{macrocode}
 % \end{environment}
 % \subsection{中文标题风格}
 %    \begin{macrocode}
-\ifSDU@opt@chsstyle
-  \CTEXsetup[name={第,章}]{chapter}
-  \CTEXsetup[number={\chinese{chapter}}]{chapter}
-  \CTEXsetup[format={\centering}]{chapter}
-  \CTEXsetup[nameformat={\bfseries\zihao{3}}]{chapter}
-  \CTEXsetup[titleformat={\bfseries\zihao{3}}]{chapter}
-  \CTEXsetup[aftername={\quad{}}]{chapter}
-  \CTEXsetup[beforeskip={10pt}]{chapter}
-  \CTEXsetup[afterskip={10pt}]{chapter}
-  \CTEXsetup[name={$\S$\,,}]{section}
-  \CTEXsetup[format={\bfseries\flushleft\zihao{4}}]{section}
-  \CTEXsetup[format={\bfseries\flushleft\zihao{-4}}]{subsection}
-  \CTEXsetup[format={\flushleft\zihao{-4}}]{subsubsection}
-  \CTEXsetup[name={附录~}]{appendix}
-  \CTEXsetup[number={\Alph{chapter}}]{appendix}
-\else
-  \PassOptionsToClass{scheme = plain, noindent}{ctexbook}
-\fi
+\str_if_eq:VnT \l_@@_style_tl { chinese }
+  {
+    \ctexset
+      {
+        chapter =
+          {
+            name   = { 第 , 章 } ,
+            number = \chinese { chapter } ,
+            format = \centering ,
+            nameformat  = \bfseries \zihao { 3 } ,
+            titleformat = \bfseries \zihao { 3 } ,
+            aftername   = \quad ,
+            beforeskip  = 10pt ,
+            afterskip   = 10pt ,
+          } ,
+        section/format       = \bfseries \flushleft \zihao { 4 } ,
+        subsection/format    = \bfseries \flushleft \zihao { -4 } ,
+        subsubsection/format = \flushleft \zihao { -4 } ,
+        appendix =
+          {
+            name   = { 附录~ } ,
+            number = \Alph { chapter } ,
+          } ,
+      }
+  }
 %    \end{macrocode}
 % \subsection{封皮和誓言}
 %    \begin{macrocode}
-\input{sduthesis-cover.def}
-\input{sduthesis-statement.def}
+\input { sduthesis-cover.def }
+\input { sduthesis-statement.def }
 %    \end{macrocode}
 %    \begin{macrocode}
 %</class>
@@ -720,78 +942,57 @@
 % \subsubsection{封皮}
 %    \begin{macrocode}
 %<*cover>
+%<@@=sdu>
 %    \end{macrocode}
-% 定义 tokens。
 %    \begin{macrocode}
-\newtoks\fenlei     % 中图分类号
-\newtoks\DWdaihao   % 单位代号
-\newtoks\miji       % 密级
-\newtoks\StuNum     % 学号
-\newtoks\Ctitle     % 中文标题
-\newtoks\Cauthor    % 作者中文名
-\newtoks\Cmajor     % 专业
-\newtoks\Csuperver  % 导师
-\newtoks\Cdate      % 中文日期
-\newtoks\Dpart      % 学院
-\newtoks\Grade      % 年级
-%    \end{macrocode}
-% \begin{macro}{\LeftLength}
-% 姓名登记表格左列的宽度。
-%    \begin{macrocode}
-\newcommand{\LeftLength}{2.3cm}
-%    \end{macrocode}
-% \end{macro}
-% \begin{macro}{\RightLength}
-% 姓名登记表格右列的宽度。
-%    \begin{macrocode}
-\newcommand{\RightLength}{5.5cm}
-%    \end{macrocode}
-% \end{macro}
-%    \begin{macrocode}
-\newcommand{\Mcs}[1]{\makebox[\LeftLength][s]{{\zihao{3}\bfseries\kaishu{}#1}}}
-\newcommand{\Mcc}[1]{\makebox[\RightLength][c]{{\zihao{-3}\songti{}#1}}}
+\dim_const:Nn \c_@@_left_col_dim  { 2.3cm }
+\dim_const:Nn \c_@@_right_col_dim { 5.5cm }
+\cs_new_protected:Npn \@@_cover_label:n #1
+  { \makebox [\c_@@_left_col_dim] [s] { { \zihao { 3 } \bfseries \kaishu #1 } } }
+\cs_new_protected:Npn \@@_cover_value:n #1
+  { \makebox [\c_@@_right_col_dim] [c] { { \zihao { -3 } \songti #1 } } }
 %    \end{macrocode}
 % \begin{macro}{\maketitlepage}
-% 最终输出封面的命令。
 %    \begin{macrocode}
-\newcommand{\maketitlepage}{%
-\thispagestyle{empty}
-\begin{center}
-~
-\vskip 8mm\relax
-{
-  {\includegraphics[width = .7\textwidth]{SDUWords.jpg}}\\[3mm]
-  {\scalebox{4}{\fzbHei{}毕业论文（设计）}}
-}
-\par \vskip 15mm \relax
-{
-  \begin{flushleft}
-    {\zihao{3}\heiti{}论文（设计）题目：}
-  \end{flushleft}
-}
-\vfill
-{
-  \noindent
-  \zihao{-1}\kaishu\the\Ctitle
-}
-\vfill
-{
-  \begin{tabular}{p{\LeftLength}p{\RightLength}}
-  \Mcs{姓名}& \Mcc{\the\Cauthor}\\[-.8mm]\cline{2-2}\\[-4mm]
-  \Mcs{学号}& \Mcc{\the\StuNum}\\[-.8mm]\cline{2-2}\\[-4mm]
-  \Mcs{学院}& \Mcc{\the\Dpart}\\[-.8mm]\cline{2-2}\\[-4mm]
-  \Mcs{专业}& \Mcc{\the\Cmajor}\\[-.8mm]\cline{2-2}\\[-4mm]
-  \Mcs{年级}& \Mcc{\the\Grade}\\[-.8mm]\cline{2-2}\\[-4mm]
-  \Mcs{指导老师}& \Mcc{\the\Csuperver}\\[-.8mm]\cline{2-2}
-  \end{tabular}
-}
-\par \vskip 20mm \relax
-{
-\zihao{3}\the\Cdate
-}
-\end{center}
-\clearpage
-}
+\NewDocumentCommand \maketitlepage { }
+  {
+    \thispagestyle { empty }
+    \begin { center }
+    ~
+    \vskip 8mm \relax
+    {
+      { \includegraphics [width=.7\textwidth] { SDUWords.jpg } } \\ [3mm]
+      { \scalebox { 4 } { \fzbHei 毕业论文（设计） } }
+    }
+    \par \vskip 15mm \relax
+    {
+      \begin { flushleft }
+        { \zihao { 3 } \heiti 论文（设计）题目： }
+      \end { flushleft }
+    }
+    \vfill
+    {
+      \noindent
+      \zihao { -1 } \kaishu \l_@@_title_tl
+    }
+    \vfill
+    {
+      \begin { tabular } { p { \c_@@_left_col_dim } p { \c_@@_right_col_dim } }
+      \@@_cover_label:n { 姓名 }     & \@@_cover_value:n { \l_@@_author_tl }     \\ [-.8mm] \cline { 2-2 } \\ [-4mm]
+      \@@_cover_label:n { 学号 }     & \@@_cover_value:n { \l_@@_student_id_tl }  \\ [-.8mm] \cline { 2-2 } \\ [-4mm]
+      \@@_cover_label:n { 学院 }     & \@@_cover_value:n { \l_@@_school_tl }      \\ [-.8mm] \cline { 2-2 } \\ [-4mm]
+      \@@_cover_label:n { 专业 }     & \@@_cover_value:n { \l_@@_major_tl }       \\ [-.8mm] \cline { 2-2 } \\ [-4mm]
+      \@@_cover_label:n { 年级 }     & \@@_cover_value:n { \l_@@_grade_tl }       \\ [-.8mm] \cline { 2-2 } \\ [-4mm]
+      \@@_cover_label:n { 指导老师 } & \@@_cover_value:n { \l_@@_supervisor_tl }  \\ [-.8mm] \cline { 2-2 }
+      \end { tabular }
+    }
+    \par \vskip 20mm \relax
+    {
+      \zihao { 3 } \l_@@_date_tl
+    }
+    \end { center }
+    \clearpage
+  }
 %    \end{macrocode}
 % \end{macro}
 %    \begin{macrocode}
@@ -800,42 +1001,50 @@
 % \subsubsection{誓言}
 %    \begin{macrocode}
 %<*statement>
+%<@@=sdu>
 %    \end{macrocode}
 % \begin{macro}{\makestatement}
-% 输出诚信承诺书的命令。
 %    \begin{macrocode}
-\newcommand{\makestatement}{%
-\begin{titlepage}
-\vspace{2cm} {\zihao{4}\baselineskip=30pt
+\NewDocumentCommand \makestatement { }
+  {
+    \begin { titlepage }
+    \vspace { 2cm } { \zihao { 4 } \baselineskip = 30pt
 
-\centerline{\zihao{3}\bfseries 原\quad 创\quad 性\quad 声\quad 明}
+    \centerline { \zihao { 3 } \bfseries 原 \quad 创 \quad 性 \quad 声 \quad 明 }
 
-\noindent\hspace*{2em}本人郑重声明：所呈交的学位论文，是本人在导师指导下，独
-立进行研究所取得的成果。除文中已经注明引用的内容外，本论文不包
-含任何其他个人或集体已经发表或撰写过的科研成果。对本论文的研究作出重
-要贡献的个人和集体，均已在文中以明确方式标明。本声明
-的法律责任由本人承担。
+    \noindent \hspace* { 2em }
+    本人郑重声明：所呈交的学位论文，是本人在导师指导下，独
+    立进行研究所取得的成果。除文中已经注明引用的内容外，本论文不包
+    含任何其他个人或集体已经发表或撰写过的科研成果。对本论文的研究作出重
+    要贡献的个人和集体，均已在文中以明确方式标明。本声明
+    的法律责任由本人承担。
 
-\vspace{13mm}
+    \vspace { 13mm }
 
-\noindent\hspace*{2em}论文作者签名：\hrulefill \hspace{1em}日\hspace{1em} 期：\hrulefill
+    \noindent \hspace* { 2em }
+    论文作者签名： \hrulefill \hspace { 1em }
+    日 \hspace { 1em } 期： \hrulefill
 
-\vspace{2.7cm}
+    \vspace { 2.7cm }
 
-\centerline{\zihao{3}\bfseries 关于学位论文使用授权的声明}
+    \centerline { \zihao { 3 } \bfseries 关于学位论文使用授权的声明 }
 
-\noindent\hspace*{2em}本人完全了解山东大学有关保留、使用学位论文的规定，同意学
-校保留或向国家有关部门或机构送交论文的复印件和电子版，允许论文被查阅
-和借阅；本人授权山东大学可以将本学位论文全部或部分内容编入有关数据库
-进行检索，可以采用影印、缩印或其他复制手段保存论文和汇编本学位论文。
+    \noindent \hspace* { 2em }
+    本人完全了解山东大学有关保留、使用学位论文的规定，同意学
+    校保留或向国家有关部门或机构送交论文的复印件和电子版，允许论文被查阅
+    和借阅；本人授权山东大学可以将本学位论文全部或部分内容编入有关数据库
+    进行检索，可以采用影印、缩印或其他复制手段保存论文和汇编本学位论文。
 
-\noindent\hspace*{2em}（保密的论文在解密后应遵守此规定）
+    \noindent \hspace* { 2em } （保密的论文在解密后应遵守此规定）
 
-\vspace{13mm}
+    \vspace { 13mm }
 
-\noindent\hspace*{2em}论文作者签名：\hrulefill\hrulefill\hspace{0.5em} 导师签名：\hrulefill\hrulefill\hspace{0.5em}日\hspace{0.5em}期：\hrulefill \hrulefill }
-\end{titlepage}
-}
+    \noindent \hspace* { 2em }
+    论文作者签名： \hrulefill \hrulefill \hspace { 0.5em }
+    导师签名： \hrulefill \hrulefill \hspace { 0.5em }
+    日 \hspace { 0.5em } 期： \hrulefill \hrulefill }
+    \end { titlepage }
+  }
 %    \end{macrocode}
 % \end{macro}
 %    \begin{macrocode}
@@ -844,39 +1053,36 @@
 %    \begin{macrocode}
 % \subsubsection{重定义输出命令}
 %<*class>
+%<@@=sdu>
 %    \end{macrocode}
 % \begin{macro}{\maketitlepagestatement}
-% 输出标题页和承诺书，并设置 \cs{frontmatter}。
 %    \begin{macrocode}
-\newcommand{\maketitlepagestatement}{%
-\maketitlepage
-\thispagestyle{empty}
-~
-\vfill\eject
-\thispagestyle{empty}
-\makestatement
-\vfill\eject
-\thispagestyle{empty}
-~
-\vfill\eject
-\setcounter{page}{1}
-\frontmatter
-}
+\NewDocumentCommand \maketitlepagestatement { }
+  {
+    \maketitlepage
+    \thispagestyle { empty }
+    ~ \vfill \eject
+    \thispagestyle { empty }
+    \makestatement
+    \vfill \eject
+    \thispagestyle { empty }
+    ~ \vfill \eject
+    \setcounter { page } { 1 }
+    \frontmatter
+  }
 %    \end{macrocode}
 % \end{macro}
 % \begin{macro}{\tableofcontents}
-% 重定义目录命令。
 %    \begin{macrocode}
-\let\savedtableofcontents\tableofcontents
-\renewcommand{\tableofcontents}{%
-  \savedtableofcontents
-    \ifSDU@opt@double
-    \cleardoublepage
-  \else
-    \clearpage
-  \fi
-  \mainmatter
-}
+\cs_set_eq:NN \@@_saved_toc: \tableofcontents
+\RenewDocumentCommand \tableofcontents { }
+  {
+    \@@_saved_toc:
+    \bool_if:NTF \l_@@_twoside_bool
+      { \cleardoublepage }
+      { \clearpage }
+    \mainmatter
+  }
 %    \end{macrocode}
 % \end{macro}
 %    \begin{macrocode}
@@ -889,75 +1095,72 @@
 
 ## Introduction / 介绍
 
-The `sduthesis` is designed for students of Shandong Univ., P.R.China,
-by [Liam Huang][liam-ctan]. The 1.0.x versions of `sduthesis` were
-released in the name of Ch'en Meng, while from the begining of version 1.2.0,
-it was released in the name of Liam Huang and was rewritten in `docstrip`.
+The `sduthesis` (v2.0.0) is designed for bachelor thesis of Shandong Univ., P.R.China,
+by [Liam Huang][liam-ctan]. Starting from v2.0.0, the class is rewritten in `expl3`
+with `l3keys` for option and metadata handling. Only XeLaTeX is supported.
 
 This work is released under the LaTeX Project Public License, v1.3c or later.
 See the License file.
 
-`sduthesis` 是由 [Liam Huang][liam-ctan] 为山东大学学生设计的 LaTeX 论文模板。
-1.x 以化名 Ch'en Meng 的名义发布；1.2.0 版本开始，以 `docstrip` 工具重写了整个代码，
-并以 Liam Huang 的名义发布。
+`sduthesis`（v2.0.0）是由 [Liam Huang][liam-ctan] 为山东大学学生设计的学士学位论文
+LaTeX 模板。自 v2.0.0 起，模板使用 `expl3` 重写，仅支持 XeLaTeX 编译。
 
 `sduthesis` 遵循不低于 1.3 版本的 LPPL 许可证，详情请查看 LICENSE 文件。
 
-## Installation / 安装
+## Build / 构建
 
-There are basicly three ways to install this package on your system:
+The project uses `l3build` for building and testing:
 
-* Install from package manager;
-* Just unpack from the development package;
-* Install from the development package to the TDS manually.
-
-### Install from package manager
-
-Both TeX Live and MiKTeX have their own package manager.
-
-For TeX Live, the name is `tlmgr`. To install `sduthesis` from `tlmgr`, all you have to do is run
-
-    tlmgr install sduthesis
-
-For those who install TeX Live as `root` privilege (include MacTeX on OS X), you may need to run this with the `sudo` prefix.
-
-For MiKTeX, the name is MiKTeX Package Manager, which is known as `mpm` for short. You could run `mpm` from the Start Menu, or just type `mpm` in your CMD window. `mpm` has a friendly GUI, which means that you can easily find `sduthesis` by using the filter and install the package with the `+` button.
-
-### Unpack from the development package
-
-If you are interested in this kind of way to install the package, the first thing that come up in your mind shoud be that you are not trying to install the package into your TeX system, but trying to make a Green Unpack.
-
-Firstly, you need to download the latest release of the package from the homepage: <http://liam0205.me/sduthesis/>.
-
-For *nix users, you should execute the build script in the terminal.
-
-    /path/to/sduthesis/build
-
-For Windows users, just double click the `build.bat`.
-
-### Install to TDS munally
-
-You should follow the instructions listed in the previous section, and then
-
-* put `sduthesis.ins` and `sduthesis.dtx` to `TEXMF/source/latex/sduthesis/`
-* put `sduthesis.cls`, `*.def` and `figures/' to `TEXMF/tex/latex/sduthesis/`
-* put the remaining files to `TEXMF/doc/latex/sduthesis/`
-
-Here `TEXMF` stands for one of your TDS root. After doing so, you should execute `texhash` in your terminal to refresh the `ls-R` database, which makes TeX knowing where the package is.
+    l3build unpack   # extract .cls and .def files
+    l3build doc      # build the user manual
+    l3build check    # run regression tests
 
 ## Usage / 用法
 
-See the user manual `sduthesis.pdf` and the demo `sduthesis-demo.tex'.
+```latex
+\documentclass{sduthesis}
+
+\sdusetup{
+  info = {
+    title      = {论文题目},
+    author     = {姓名},
+    student-id = {学号},
+    school     = {学院},
+    major      = {专业},
+    grade      = {年级},
+    supervisor = {指导老师},
+    date       = {\today},
+  }
+}
+
+\begin{document}
+\maketitlepagestatement
+\tableofcontents
+% ...
+\end{document}
+```
+
+See the user manual `sduthesis.pdf` and the demo `sduthesis-demo.tex`.
 
 参见用户文档 `sduthesis.pdf` 及示例文件 `sduthesis-demo.tex`。
+
+### Class options / 类选项
+
+| Option    | Values                  | Default     |
+|-----------|-------------------------|-------------|
+| `style`   | `chinese`, `plain`      | `chinese`   |
+| `print`   | `true`, `false`         | `false`     |
+| `twoside` | `true`, `false`         | `true`      |
+| `degree`  | `bachelor`, `master`, `doctor` | `bachelor` |
+
+Legacy options (`chsstyle`, `nochsstyle`, `print`, `noprint`, `double`, `single`)
+are still accepted but emit deprecation warnings.
 
 ## Author / 作者
 
 Liam Huang
 
 Email: liamhuang0205+sduthesis@gmail.com
-
-If you are interested in the process of development you may observe
 
 <https://github.com/Liam0205/sduthesis>
 
@@ -973,24 +1176,23 @@ The package has status 'maintained': the current maintainer is
 %<*demo>
 \documentclass{sduthesis}
 
-\fenlei{O21}                  % 中图分类号
-\DWdaihao{0518}               % 单位代号
-\miji{公开}                    % 密级
-\StuNum{200900000000}         % 学号
-\Ctitle{忆美丽的山大校园\\{\normalsize\raggedleft ——模板说明}} % 中文标题
-\Cauthor{山大学子}             % 作者中文名
-\Dpart{数学学院}               % 学院
-\Cmajor{如何用\LaTeX{}拯救世界} % 专业中文名
-\Grade{2009级}                % 年级
-\Csuperver{高德纳~~教授}        %指导老师中文名
-
-\Cdate{\today}
-\title{\the\Ctitle}
-\author{\the\Cauthor}
-\date{\the\Cdate}
+\sdusetup{
+  info = {
+    title      = {忆美丽的山大校园\\{\normalsize\raggedleft ——模板说明}},
+    author     = {山大学子},
+    student-id = {200900000000},
+    school     = {数学学院},
+    major      = {如何用\LaTeX{}拯救世界},
+    grade      = {2009级},
+    supervisor = {高德纳~~教授},
+    date       = {\today},
+    clc        = {O21},
+    institution-code = {0518},
+    secret-level     = {公开},
+  }
+}
 
 \usepackage{subfig}
-\usepackage{tabu}
 \usepackage{booktabs}
 
 \begin{document}

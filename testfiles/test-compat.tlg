@@ -1,0 +1,14 @@
+This is a generated file for the l3build validation system.
+Don't change this file in any respect.
+============================================================
+TEST 1: compat Ctitle sets info
+============================================================
+Package sdu Warning: "\Ctitle " is deprecated; use \sdusetup {} instead.
+title: Compat Title
+============================================================
+============================================================
+TEST 2: compat Cauthor sets info
+============================================================
+Package sdu Warning: "\Cauthor " is deprecated; use \sdusetup {} instead.
+author: Compat Author
+============================================================

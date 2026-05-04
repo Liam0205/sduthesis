@@ -1,0 +1,31 @@
+\input{regression-test}
+\documentclass{sduthesis}
+\ExplSyntaxOn
+\START
+
+\TEST { sdusetup~info~keys }
+  {
+    \sdusetup
+      {
+        info =
+          {
+            title      = { Test~Title } ,
+            author     = { Test~Author } ,
+            student-id = { 123456 } ,
+            school     = { Math } ,
+            major      = { CS } ,
+            grade      = { 2024 } ,
+            supervisor = { Advisor } ,
+          }
+      }
+    \TYPE { title:~      \tl_use:N \l__sdu_title_tl }
+    \TYPE { author:~     \tl_use:N \l__sdu_author_tl }
+    \TYPE { student-id:~ \tl_use:N \l__sdu_student_id_tl }
+    \TYPE { school:~     \tl_use:N \l__sdu_school_tl }
+    \TYPE { major:~      \tl_use:N \l__sdu_major_tl }
+    \TYPE { grade:~      \tl_use:N \l__sdu_grade_tl }
+    \TYPE { supervisor:~ \tl_use:N \l__sdu_supervisor_tl }
+  }
+
+\END
+\ExplSyntaxOff
