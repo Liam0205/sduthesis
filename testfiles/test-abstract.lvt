@@ -1,0 +1,36 @@
+\input{regression-test}
+\documentclass{sduthesis}
+\sdusetup{
+  info = {
+    title      = {测试论文标题},
+    author     = {测试作者},
+    student-id = {200900000000},
+    school     = {数学学院},
+    major      = {数学与应用数学},
+    grade      = {2009级},
+    supervisor = {测试导师~~教授},
+    date       = {2026年5月4日},
+  }
+}
+\ExplSyntaxOn
+\START
+\begin{document}
+\TEST { chinese~abstract }
+  {
+    \begin{cnabstract}
+    这是一段中文摘要。
+    \cnkeywords{关键词一，关键词二，关键词三}
+    \end{cnabstract}
+    \TYPE { cn-abstract:~ok }
+  }
+\TEST { english~abstract }
+  {
+    \begin{enabstract}
+    This is an English abstract.
+    \enkeywords{keyword one, keyword two, keyword three}
+    \end{enabstract}
+    \TYPE { en-abstract:~ok }
+  }
+\END
+\end{document}
+\ExplSyntaxOff

@@ -1,0 +1,23 @@
+\input{regression-test}
+\documentclass{sduthesis}
+\sdusetup{
+  info = {
+    title      = {测试论文标题},
+    author     = {测试作者},
+    student-id = {200900000000},
+    school     = {数学学院},
+    major      = {数学与应用数学},
+    grade      = {2009级},
+    supervisor = {测试导师~~教授},
+    date       = {2026年5月4日},
+  }
+}
+\ExplSyntaxOn
+\START
+\TEST { statement~page~generation }
+  {
+    \makestatement
+    \TYPE { statement:~ok }
+  }
+\END
+\ExplSyntaxOff

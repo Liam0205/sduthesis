@@ -1,0 +1,70 @@
+name: Bug 报告
+description: 报告 sduthesis 的问题
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢你提交 Bug 报告！请尽可能详细地填写以下信息。
+  - type: input
+    id: version
+    attributes:
+      label: sduthesis 版本
+      placeholder: "例如：v2.0.0"
+    validations:
+      required: true
+  - type: dropdown
+    id: texlive
+    attributes:
+      label: TeX 发行版
+      options:
+        - TeX Live 2025
+        - TeX Live 2024
+        - TeX Live 2023
+        - MiKTeX
+        - 其他
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: 操作系统
+      placeholder: "例如：Windows 11、macOS 15、Ubuntu 24.04"
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: 问题描述
+      description: 清晰简要地描述遇到的问题。
+    validations:
+      required: true
+  - type: textarea
+    id: mwe
+    attributes:
+      label: 最小可复现示例（MWE）
+      description: 请提供能复现问题的最小 LaTeX 代码。
+      render: latex
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 期望行为
+      description: 描述你期望看到的结果。
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: 实际行为
+      description: 描述实际发生的情况。可附上截图或错误日志。
+    validations:
+      required: true
+  - type: textarea
+    id: additional
+    attributes:
+      label: 补充信息
+      description: 其他可能有帮助的信息（截图、日志等）。
+    validations:
+      required: false

@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 使用问题
+    url: https://github.com/liam0205/sduthesis/discussions
+    about: 使用相关的问题请到 Discussions 讨论

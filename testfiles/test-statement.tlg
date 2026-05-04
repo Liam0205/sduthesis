@@ -1,0 +1,74 @@
+This is a generated file for the l3build validation system.
+Don't change this file in any respect.
+============================================================
+TEST 1: statement page generation
+============================================================
+! LaTeX Error: Missing \begin{document}.
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+l. ...  }
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+Overfull \hbox (42.15747pt too wide) in paragraph at lines ...
+[]| \TU/STSong(0)/m/n/14.05249 本
+\hbox(13.2495+2.31865)x390.0
+.\hbox(13.2495+1.84688)x390.0, glue set 90.61002fil
+..\glue 0.0 plus 1.0fil minus 1.0fil
+..\TU/STSong(0)/b/n/16.06 关
+..\glue 0.0 plus 0.93727
+..\TU/STSong(0)/b/n/16.06 于
+..\glue 0.0 plus 0.93727
+..\TU/STSong(0)/b/n/16.06 学
+..\glue 0.0 plus 0.93727
+..\TU/STSong(0)/b/n/16.06 位
+..\glue 0.0 plus 0.93727
+..\TU/STSong(0)/b/n/16.06 论
+..\glue 0.0 plus 0.93727
+..\TU/STSong(0)/b/n/16.06 文
+..\glue 0.0 plus 0.93727
+..\TU/STSong(0)/b/n/16.06 使
+..\glue 0.0 plus 0.93727
+..\TU/STSong(0)/b/n/16.06 用
+..\glue 0.0 plus 0.93727
+..\TU/STSong(0)/b/n/16.06 授
+..\glue 0.0 plus 0.93727
+..\TU/STSong(0)/b/n/16.06 权
+..\glue 0.0 plus 0.93727
+..\TU/STSong(0)/b/n/16.06 的
+..\glue 0.0 plus 0.93727
+..\TU/STSong(0)/b/n/16.06 声
+..\glue 0.0 plus 0.93727
+..\TU/STSong(0)/b/n/16.06 明
+..\kern -0.00017
+..\kern 0.00017
+..\glue 0.0 plus 1.0fil minus 1.0fil
+.\rule(*+*)x0.0
+.\penalty 10000
+.\glue 28.10498
+.\glue 0.0
+.\TU/STSong(0)/m/n/14.05249 本
+.\glue(\rightskip) 0.0
+! Undefined control sequence.
+\set@color ->\special {color push \current@color 
+                                                 }\aftergroup \reset@color 
+l. ...  }
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+! Undefined control sequence.
+\set@color ->\special {color push \current@color 
+                                                 }\aftergroup \reset@color 
+l. ...  }
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+\HyPL@Entry{0<</S/D>>}
+[1
+]
+statement: ok
+============================================================
