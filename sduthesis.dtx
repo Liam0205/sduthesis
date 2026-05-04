@@ -154,6 +154,8 @@ and the derived files           sduthesis.cls,
 \usepackage{booktabs}
 \usepackage{listings}
 \usepackage{multirow}
+\let\sdugitrev\empty
+\InputIfFileExists{\jobname-gitrev.tex}{}{}
 \begin{document}
   \DocInput{\jobname.dtx}
 \end{document}
@@ -185,9 +187,12 @@ and the derived files           sduthesis.cls,
 %
 % \DoNotIndex{\test}
 %
-% \title{\pkg{sduthesis} 文档类\thanks{This Document
-%   corresponds to \textsf{\jobname}~\fileversion,
-%   dated \filedate.}}
+% \title{\pkg{sduthesis} 文档类\thanks{对应
+%   \textsf{\jobname}~\fileversion，\filedate。%
+%   \ifx\sdugitrev\empty\else
+%   \space(\href{https://github.com/liam0205/sduthesis/commit/\sdugitrev}%
+%     {\texttt{\sdugitrev}})%
+%   \fi}}
 % \author{Liam Huang \\ \texttt{liamhuang0205+\jobname@gmail.com}}
 % \date{\filedate}
 %

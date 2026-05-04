@@ -37,6 +37,16 @@ function docinit_hook()
   cp("sduthesis-demo.tex", unpackdir, typesetdir)
   cp("*.pdf", "figures", typesetdir)
   cp("*.jpg", "figures", typesetdir)
+  local p = io.popen("git log -1 --pretty=format:%h 2>/dev/null")
+  if p then
+    local hash = p:read("*a") or ""
+    p:close()
+    if hash ~= "" then
+      local f = io.open(typesetdir .. "/" .. module .. "-gitrev.tex", "w")
+      f:write("\\gdef\\sdugitrev{" .. hash .. "}\n")
+      f:close()
+    end
+  end
   return 0
 end
 
