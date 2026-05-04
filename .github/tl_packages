@@ -32,6 +32,9 @@ lm
 lm-math
 psnfss
 unicode-math
+tex-gyre
+tex-gyre-math
+cm-unicode
 
 # class runtime deps
 xcolor
