@@ -11,35 +11,35 @@ l. ...  }
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 Overfull \hbox (42.15747pt too wide) in paragraph at lines ...
-[]| \TU/STSong(0)/m/n/14.05249 本
-\hbox(13.2495+2.31865)x390.0
-.\hbox(13.2495+1.84688)x390.0, glue set 90.61002fil
+[]| \TU/FandolSong-Regular(0)/m/n/14.05249 本
+\hbox(12.26984+2.6017)x390.0
+.\hbox(12.26984+2.6017)x390.0, glue set 90.61002fil
 ..\glue 0.0 plus 1.0fil minus 1.0fil
-..\TU/STSong(0)/b/n/16.06 关
+..\TU/FandolSong-Regular(0)/b/n/16.06 关
 ..\glue 0.0 plus 0.93727
-..\TU/STSong(0)/b/n/16.06 于
+..\TU/FandolSong-Regular(0)/b/n/16.06 于
 ..\glue 0.0 plus 0.93727
-..\TU/STSong(0)/b/n/16.06 学
+..\TU/FandolSong-Regular(0)/b/n/16.06 学
 ..\glue 0.0 plus 0.93727
-..\TU/STSong(0)/b/n/16.06 位
+..\TU/FandolSong-Regular(0)/b/n/16.06 位
 ..\glue 0.0 plus 0.93727
-..\TU/STSong(0)/b/n/16.06 论
+..\TU/FandolSong-Regular(0)/b/n/16.06 论
 ..\glue 0.0 plus 0.93727
-..\TU/STSong(0)/b/n/16.06 文
+..\TU/FandolSong-Regular(0)/b/n/16.06 文
 ..\glue 0.0 plus 0.93727
-..\TU/STSong(0)/b/n/16.06 使
+..\TU/FandolSong-Regular(0)/b/n/16.06 使
 ..\glue 0.0 plus 0.93727
-..\TU/STSong(0)/b/n/16.06 用
+..\TU/FandolSong-Regular(0)/b/n/16.06 用
 ..\glue 0.0 plus 0.93727
-..\TU/STSong(0)/b/n/16.06 授
+..\TU/FandolSong-Regular(0)/b/n/16.06 授
 ..\glue 0.0 plus 0.93727
-..\TU/STSong(0)/b/n/16.06 权
+..\TU/FandolSong-Regular(0)/b/n/16.06 权
 ..\glue 0.0 plus 0.93727
-..\TU/STSong(0)/b/n/16.06 的
+..\TU/FandolSong-Regular(0)/b/n/16.06 的
 ..\glue 0.0 plus 0.93727
-..\TU/STSong(0)/b/n/16.06 声
+..\TU/FandolSong-Regular(0)/b/n/16.06 声
 ..\glue 0.0 plus 0.93727
-..\TU/STSong(0)/b/n/16.06 明
+..\TU/FandolSong-Regular(0)/b/n/16.06 明
 ..\kern -0.00017
 ..\kern 0.00017
 ..\glue 0.0 plus 1.0fil minus 1.0fil
@@ -47,7 +47,7 @@ Overfull \hbox (42.15747pt too wide) in paragraph at lines ...
 .\penalty 10000
 .\glue 28.10498
 .\glue 0.0
-.\TU/STSong(0)/m/n/14.05249 本
+.\TU/FandolSong-Regular(0)/m/n/14.05249 本
 .\glue(\rightskip) 0.0
 ! Undefined control sequence.
 \set@color ->\special {color push \current@color 

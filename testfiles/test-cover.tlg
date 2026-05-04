@@ -13,91 +13,75 @@ If that doesn't work, type  X <return>  to quit.
 File: SDUWords.jpg Graphic file (type bmp)
 <SDUWords.jpg>
 Package fontspec Info: 
-(fontspec)             Script 'CJK' not explicitly supported within font 'STHeiti'. Check the typeset output, and if it is okay then ignore this warning. Otherwise a different font should be chosen.
+(fontspec)             Script 'CJK' not explicitly supported within font 'FandolHei-Regular'. Check the typeset output, and if it is okay then ignore this warning. Otherwise a different font should be chosen.
 Package fontspec Info: 
-(fontspec)             Could not resolve font "STHeiti/BI" (it probably doesn't exist).
-Package fontspec Info: 
-(fontspec)             Could not resolve font "STHeiti/B" (it probably doesn't exist).
-Package fontspec Info: 
-(fontspec)             Could not resolve font "STHeiti/I" (it probably doesn't exist).
-Package fontspec Info: 
-(fontspec)             Font family 'STHeiti(0)' created for font 'STHeiti' with options [Script={CJK}].
+(fontspec)             Font family 'FandolHei-Regular(0)' created for font 'FandolHei-Regular' with options [Script={CJK},Extension={.otf},BoldFont={FandolHei-Bold}].
 (fontspec)              
 (fontspec)              This font family consists of the following NFSS series/shapes:
 (fontspec)              
-(fontspec)             - 'normal' (m/n) with NFSS spec.: <->"STHeiti/OT:script=hani;language=dflt;"
+(fontspec)             - 'normal' (m/n) with NFSS spec.: <->"[FandolHei-Regular.otf]/OT:script=hani;language=dflt;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.: <->"[FandolHei-Bold.otf]/OT:script=hani;language=dflt;"
 Package fontspec Info: 
-(fontspec)             Script 'CJK' not explicitly supported within font 'STKaiti'. Check the typeset output, and if it is okay then ignore this warning. Otherwise a different font should be chosen.
+(fontspec)             Script 'CJK' not explicitly supported within font 'FandolKai-Regular'. Check the typeset output, and if it is okay then ignore this warning. Otherwise a different font should be chosen.
 Package fontspec Info: 
-(fontspec)             Could not resolve font "STKaiti/BI" (it probably doesn't exist).
-Package fontspec Info: 
-(fontspec)             Could not resolve font "STKaiti/B" (it probably doesn't exist).
-Package fontspec Info: 
-(fontspec)             Could not resolve font "STKaiti/I" (it probably doesn't exist).
-Package fontspec Info: 
-(fontspec)             Font family 'STKaiti(0)' created for font 'STKaiti' with options [Script={CJK}].
+(fontspec)             Font family 'FandolKai-Regular(0)' created for font 'FandolKai-Regular' with options [Script={CJK},Extension={.otf}].
 (fontspec)              
 (fontspec)              This font family consists of the following NFSS series/shapes:
 (fontspec)              
-(fontspec)             - 'normal' (m/n) with NFSS spec.: <->"STKaiti/OT:script=hani;language=dflt;"
+(fontspec)             - 'normal' (m/n) with NFSS spec.: <->"[FandolKai-Regular.otf]/OT:script=hani;language=dflt;"
 LaTeX Font Info:    Trying to load font information for U+msa on input line ....
 LaTeX Font Info:    Trying to load font information for U+msb on input line ....
 LaTeX Font Info:    Trying to load font information for U+rsfs on input line ....
 )
-LaTeX Font Warning: Font shape `TU/STKaiti(0)/b/n' undefined
-(Font)              using `TU/STKaiti(0)/m/n' instead on input line ....
-Underfull \hbox (badness 5741) detected at line 21
-\TU/STKaiti(0)/m/n/16.06 姓 名
-\hbox(11.45078+1.46144)x65.44142, glue set 3.8608
-.\TU/STKaiti(0)/m/n/16.06 姓
+LaTeX Font Warning: Font shape `TU/FandolKai-Regular(0)/b/n' undefined
+(Font)              using `TU/FandolKai-Regular(0)/m/n' instead on input line ....
+Underfull \hbox (badness 5741) detected at line 22
+\TU/FandolKai-Regular(0)/m/n/16.06 姓 名
+\hbox(11.41866+1.38115)x65.44142, glue set 3.8608
+.\TU/FandolKai-Regular(0)/m/n/16.06 姓
 .\glue 0.0 plus 8.63072
-.\TU/STKaiti(0)/m/n/16.06 名
+.\TU/FandolKai-Regular(0)/m/n/16.06 名
 .\kern -0.00017
 .\kern 0.00017
 Package fontspec Info: 
-(fontspec)             Script 'CJK' not explicitly supported within font 'STSong'. Check the typeset output, and if it is okay then ignore this warning. Otherwise a different font should be chosen.
+(fontspec)             Script 'CJK' not explicitly supported within font 'FandolSong-Regular'. Check the typeset output, and if it is okay then ignore this warning. Otherwise a different font should be chosen.
 Package fontspec Info: 
-(fontspec)             Could not resolve font "STSong/BI" (it probably doesn't exist).
-Package fontspec Info: 
-(fontspec)             Could not resolve font "STSong/B" (it probably doesn't exist).
-Package fontspec Info: 
-(fontspec)             Could not resolve font "STSong/I" (it probably doesn't exist).
-Package fontspec Info: 
-(fontspec)             Font family 'STSong(1)' created for font 'STSong' with options [Script={CJK}].
+(fontspec)             Font family 'FandolSong-Regular(1)' created for font 'FandolSong-Regular' with options [Script={CJK},Extension={.otf},BoldFont={FandolSong-Bold}].
 (fontspec)              
 (fontspec)              This font family consists of the following NFSS series/shapes:
 (fontspec)              
-(fontspec)             - 'normal' (m/n) with NFSS spec.: <->"STSong/OT:script=hani;language=dflt;"
-Underfull \hbox (badness 5741) detected at line 21
-\TU/STKaiti(0)/m/n/16.06 学 号
-\hbox(11.93257+2.6017)x65.44142, glue set 3.8608
-.\TU/STKaiti(0)/m/n/16.06 学
+(fontspec)             - 'normal' (m/n) with NFSS spec.: <->"[FandolSong-Regular.otf]/OT:script=hani;language=dflt;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.: <->"[FandolSong-Bold.otf]/OT:script=hani;language=dflt;"
+Underfull \hbox (badness 5741) detected at line 22
+\TU/FandolKai-Regular(0)/m/n/16.06 学 号
+\hbox(12.31802+3.03532)x65.44142, glue set 3.8608
+.\TU/FandolKai-Regular(0)/m/n/16.06 学
 .\glue 0.0 plus 8.63072
-.\TU/STKaiti(0)/m/n/16.06 号
+.\TU/FandolKai-Regular(0)/m/n/16.06 号
 .\kern -0.00017
 .\kern 0.00017
-Underfull \hbox (badness 5741) detected at line 21
-\TU/STKaiti(0)/m/n/16.06 学 院
-\hbox(11.93257+2.6017)x65.44142, glue set 3.8608
-.\TU/STKaiti(0)/m/n/16.06 学
+Underfull \hbox (badness 5741) detected at line 22
+\TU/FandolKai-Regular(0)/m/n/16.06 学 院
+\hbox(12.31802+3.03532)x65.44142, glue set 3.8608
+.\TU/FandolKai-Regular(0)/m/n/16.06 学
 .\glue 0.0 plus 8.63072
-.\TU/STKaiti(0)/m/n/16.06 院
+.\TU/FandolKai-Regular(0)/m/n/16.06 院
 .\kern -0.00017
 .\kern 0.00017
-Underfull \hbox (badness 5741) detected at line 21
-\TU/STKaiti(0)/m/n/16.06 专 业
-\hbox(11.99683+2.45717)x65.44142, glue set 3.8608
-.\TU/STKaiti(0)/m/n/16.06 专
+Underfull \hbox (badness 5741) detected at line 22
+\TU/FandolKai-Regular(0)/m/n/16.06 专 业
+\hbox(12.2859+2.53746)x65.44142, glue set 3.8608
+.\TU/FandolKai-Regular(0)/m/n/16.06 专
 .\glue 0.0 plus 8.63072
-.\TU/STKaiti(0)/m/n/16.06 业
+.\TU/FandolKai-Regular(0)/m/n/16.06 业
 .\kern -0.00017
 .\kern 0.00017
-Underfull \hbox (badness 5741) detected at line 21
-\TU/STKaiti(0)/m/n/16.06 年 级
-\hbox(11.51501+2.95502)x65.44142, glue set 3.8608
-.\TU/STKaiti(0)/m/n/16.06 年
+Underfull \hbox (badness 5741) detected at line 22
+\TU/FandolKai-Regular(0)/m/n/16.06 年 级
+\hbox(12.2859+2.97108)x65.44142, glue set 3.8608
+.\TU/FandolKai-Regular(0)/m/n/16.06 年
 .\glue 0.0 plus 8.63072
-.\TU/STKaiti(0)/m/n/16.06 级
+.\TU/FandolKai-Regular(0)/m/n/16.06 级
 .\kern -0.00017
 .\kern 0.00017
 ! Undefined control sequence.
