@@ -1,0 +1,188 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+  actions: read
+
+env:
+  NOTO_SANS_URL: https://github.com/notofonts/noto-cjk/releases/download/Sans2.004/03_NotoSansCJK-OTC.zip
+  NOTO_SERIF_URL: https://github.com/notofonts/noto-cjk/releases/download/Serif2.002/04_NotoSerifCJKOTC.zip
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Parse tag
+      id: parse
+      run: |
+        TAG="${GITHUB_REF_NAME}"
+        VER="${TAG#v}"
+        echo "tag=${TAG}"   >> "$GITHUB_OUTPUT"
+        echo "ver=${VER}"   >> "$GITHUB_OUTPUT"
+
+    - name: Install TeX Live
+      timeout-minutes: 30
+      uses: TeX-Live/setup-texlive-action@v4
+      with:
+        package-file: .github/tl_packages
+
+    - name: Install CJK fonts
+      run: |
+        curl -fsSLO ${{ env.NOTO_SANS_URL }}
+        curl -fsSLO ${{ env.NOTO_SERIF_URL }}
+        sudo mkdir -p /usr/share/fonts/truetype
+        unzip -ojd /usr/share/fonts/truetype "*OTC.zip" "*.ttc"
+        fc-cache -f
+
+    - name: Build CTAN zip
+      run: l3build ctan
+
+    - name: Prepare release asset
+      id: asset
+      run: |
+        VER="${{ steps.parse.outputs.ver }}"
+        SHORT_SHA=$(git rev-parse --short HEAD)
+        ASSET="sduthesis-v${VER}-${SHORT_SHA}.zip"
+        mv sduthesis-ctan.zip "${ASSET}"
+        echo "path=${ASSET}" >> "$GITHUB_OUTPUT"
+
+    - name: Generate release notes
+      run: |
+        VER="${{ steps.parse.outputs.ver }}"
+        TAG="${{ steps.parse.outputs.tag }}"
+        NOTES_FILE="release-notes.md"
+
+        # Try extracting from \changes entries in dtx
+        if grep -q "\\\\changes{v${VER}}" sduthesis.dtx 2>/dev/null; then
+          python3 - sduthesis.dtx "v${VER}" > "${NOTES_FILE}" << 'PYEOF'
+        import re, sys
+        dtx_path, target_ver = sys.argv[1], sys.argv[2]
+        with open(dtx_path) as f:
+            lines = f.readlines()
+        tag = '\\changes{' + target_ver + '}'
+        entries = []
+        i = 0
+        while i < len(lines):
+            line = lines[i]
+            if tag not in line:
+                i += 1
+                continue
+            m = re.search(r'\\changes\{[^}]*\}\{[^}]*\}\{', line)
+            if not m:
+                i += 1
+                continue
+            text = line[m.end():]
+            i += 1
+            while i < len(lines) and re.match(r'^%\s+\S', lines[i]) and '\\changes{' not in lines[i]:
+                text += ' ' + lines[i].lstrip('% ').rstrip('\n')
+                i += 1
+            depth = 1
+            result = []
+            for ch in text:
+                if ch == '{': depth += 1
+                elif ch == '}':
+                    depth -= 1
+                    if depth == 0:
+                        break
+                result.append(ch)
+            text = ''.join(result)
+            text = re.sub(r'\s+', ' ', text).strip()
+            text = re.sub(r'\\(?:cs|tn)\{([^}]*)\}', lambda m: '`\\' + m.group(1) + '`', text)
+            text = re.sub(r'\\(?:opt|pkg|cls|file|texttt)\{([^}]*)\}', r'`\1`', text)
+            text = re.sub(r'\\textbf\{([^}]*)\}', r'**\1**', text)
+            text = re.sub(r'\\#', '#', text)
+            text = re.sub(r'\\[Xx]e[Ll]a[Tt]e[Xx](?:\\\s|\{\})?', 'XeLaTeX ', text)
+            text = re.sub(r'\\LaTeX(?:\\\s|\{\})?', 'LaTeX ', text)
+            text = re.sub(r'\\TeX(?:\\\s|\{\})?', 'TeX ', text)
+            text = re.sub(r'\\[A-Za-z]+(?:\{\})?\s*', '', text)
+            text = re.sub(r'\\\s', ' ', text)
+            text = text.replace('~', ' ')
+            text = re.sub(r'  +', ' ', text).strip()
+            if text:
+                entries.append(text)
+        seen = set()
+        for e in entries:
+            if e not in seen:
+                seen.add(e)
+                print(f"- {e}")
+        PYEOF
+        fi
+
+        # Fallback: git log since previous tag
+        if [ ! -s "${NOTES_FILE}" ]; then
+          PREV_TAG=$(git tag -l "v*" --sort=-version:refname | sed -n '2p')
+          if [ -n "${PREV_TAG}" ]; then
+            git log --oneline "${PREV_TAG}..${TAG}" \
+              | sed 's/^[a-f0-9]* /- /' > "${NOTES_FILE}"
+          fi
+        fi
+
+        # Final fallback
+        if [ ! -s "${NOTES_FILE}" ]; then
+          echo "Release sduthesis v${VER}" > "${NOTES_FILE}"
+        fi
+
+        echo "--- Release Notes ---"
+        cat "${NOTES_FILE}"
+
+    - name: Wait for test CI to pass
+      run: |
+        SHA="${{ github.sha }}"
+        echo "Waiting for test workflow to pass on ${SHA:0:8}..."
+
+        for i in $(seq 1 120); do
+          RESULT=$(gh api \
+            "repos/${{ github.repository }}/actions/workflows/test.yml/runs?head_sha=${SHA}&per_page=1" \
+            --jq 'if (.workflow_runs | length) == 0 then "none"
+                  else .workflow_runs[0] | "\(.status);\(.conclusion)" end') || RESULT=""
+
+          if [ -z "$RESULT" ] || [ "$RESULT" = "none" ]; then
+            echo "  No test run found yet, retrying... (attempt ${i}/120)"
+            sleep 30
+            continue
+          fi
+
+          STATUS="${RESULT%%;*}"
+          CONCLUSION="${RESULT##*;}"
+
+          if [ "$CONCLUSION" = "success" ]; then
+            echo "Test CI passed!"
+            exit 0
+          elif [ "$STATUS" = "completed" ]; then
+            echo "::error::Test CI finished with: ${CONCLUSION}"
+            exit 1
+          fi
+
+          echo "  Test CI status: ${STATUS}, waiting... (attempt ${i}/120)"
+          sleep 30
+        done
+
+        echo "::error::Timeout after 60 minutes waiting for test CI"
+        exit 1
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Create GitHub Release
+      run: |
+        TAG="${{ steps.parse.outputs.tag }}"
+        VER="${{ steps.parse.outputs.ver }}"
+        ASSET="${{ steps.asset.outputs.path }}"
+
+        gh release delete "${TAG}" --yes 2>/dev/null || true
+        gh release create "${TAG}" \
+          "${ASSET}" \
+          --prerelease \
+          --title "sduthesis v${VER}" \
+          --notes-file release-notes.md
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
