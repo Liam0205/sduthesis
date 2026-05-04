@@ -201,23 +201,21 @@ and the derived files           sduthesis.cls,
 % \tableofcontents
 % \section{模板介绍}
 %
-% \textsc{SDUThesis} (Shandong Unversity Thesis) 是为了帮助山东大学
-% 毕业生高效完成自己的学位论文/毕业论文而设计的 \LaTeX{} 论文模板。\par
+% \textsc{SDUThesis} (Shandong University Thesis) 是为了帮助山东大学
+% 毕业生高效完成自己的学位论文/毕业论文而设计的 \LaTeX{} 论文模板。
+% 自 v2.0.0 起，模板使用 \pkg{expl3} 完全重写，提供基于 \pkg{l3keys}
+% 的键值接口，并使用 \pkg{l3build} 构建和测试。\par
 % 模板由 Liam Huang 设计制作，并遵循 \LaTeX{} Project Public License 开源，
 % 源代码公开在 GitHub 上，项目地址是：
 % \begin{quote}
 %   \url{https://github.com/Liam0205/sduthesis}
 % \end{quote}
 % 欢迎山大学子参与进来，共同维护这一项目。\par
-% \mem{模板的意义在于，它能让使用者将注意力集中在论文内容的编写上，而不必费心于
-% 格式调整。\pkg{sduthesis} 自身已经按照学校的论文要求制定了格式，如果使用者
-% 严格遵守 \LaTeX{} 规范和模板说明，就能排版出高质量的文档；反之，即使使
-% 用 \LaTeX{} 也可能排版出难看的文档。}\par
-% 本文档可以在命令行下执行 |xelatex sduthesis.dtx| 得到。\par
+% 本文档可以在命令行下执行 |l3build doc| 得到。\par
 % \pkg{sduthesis} 遵循版本号不低于 1.3 的 \LaTeX{} Project Public
 % License 许可证，下面是它的最新版本：
 % \begin{quote}
-%   \url{http://www.latex-project.org/lppl.txt}
+%   \url{https://www.latex-project.org/lppl.txt}
 % \end{quote}
 %
 % \section{安装}
@@ -237,32 +235,28 @@ and the derived files           sduthesis.cls,
 % \begin{quote}
 %   \url{https://github.com/Liam0205/sduthesis/releases}
 % \end{quote}
-% 这里，类似 \fileversion{} 的版本是源代码，下载后需要进行编译安装；
-% 类似 \fileversion-plain 的版本是扁平化安装，下载后解压至工作目录
-% 可以直接使用；类似 \fileversion-tds 的版本是 TDS 安装包，下载后应
-% 解压至指定目录使用。\par
 % \subsection{模板组成}\label{subs:consist}
 % 模板由下列文件组成：\\
 % \begin{longtable}{rlr}
 %   \toprule
 %   \textbf{文件（夹）} & \textbf{功能描述} & \\
 %   \midrule\endhead\bottomrule\endfoot
-%   \file{sduthesis.ins} & 模板驱动文件 \\
-%   \file{sduthesis.dtx} & 模板源代码及其他文档的 \pkg{DocStrip} 代码 \\
+%   \file{sduthesis.dtx} & 自解压源代码（含文档和 DocStrip 指令） \\
 %   \file{sduthesis.cls} & 文档类，模板主体 \\
 %   \file{sduthesis-cover.def} & 封面样式定义文件 \\
 %   \file{sduthesis-statement.def} & 承诺书定义文件 \\
 %   \midrule
 %   \file{sduthesis-demo.tex} & 演示文件 \\
-%   \file{figures/} & 演示文件图片路径 \\
+%   \file{figures/} & 校徽等图片 \\
 %   \midrule
 %   \file{README.md} & 说明文件 \\
 %   \file{LICENSE.md} & 许可证说明文件 \\
+%   \file{DEPENDS.txt} & 依赖宏包列表 \\
+%   \file{CHANGELOG.md} & 变更日志 \\
 %   \file{sduthesis.pdf} & 用户手册（本文档） \\
 %   \file{sduthesis-demo.pdf} & 演示文件 \\
 % \end{longtable}
-% \mem{其中 \file{sduthesis.ins} 和 \file{sduthesis.dtx} 是原始文件，其余
-% 文件均可经由特定的编译步骤编译出来。}
+% 其中 \file{sduthesis.dtx} 是原始文件，其余文件均可经由编译步骤生成。
 % \subsection{依赖}
 % \pkg{sduthesis} 依赖于以下宏包，这些宏包在常见的 \TeX{} 发行版中都已包含，
 % 在安装使用之前，请确认你的 \TeX{} 发行版中正确安装了这些宏包。
@@ -275,7 +269,7 @@ and the derived files           sduthesis.cls,
 %   \bottomrule
 % \end{tabular}
 % 如果你尚未安装这些宏包，可以启动你的 \TeX{} 发行版的宏包管理器
-% 来安装；或者到 \url{http://www.ctan.org} 上搜索下载并安装。
+% 来安装；或者到 \url{https://www.ctan.org} 上搜索下载并安装。
 % \subsection{安装}
 % \subsubsection{编译安装}
 % 下载并解压源代码至某一目录，在该目录执行：
@@ -289,7 +283,7 @@ and the derived files           sduthesis.cls,
 %   l3build install
 % \end{verbatim}
 % \subsubsection{扁平化安装}\label{subss:plain}
-% 将 \lstinline|l3build unpack| 生成的文件复制到你的工作目录即可。
+% 将 |l3build unpack| 生成的文件复制到你的工作目录即可。
 % \subsubsection{TDS 安装}\label{subss:TDS}
 % 将 TDS 安装包解压，将其内的所有内容按照既有的目录结构，复制到某一个 TDS 根
 % 下面。比如 |TEXMFLOCAL|。\pkg{sduthesis} 的目录结构如下表所示。
@@ -297,9 +291,8 @@ and the derived files           sduthesis.cls,
 %   \toprule
 %   \textbf{文件（夹）} & \textbf{目录} \\
 %   \midrule\endhead\bottomrule\endfoot
-%   \file{sduthesis.ins} &
-%     \multirow{2}{*}{\file{TEXMF/source/latex/sduthesis/}} \\
-%   \file{sduthesis.dtx} &  \\
+%   \file{sduthesis.dtx} &
+%     \file{TEXMF/source/latex/sduthesis/} \\
 %   \midrule
 %   \file{sduthesis.cls} &
 %     \multirow{4}{*}{\file{TEXMF/tex/latex/sduthesis/}} \\
@@ -307,165 +300,205 @@ and the derived files           sduthesis.cls,
 %   \file{sduthesis-statement.def} &  \\
 %   \file{figures/} &  \\
 %   \midrule
-%   \file{sduthesis-demo.tex} &
+%   \file{sduthesis.pdf} &
 %     \multirow{5}{*}{\file{TEXMF/doc/latex/sduthesis/}} \\
-%   \file{README.md} &  \\
-%   \file{LICENSE.md} &  \\
-%   \file{sduthesis.pdf} &  \\
 %   \file{sduthesis-demo.pdf} &  \\
+%   \file{README.md} &  \\
+%   \file{DEPENDS.txt} &  \\
+%   \file{CHANGELOG.md} &  \\
 % \end{longtable}
 %
 % 之后，在终端（命令提示符）中以管理员权限运行 |texhash|。
 % \subsection{升级}
-% 下载新版源代码后，重新执行 \lstinline|l3build unpack| 或
-% \lstinline|l3build install| 即可。
+% 下载新版源代码后，重新执行 |l3build unpack| 或
+% |l3build install| 即可。
 % \section{使用说明}
 %
 % 使用 \pkg{\jobname} 必须具有一定的 \LaTeXe{} 基础知识，能够
 % 处理一般的 \LaTeX{} 文档，并对 \BibTeX{} 有一定的了解。如果你
-% 从来没有接触过 \LaTeX{}，请先学习相关的基础知识，毕竟「磨刀不误砍柴工」。\par
-% 网络上关于 \LaTeX{} 的资料参差不齐，再加上今年 \LaTeX{} 中文处理
-% 技术发展飞快，许多网络文章已经过时。因此，我不建议你在网络上寻找文档
-% 自学 \LaTeX{}。如果你愿意购买实体书，我推荐你选购刘海洋\footnote{刘海洋
-% 是 C\TeX{} 论坛版主，是当前最先进的中文处理技术 \pkg{xeCJK} 的主要维护
-% 者，同时是当前最完善的中文版式解决方案 \pkg{ctex} 宏包的维护者，同时
-% 是不少中文相关 \TeX{} 工具的作者。}的《\LaTeX{} 入门》；如果你更希望
-% 阅读免费的电子文档，我推荐你下载我整理的文档集：\url{http://zip.xelatex.tk}。
-% \subsection{关于提问}
-% 首先你应当完整阅读一份 \LaTeX{} 入门文档，如果遇到的问题确实超出能力范围，
-% 而暂时无法解决，你应当清晰地提出你的问题。在提问之前，我建议你先阅读我写的
-% 这份文档：\url{xelatex.tk}。\par
-% 欢迎你到下列位置提出你的问题（按照优先级顺序排列）：
-% \begin{itemize}
-%   \item[C\TeX{}论坛] \url{http://bbs.ctex.org}；
-%   \item[QQ 群] 31752345；
-%   \item[GitHub Issue] \url{https://github.com/Liam0205/sduthesis/issues}。
-% \end{itemize}
+% 从来没有接触过 \LaTeX{}，请先学习相关的基础知识。
 % \subsection{关于编译}
-% \pkg{\jobname} 支持三种编译方式：
+% 自 v2.0.0 起，\pkg{\jobname} 仅支持 \XeLaTeX{} 编译。
+% 请确保你使用 \XeLaTeX{} 编译你的论文文档。
+% \subsection{关于提问}
+% 欢迎你到下列位置提出你的问题：
 % \begin{itemize}
-%   \item \XeLaTeX{}；
-%   \item pdf\LaTeX{}；
-%   \item \LaTeX{} + DVIPDFMx。
+%   \item GitHub Issues：\url{https://github.com/Liam0205/sduthesis/issues}；
+%   \item GitHub Discussions：\url{https://github.com/Liam0205/sduthesis/discussions}。
 % \end{itemize}
-% 其中，由于 \pkg{\jobname} 的依赖宏包 \pkg{ctex} 的默认配置的问题，只有
-% 在 Windows 系统底下三种编译方式均能较好地工作；在 Mac OS X 及 Linux 系统
-% 底下，pdf\LaTeX{} 和 \LaTeX{} + DVIPDFMx 两种方式需要做额外的配置。\par
-% 对于 Mac OS X 和 Linux 系统，推荐使用 \XeLaTeX{} 方式编译。请参看我的博文：
-% \begin{quote}
-%   \url{http://liam0205.me/2014/11/02/latex-mactex-chinese-support/}
-% \end{quote}\par
-% 考虑到使用 \XeLaTeX{} 能减少配置的工作量，且能够输出更高质量的文档，强烈建议
-% \mem{总是使用 \XeLaTeX{} 编译文档}。
 % \subsection{\pkg{\jobname} 示例文件}
-% 示例文件 \file{\jobname-demo.tex} 里集中展现了许多 \pkg{\jobname} 的用法，请在使用前自习研读示例文件。
-% \subsection{选项}
-% \subsubsection{中文字库}
-% \label{subs:fontset}
-% 下面的选项用于选择可用的中文字库。设置这些选项是考虑到不同的操作系统平台提
-% 供的中文字库是不同的。
+% 示例文件 \file{\jobname-demo.tex} 里集中展现了许多 \pkg{\jobname} 的用法，
+% 请在使用前仔细研读示例文件。
+% \subsection{快速上手}
+% 一个最简单的 \pkg{\jobname} 文档如下所示：
+% \begin{verbatim}
+%   \documentclass{sduthesis}
+%   \sdusetup{
+%     info = {
+%       title      = {论文题目},
+%       author     = {姓名},
+%       student-id = {200900000000},
+%       school     = {数学学院},
+%       major      = {数学与应用数学},
+%       grade      = {2009级},
+%       supervisor = {导师姓名~~教授},
+%     }
+%   }
+%   \begin{document}
+%   \maketitlepagestatement
+%   \tableofcontents
+%   \begin{cnabstract}
+%   摘要内容。
+%   \cnkeywords{关键词一，关键词二}
+%   \end{cnabstract}
+%   \begin{enabstract}
+%   Abstract content.
+%   \enkeywords{keyword one, keyword two}
+%   \end{enabstract}
+%   \chapter{引言}
+%   正文内容。
+%   \end{document}
+% \end{verbatim}
+% \subsection{类选项}
+% \pkg{\jobname} 使用键值方式传递类选项。
+% \begin{verbatim}
+%   \documentclass[style=chinese, print=false]{sduthesis}
+% \end{verbatim}
+% 可用的选项如下：
 % \begin{center}
-% \begin{tabular}{p{.2\textwidth}p{.7\textwidth}}
+% \begin{tabular}{p{.2\textwidth}p{.15\textwidth}p{.55\textwidth}}
 % \toprule
-% \textbf{winfonts}& 使用 Windows 的字体设置，默认为六种中易字体：宋体、仿宋、黑体、楷
-% 体、隶书、幼圆（在使用 \XeLaTeX 时只有前四种）。\textit{这是默认设置}。\\
-% \textbf{adobefonts}& 在 xeCJK 模式中使用 Adobe 的四套字体：宋体、仿宋、黑体、楷体。
-% 在 CJK 模式（即不使用 \XeLaTeX 时）下，该选项将使用 \textbf{winfonts} 选项的设置。\\
-% \textbf{nofonts}& 没有中文字库，此时没有中文字体命令可用。如果期望使用自己设置的字
-% 体，可以选中这个选项。\\
+% \textbf{选项} & \textbf{默认值} & \textbf{说明} \\
+% \midrule
+% |style| & |chinese| & 标题风格。|chinese|：中文标题样式；|plain|：保留默认英文样式。 \\
+% |print| & |false| & 打印模式。|true|：隐藏超链接颜色；|false|：保留链接色彩。 \\
+% |twoside| & |true| & 双面模式。|true|：双面排版，页边距左右不等；|false|：单面排版。 \\
+% |degree| & |bachelor| & 学位类型。目前仅实现 |bachelor|，|master| 和 |doctor| 预留。 \\
 % \bottomrule
 % \end{tabular}
 % \end{center}
-% \subsubsection{排版风格}
+% \subsubsection{兼容旧选项}
+% 以下旧版选项仍可使用，但会发出废弃警告：
 % \begin{center}
-% \begin{tabular}{p{.2\textwidth}p{.7\textwidth}}
+% \begin{tabular}{ll}
 % \toprule
-% \textbf{chsstyle}& 使用中文的标题样式。这个命令会修改章节的标题样式，以及图标目录等的标题。\textit{这是默认设置}。\\
-% \textbf{nochsstyle}& 保留使用英文的标题样式。\\
-% \textbf{punct}& 对中文标点的位置（宽度）进行调整。\textit{这是默认设置}。\\
-% \textbf{nopunct}& 不对中文标点的位置进行调整（每个标点占有相同的宽度）。\\
+% \textbf{旧选项} & \textbf{等价新选项} \\
+% \midrule
+% |chsstyle| & |style=chinese| \\
+% |nochsstyle| & |style=plain| \\
+% |noprint| & |print=false| \\
+% |double| & |twoside=true| \\
+% |single| & |twoside=false| \\
 % \bottomrule
 % \end{tabular}
 % \end{center}
-% \subsubsection{打印}
+% \subsection{文档元数据}
+% 使用 \cs{sdusetup} 命令设置论文元数据：
+% \begin{verbatim}
+%   \sdusetup{
+%     info = {
+%       title          = {论文题目},
+%       author         = {作者姓名},
+%       student-id     = {学号},
+%       school         = {学院},
+%       major          = {专业},
+%       grade          = {年级},
+%       supervisor     = {导师姓名~~职称},
+%       date           = {\today},
+%       clc            = {分类号},
+%       institution-code = {单位代号},
+%       secret-level   = {密级},
+%     }
+%   }
+% \end{verbatim}
+% 可用的元数据键如下：
 % \begin{center}
-% \begin{tabular}{p{.2\textwidth}p{.7\textwidth}}
+% \begin{tabular}{p{.22\textwidth}p{.15\textwidth}p{.55\textwidth}}
 % \toprule
-% \textbf{noprint}& 保留链接等的色彩，页边距左右相等，\verb|chapter|不强制从偶数页开始。\textit{这是默认设置}。\\
-% \textbf{print}& 单面打印模式。不保留链接等的色彩，页边距左右相等，\verb|chapter|不强制从偶数页开始。\\
-% \textbf{dprint}& 双面打印模式。不保留链接等的色彩，页边距左右不相等，\verb|chapter|强制从偶数页开始。\\
+% \textbf{键名} & \textbf{默认值} & \textbf{说明} \\
+% \midrule
+% |title| & （空） & 论文标题 \\
+% |author| & （空） & 作者姓名 \\
+% |student-id| & （空） & 学号 \\
+% |school| & （空） & 学院 \\
+% |major| & （空） & 专业 \\
+% |grade| & （空） & 年级 \\
+% |supervisor| & （空） & 指导老师 \\
+% |date| & |\today| & 日期 \\
+% |clc| & （空） & 中图分类号（保留，封面不渲染） \\
+% |institution-code| & （空） & 单位代号（保留，封面不渲染） \\
+% |secret-level| & （空） & 密级（保留，封面不渲染） \\
 % \bottomrule
 % \end{tabular}
 % \end{center}
-% \subsubsection{默认选项}
-% 总结一下，\pkg{\jobname} 的默认选项有：
+% \subsubsection{兼容旧命令}
+% 以下旧版命令仍可使用，但会发出废弃警告：
+% \begin{center}
+% \begin{tabular}{ll}
+% \toprule
+% \textbf{旧命令} & \textbf{等价新写法} \\
+% \midrule
+% |\Ctitle{...}| & |info/title = {...}| \\
+% |\Cauthor{...}| & |info/author = {...}| \\
+% |\StuNum{...}| & |info/student-id = {...}| \\
+% |\Dpart{...}| & |info/school = {...}| \\
+% |\Cmajor{...}| & |info/major = {...}| \\
+% |\Grade{...}| & |info/grade = {...}| \\
+% |\Csuperver{...}| & |info/supervisor = {...}| \\
+% |\Cdate{...}| & |info/date = {...}| \\
+% |\fenlei{...}| & |info/clc = {...}| \\
+% |\DWdaihao{...}| & |info/institution-code = {...}| \\
+% |\miji{...}| & |info/secret-level = {...}| \\
+% |\ekv{...}| & |\sdusetup{option = {...}}| \\
+% \bottomrule
+% \end{tabular}
+% \end{center}
+% \subsection{封面和承诺书}
 % \begin{itemize}
-% \item winfonts；\item chsstyle；\item punct；\item noprint。
+%   \item \cs{maketitlepagestatement}：依次生成封面和承诺书。
+%   \item \cs{maketitlepage}：仅生成封面。
+%   \item \cs{makestatement}：仅生成承诺书。
 % \end{itemize}
-% \subsection{常用命令}
-% \pkg{\jobname} 提供了一系列命令，用于修改字体、字号、数字等的呈现形式。
-% \subsubsection{字体}
-% 中文字体很多，但是常用的就那么几个。模板为 CJK 常用的四种中文字体定义了简单易用的命令。它们是：
-%
-% 宋体： \cs{songti}，启用宋体。
-%
-% 黑体：  \cs{heiti}，启用黑体。
-%
-% 仿宋：  \cs{fangsong}，启用仿宋。
-%
-% 楷书：  \cs{kaishu}，启用楷书。
-%
-% \subsubsection{字号、字距、字宽和缩进}
-% 中文字号的设置命令是 \cs{zihao}\marg{字号}，例如 |\zihao{3}|。可以使用的参数有16 个，小号字体在前面加负号表示，从大到小依次为
+% \subsection{摘要与关键词}
+% 中文摘要使用 |cnabstract| 环境，英文摘要使用 |enabstract| 环境。
+% 关键词分别用 \cs{cnkeywords} 和 \cs{enkeywords} 命令在摘要环境内部给出。
+% \begin{verbatim}
+%   \begin{cnabstract}
+%   中文摘要内容。
+%   \cnkeywords{关键词一，关键词二，关键词三}
+%   \end{cnabstract}
+%   \begin{enabstract}
+%   English abstract content.
+%   \enkeywords{keyword one, keyword two, keyword three}
+%   \end{enabstract}
+% \end{verbatim}
+% \subsection{数学命令}
+% \pkg{\jobname} 提供了一些常用的数学排版命令：
 % \begin{center}
-% \begin{tabular}{cccccccc}
+% \begin{tabular}{lll}
 % \toprule
-% 初号 & 小初 & 一号 & 小一 & 二号 & 小二 & 三号 & 小三 \\
-% 0 & -0 & 1 & -1 & 2 & -2 & 3 & -3 \\
-% \hline
-% 四号 & 小四 & 五号 & 小五 & 六号 & 小六 & 七号 & 八号 \\
-% 4 & -4 & 5 & -5 & 6 & -6 & 7 & 8 \\
+% \textbf{命令} & \textbf{效果} & \textbf{说明} \\
+% \midrule
+% |\me| & $\mathrm{e}$ & 自然底数 \\
+% |\mi| & $\mathrm{i}$ & 虚数单位 \\
+% |\dif| & $\mathrm{d}$ & 微分算子 \\
+% |\VEC{x}| & $\boldsymbol{x}$ & 向量（粗体） \\
+% |\MATRIX{A}| & $\boldsymbol{A}$ & 矩阵（粗体） \\
+% |\TENSOR{T}| & $\boldsymbol{\mathsf{T}}$ & 张量 \\
+% |\HUA{f}| & $\mathscr{F}$ & 花体字母 \\
+% |\SHUANG{R}| & $\mathbb{R}$ & 双线体（黑板粗体） \\
+% |\upcite{key}| & \textsuperscript{[n]} & 上标引用 \\
 % \bottomrule
 % \end{tabular}
 % \end{center}
-% \noindent 英文字体大小会始终保持和中文字体一致。
-%
-% 汉字字距的调整使用命令  \cs{ziju}\marg{字宽的倍数}。参数可以是任意的数字，
-% 例如  |\ziju{5}| 设置汉字字距为当前汉字字宽的 5 倍，  |\ziju{0.5}| 设置汉字
-% 字距为当前汉字字宽的一半。这里的汉字字宽指的是实际汉字的宽度，
-% 不包含字间间隔。该命令不影响英文字距。
-%
-% 使用 |\CTEXindent| 可以正常的缩进两个汉字字宽的距离，同时在汉字大小和字距改变
-% 的情况都可以自动修改缩进距离。使用 |\CTEXnoindent|可以取消缩进。
-% \subsubsection{中文数字转换}
-% 使用  \pkg{ctex} 宏包提供的  |\CTEXnumber| 命令可以将阿拉伯数字转换为中文数字。该命令的格式为
-% \begin{quote}
-%  \cs{CTEXnumber}\marg{result}\marg{number}
-% \end{quote}
-% 其中  \marg{result} 必须是一个 \TeX{} 宏的名字，不需要预先定义。
-% 例如
-% \begin{quote}
-%  |\CTEXnumber{\test}{100002005}|
-% \end{quote}
-% 则 |\test|中的内容就是「一亿零二千零五」（不包括引号）。类似有 |\CTEXdigits|命令，若将上面示例中的 |\CTEXnumber|替换成 |\CTEXdigits|, 则 |\test|中的内容是「一〇〇〇〇二〇〇五」（不包括引号）。
-%
-% 对于计数器来说，可以用以下一些命令：
-%
-% \begin{itemize}
-% \item  \cs{chinese}\marg{counter}: 一, 二, 三, $\ldots$
-% \item  \cs{arabic}\marg{counter}: 1, 2, 3, $\ldots$
-% \item  \cs{roman}\marg{counter}: i, ii, iii, $\ldots$
-% \item  \cs{Roman}\marg{counter}: I, II, III, $\ldots$
-% \item  \cs{alph}\marg{counter}: a, b, c, $\ldots$
-% \item  \cs{Alph}\marg{counter}: A, B, C, $\ldots$
-% \end{itemize}
-% \subsubsection{引用}
+% \subsection{引用}
 % \paragraph{参考文献}
-% 参考文献方面，模板没有提供任何支持，完全依赖 \texttt{book} 类。之所以这么做，是因为使用\LaTeX{}进行论文排版的人水平参差不一，在这里做过多的设置反而会让初学者感到困惑。事实上用\BibTeX{}对参考文献进行处理是容易的。
+% 参考文献方面，模板没有提供额外支持，完全依赖 \cls{ctexbook} 类。
+% 推荐使用 \BibTeX{} 或 \texttt{biblatex} 处理参考文献。
 % \paragraph{对图表、章节、公式的引用}
-% 和\LaTeXe{}的习惯完全一致，需要先用 \cs{label}\marg{label-name} 命令
+% 和 \LaTeXe{} 的习惯完全一致，需要先用 \cs{label}\marg{label-name} 命令
 % 做一个「标签」，然后用 \cs{ref}\marg{label-name} 命令来引用。例如，
-% 式 \ref{Equ:emc2} 是被称为质能方程的公式。
+% 式~\ref{Equ:emc2} 是被称为质能方程的公式。
 % \begin{equation}
 % E = m c^2.
 % \label{Equ:emc2}
