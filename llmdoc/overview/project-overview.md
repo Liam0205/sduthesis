@@ -16,6 +16,8 @@ High-signal state changes in `v2.0.0`:
 - only XeLaTeX is supported; legacy pdfTeX/DVI branches are no longer part of the supported runtime contract
 - build, test, and release packaging now center on `l3build`
 - CI and regression baselines now exist in-repo
+- release history and compare links are tracked in `CHANGELOG.md`
+- repository issue intake now includes a structured bug-report template and Discussion routing
 
 ## What the Project Is Today
 At runtime, `sduthesis` is still a focused wrapper around `ctexbook`, but it is no longer a thin legacy layer with ad-hoc state.
@@ -52,9 +54,10 @@ Key repository-level changes:
 - `build.bat` became `build-legacy.bat`
 - `README` became tracked as `README.md`
 - `build.lua` now defines the `l3build` configuration
-- `DEPENDS.txt` declares required package dependencies
+- `CHANGELOG.md` records release history in Keep a Changelog format and is part of release metadata updates
 - `.github/workflows/test.yml` and `.github/tl_packages` provide CI and TeX Live package installation
-- `testfiles/` now contains regression fixtures such as `test-options`, `test-info`, and `test-compat`
+- `.github/ISSUE_TEMPLATE/` now provides a structured bug-report form and routes usage questions to Discussions
+- `testfiles/` now contains regression fixtures such as `test-options`, `test-info`, `test-compat`, `test-cover`, `test-statement`, and `test-abstract`
 
 ## Deliverable Relationship Diagram
 

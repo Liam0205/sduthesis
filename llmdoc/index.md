@@ -13,7 +13,7 @@ This index is the global map of stable project documentation. Use it to find the
 - `llmdoc/architecture/class-architecture.md` — current class execution model: self-extracting DocStrip structure, expl3 naming, key spaces, compatibility layer, XeLaTeX-only runtime, front-matter flow, and maintenance invariants.
 
 ## reference
-- `llmdoc/reference/modernization-reference.md` — stable v2.0.0 lookup for expl3 modernization decisions, `sdu` key namespaces, `\sdusetup`, `l3build`, CTAN/TDS packaging layout, CI, documentation-driver choices, and compatibility policy.
+- `llmdoc/reference/modernization-reference.md` — stable v2.0.0 lookup for expl3 modernization decisions, `sdu` key namespaces, `\sdusetup`, `l3build`, release tagging/changelog automation, CTAN/TDS packaging layout, regression coverage, CI, issue templates, documentation-driver choices, and compatibility policy.
 
 ## memory
 - `llmdoc/memory/doc-gaps.md` — known documentation gaps, unresolved questions, and underdocumented behavior worth revisiting.
@@ -22,5 +22,5 @@ This index is the global map of stable project documentation. Use it to find the
 - Need repository identity, supported engine, or build facts: go to `must/project-essentials.md`.
 - Need context on what changed in v2.0.0 and how the repository is organized now: go to `overview/project-overview.md`.
 - Need to understand how the modern class actually works: go to `architecture/class-architecture.md`.
-- Need quick lookup for option namespaces, compatibility policy, build commands, or CI files: go to `reference/modernization-reference.md`.
+- Need quick lookup for option namespaces, compatibility policy, build commands, release tagging, changelog automation, regression coverage, or CI files: go to `reference/modernization-reference.md`.
 - Need to see what is still unclear or missing from docs: go to `memory/doc-gaps.md`.

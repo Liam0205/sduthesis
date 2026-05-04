@@ -21,8 +21,10 @@
 - `sduthesis.dtx`: documented source for class, cover, statement, demo, README, license, and documentation driver
 - `build.lua`: `l3build` configuration
 - `DEPENDS.txt`: dependency declaration for the build/test toolchain
+- `CHANGELOG.md`: Keep a Changelog release history and compare-link source
 - `.github/workflows/test.yml`: CI workflow
 - `.github/tl_packages`: TeX Live package list for CI
+- `.github/ISSUE_TEMPLATE/`: structured issue intake and discussion routing
 
 ## Generated Outputs
 - `sduthesis.cls`: main class
@@ -37,7 +39,8 @@
 - `build.lua`: canonical build/test/package entrypoint definition
 - `build-legacy.sh`, `build-legacy.bat`: legacy manual build helpers kept for compatibility
 - `figures/`: cover and demo image assets
-- `testfiles/`: regression fixtures and expected logs
+- `testfiles/`: regression fixtures and expected logs, including front-matter and abstract coverage
+- `.github/ISSUE_TEMPLATE/`: structured bug-report intake and discussion routing
 - `llmdoc/`: durable project documentation
 - `.llmdoc-tmp/investigations/`: temporary investigation notes, not stable docs
 
@@ -46,9 +49,13 @@
 - Run regression tests: `l3build check`
 - Build user documentation: `l3build doc`
 - Build CTAN package archives: `l3build ctan`
+- Update release metadata before tagging: `l3build tag <version>`
 
 ## Packaging Facts
 - `build.lua` treats `sduthesis.dtx` plus `figures/*.pdf` and `figures/*.jpg` as CTAN source inputs so image assets are copied into the flat CTAN package.
+- `docfiles` ships both `DEPENDS.txt` and `CHANGELOG.md`; `textfiles` ships `README.md`.
+- `tagfiles = {"*.dtx", "CHANGELOG.md"}` lets `l3build tag <version>` update release metadata in both the documented source and changelog.
+- `typesetdemofiles = {"sduthesis-demo.tex"}` plus `docinit_hook()` make the extracted demo compile into a PDF for the CTAN documentation payload.
 - `installfiles` only matches generated runtime files plus flattened image filenames in the unpack directory: `*.cls`, `*.def`, `SDU.pdf`, `SDULogo.pdf`, `SDUWords.jpg`, and `sduthesis-*.jpg`.
 - `tdslocations` sends those flattened image assets to `tex/latex/sduthesis/figures/` inside the TDS zip.
 - `docfiles` ships `DEPENDS.txt`; `textfiles` ships `README.md`.
@@ -85,7 +92,7 @@
 - legacy options such as `chsstyle`, `noprint`, `double`, and `single` are still supported with deprecation warnings
 - `degree` already reserves `master` and `doctor` extension points
 - CI runs `l3build check` on GitHub Actions
-- regression baselines exist for options, info metadata, and compatibility
+- regression baselines exist for options, info metadata, compatibility, cover generation, statement generation, and abstract environments
 
 ## Immediate Watchpoints
 - new work should document and prefer the keyed API, not the legacy setter surface
