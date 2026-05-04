@@ -131,3 +131,6 @@ sduthesis.hd
 build/
 *.tds.zip
 *-ctan.zip
+
+# llmdoc
+/.llmdoc-tmp
